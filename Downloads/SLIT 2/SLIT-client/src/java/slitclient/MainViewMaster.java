@@ -262,13 +262,13 @@ public abstract class MainViewMaster {
          * avsluttes.
          */
         exitApplication.addActionListener(new ActionListener() {
-            String message = "Er du sikker på at du vil avslutte applikasjonen?";
+            String message = "Where were you when application was kill?";
             String title = "Avslutt applikasjon";
             @Override
             public void actionPerformed(ActionEvent e) {
                     int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "Applikasjonen er avsluttet.");
+                        JOptionPane.showMessageDialog(null, "Application is kill RIP.");
                         System.exit(0);
                     }
             }

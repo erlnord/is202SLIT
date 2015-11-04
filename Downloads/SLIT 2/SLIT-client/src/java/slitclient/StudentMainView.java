@@ -16,7 +16,8 @@ import javax.swing.*;
 public class StudentMainView extends MainViewMaster {
     
     public StudentMainView() {
-        
+        // Elever skal ikke kunne endre på tekstfeltet.
+        super.infoTxt.setEditable(false);
     }
     
     
