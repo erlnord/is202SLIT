@@ -90,6 +90,7 @@ public abstract class MainViewMaster {
     JTextArea infoTxt = new JTextArea();
     JScrollPane infoScroll = new JScrollPane(infoTxt);
     
+    // Initialiserer kalender
     UtilDateModel model = new UtilDateModel();
     //model.setDate(20,04,2014);
     // Need this...
