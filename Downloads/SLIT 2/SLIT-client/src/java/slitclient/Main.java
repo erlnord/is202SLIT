@@ -6,19 +6,27 @@
 package slitclient;
 
 import java.awt.Color;
+import javax.ejb.EJB;
 import javax.swing.*;
-import javax.swing.UIManager;
+import service.messageBeanRemote;
 
 /**
  *
- * @author Erlend
+ * @author Erlend & company
  */
 public class Main {
+    
+    @EJB (name="messageBean")
+    private static messageBeanRemote messageInstance;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Boolean result = messageInstance.addMessage("Dette er en test");
+        System.out.println("Result: " +result);
+        /**
         // TODO code application logic here
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -34,7 +42,7 @@ public class Main {
         // Plasserer applikasjonen midt på skjermen
         logIn.setLocationRelativeTo(null);
         
-        
+        **/
         }
     
     public static void studentMainView() {
