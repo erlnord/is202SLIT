@@ -24,9 +24,9 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        Boolean result = messageInstance.addMessage("Dette er en test");
-        System.out.println("Result: " +result);
-        /**
+        //Boolean result = messageInstance.addMessage("Dette er en test");
+        //System.out.println("Result: " +result);
+        
         // TODO code application logic here
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -42,7 +42,7 @@ public class Main {
         // Plasserer applikasjonen midt på skjermen
         logIn.setLocationRelativeTo(null);
         
-        **/
+        
         }
     
     public static void studentMainView() {
