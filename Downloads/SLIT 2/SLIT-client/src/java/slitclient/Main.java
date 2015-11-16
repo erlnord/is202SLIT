@@ -6,7 +6,8 @@
 package slitclient;
 
 import java.awt.Color;
-import java.util.Properties;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.ejb.EJB;
 import javax.swing.*;
 import service.messageBeanRemote;
@@ -24,8 +25,7 @@ public class Main {
      * @param args the command line arguments
      */
     
-    public static void main(String[] args) {
-        
+    public Main() {
         //Boolean result = messageInstance.addMessage("Dette er en test");
         //System.out.println("Result: " +result);
         
@@ -44,7 +44,11 @@ public class Main {
         logIn.setBackground(Color.WHITE);
         // Plasserer applikasjonen midt på skjermen
         logIn.setLocationRelativeTo(null);
-
+        
+    }
+    
+    public static void main(String[] args) {
+        new Main();
     }
     
     public static void studentMainView() {
@@ -69,16 +73,3 @@ public class Main {
         
 
 }
-        
-        
-        
-        
-       // StudentMainView studentTest = new StudentMainView();
-       // studentTest.setVisible(true);
-       // studentTest.setSize(800,600);
-       // studentTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
-    
-    
-    
-
