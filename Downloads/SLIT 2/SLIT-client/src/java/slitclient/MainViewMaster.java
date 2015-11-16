@@ -13,6 +13,8 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Properties;
+import javax.swing.BorderFactory;
+import static javax.swing.BorderFactory.createEmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -189,7 +191,9 @@ public abstract class MainViewMaster {
         infoTxt.setText("Hei");
         infoTxt.setMargin( new Insets(15,15,15,15)); // teksten går ikke helt til kantene
         leftPanel.add(infoScroll, BorderLayout.CENTER); // legger scrollpanen med textarea inni til leftPanel
+        infoScroll.setBorder(createEmptyBorder());
         leftPanel.setBackground(Color.white);
+        leftPanel.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 1, Color.decode("#f0f0f0")));
 
         
         rightPanel.setBackground(Color.white);
@@ -197,6 +201,7 @@ public abstract class MainViewMaster {
         p.put("text.month", "Month");
         p.put("text.year", "Year");
         rightPanel.add(datePicker);
+        rightPanel.setBorder(BorderFactory.createMatteBorder(2, 1, 0, 0, Color.decode("#f0f0f0")));
         
         /**
          * Legger til en actionListener som avslutter applikasjonen
