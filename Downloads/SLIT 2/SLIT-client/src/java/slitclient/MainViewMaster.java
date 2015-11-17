@@ -147,6 +147,7 @@ public abstract class MainViewMaster {
         bookingBtn.setFocusPainted(false);
         bookingBtn.setContentAreaFilled(false);
         bookingBtn.setSize(1, 1);
+        bookingBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         topPanel.add(bookingBtn);
         
         // Initialiserer moduleBtn
@@ -154,6 +155,7 @@ public abstract class MainViewMaster {
         moduleBtn.setFocusPainted(false);
         moduleBtn.setContentAreaFilled(false);
         moduleBtn.setSize(1, 1);
+        moduleBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         topPanel.add(moduleBtn);
         
         // Initialiserer mailBtn
@@ -161,6 +163,7 @@ public abstract class MainViewMaster {
         mailBtn.setFocusPainted(false);
         mailBtn.setContentAreaFilled(false);
         mailBtn.setSize(1, 1);
+        mailBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         topPanel.add(mailBtn);
         
         // Initialiserer settingsBtn
@@ -168,6 +171,7 @@ public abstract class MainViewMaster {
         settingsBtn.setFocusPainted(false);
         settingsBtn.setContentAreaFilled(false);
         settingsBtn.setSize(1, 1);
+        settingsBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         topPanel.add(settingsBtn);
         
         
@@ -189,14 +193,15 @@ public abstract class MainViewMaster {
         infoTxt.setWrapStyleWord(true); // Linjer pÃ¥ ord istedenfor bokstaver
         infoTxt.setLineWrap(true); // NÃ¥ scroller vi bare horisontalt
         infoTxt.setText("Hei");
+        infoTxt.setBackground(Color.white);
         infoTxt.setMargin( new Insets(15,15,15,15)); // teksten går ikke helt til kantene
         leftPanel.add(infoScroll, BorderLayout.CENTER); // legger scrollpanen med textarea inni til leftPanel
         infoScroll.setBorder(createEmptyBorder());
-        leftPanel.setBackground(Color.white);
+        leftPanel.setBackground(Color.decode("#f0f0f0"));
         leftPanel.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 1, Color.decode("#f0f0f0")));
 
         
-        rightPanel.setBackground(Color.white);
+        rightPanel.setBackground(Color.decode("#f0f0f0"));
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
