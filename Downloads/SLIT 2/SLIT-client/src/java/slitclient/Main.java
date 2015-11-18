@@ -6,9 +6,7 @@
 package slitclient;
 
 import java.awt.Color;
-import javax.ejb.EJB;
 import javax.swing.*;
-import service.messageBeanRemote;
 
 /**
  *
@@ -16,16 +14,12 @@ import service.messageBeanRemote;
  */
 public class Main {
     
-    @EJB (name="messageBean")
-    private static messageBeanRemote messageInstance;
 
     /**
      * @param args the command line arguments
      */
     
     public Main() {
-        Boolean result = messageInstance.addMessage("Dette er en test");
-        System.out.println("Result: " +result);
         
         // TODO code application logic here
         
@@ -42,6 +36,9 @@ public class Main {
         logIn.setBackground(Color.WHITE);
         // Plasserer applikasjonen midt på skjermen
         logIn.setLocationRelativeTo(null);
+        
+        
+        //TimePlan tb = new TimePlan();
         
     }
     

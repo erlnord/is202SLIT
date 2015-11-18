@@ -189,6 +189,10 @@ public abstract class MainViewMaster extends ButtonMenu {
             JOptionPane.showMessageDialog(null, "Du trykte på en knapp.");
         });
         
+        super.bookingBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new TimePlan();
+        });
     }
 }
 
