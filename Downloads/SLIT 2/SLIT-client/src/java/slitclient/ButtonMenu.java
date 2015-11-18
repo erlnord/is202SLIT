@@ -9,6 +9,9 @@ import java.awt.Cursor;
 import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 /**
@@ -39,6 +42,24 @@ public abstract class ButtonMenu {
     JButton settingsBtn = new JButton(settingsImg);
     
     JPanel topPanel = new JPanel();
+    
+      // Lager en menylinje
+    JMenuBar menuBar = new JMenuBar();
+    
+    // Lager "Fil"-delen av menyen og alt som hÃ¸rer til
+    JMenu fileMenu = new JMenu("Fil");
+    JMenu openFile = new JMenu("Ã…pne");
+    JMenuItem fromLocal = new JMenuItem("Lokalt lagret");
+    JMenuItem fromCloud = new JMenuItem("Fra sky");
+    JMenuItem saveFile = new JMenuItem("Lagre");
+    JMenuItem saveAsFile = new JMenuItem("Lagre Som");
+    JMenuItem exitApplication = new JMenuItem("Avslutt applikasjonen");
+    
+    // Lager "Kontakt"-delen av menyen og alt som hÃ¸rer til
+    JMenu contactMenu = new JMenu("Kontakt");
+    
+    // Lager "Hjelp"-delen av menyen og alt som hÃ¸rer til
+    JMenu helpMenu = new JMenu("Hjelp");
     
     public ButtonMenu(){
         
@@ -80,5 +101,20 @@ public abstract class ButtonMenu {
         settingsBtn.setContentAreaFilled(false);
         settingsBtn.setSize(1, 1);
         topPanel.add(settingsBtn);
+        
+         // Legger til fil-menyen i menylinja, og legger til menyelementer
+        menuBar.add(fileMenu);
+        fileMenu.add(openFile);
+        openFile.add(fromLocal);
+        openFile.add(fromCloud);
+        fileMenu.add(saveFile);
+        fileMenu.add(saveAsFile);
+        fileMenu.add(exitApplication);
+        
+        // Legger til kontakt-menyen i menylinja, og legger til elementer
+        menuBar.add(contactMenu);
+        
+        // Legger til hjelp-menyen i menylinja, og legger til elementer
+        menuBar.add(helpMenu);
     }
 }
