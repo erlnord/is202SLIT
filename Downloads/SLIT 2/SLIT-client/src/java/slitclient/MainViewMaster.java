@@ -141,7 +141,7 @@ public abstract class MainViewMaster extends ButtonMenu {
         
         leftPane1.setText("Hello");
         leftPane2.setText("Halla");
-        leftPane3.setText("Hello");
+        leftPane3.setText("Helllo");
         leftPane4.setText("Hva skjer?");
         leftPane5.setText("Hello");
         leftPane6.setText("Heihei ja");
