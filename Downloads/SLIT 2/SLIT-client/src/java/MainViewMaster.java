@@ -48,23 +48,7 @@ public abstract class MainViewMaster extends ButtonMenu{
     JPanel rightPanel = new JPanel();
     JPanel container = new JPanel();
     
-    // Lager en menylinje
-    JMenuBar menuBar = new JMenuBar();
-    
-    // Lager "Fil"-delen av menyen og alt som hÃ¸rer til
-    JMenu fileMenu = new JMenu("Fil");
-    JMenu openFile = new JMenu("Ã…pne");
-    JMenuItem fromLocal = new JMenuItem("Lokalt lagret");
-    JMenuItem fromCloud = new JMenuItem("Fra sky");
-    JMenuItem saveFile = new JMenuItem("Lagre");
-    JMenuItem saveAsFile = new JMenuItem("Lagre Som");
-    JMenuItem exitApplication = new JMenuItem("Avslutt applikasjonen");
-    
-    // Lager "Kontakt"-delen av menyen og alt som hÃ¸rer til
-    JMenu contactMenu = new JMenu("Kontakt");
-    
-    // Lager "Hjelp"-delen av menyen og alt som hÃ¸rer til
-    JMenu helpMenu = new JMenu("Hjelp");
+  
     
     
     
@@ -95,20 +79,7 @@ public abstract class MainViewMaster extends ButtonMenu{
         frame.setJMenuBar(menuBar);
         //frame.setLayout(new GridLayout(5, 5, 10, 10));
         
-        // Legger til fil-menyen i menylinja, og legger til menyelementer
-        menuBar.add(fileMenu);
-        fileMenu.add(openFile);
-        openFile.add(fromLocal);
-        openFile.add(fromCloud);
-        fileMenu.add(saveFile);
-        fileMenu.add(saveAsFile);
-        fileMenu.add(exitApplication);
-        
-        // Legger til kontakt-menyen i menylinja, og legger til elementer
-        menuBar.add(contactMenu);
-        
-        // Legger til hjelp-menyen i menylinja, og legger til elementer
-        menuBar.add(helpMenu);
+       
     
         // Legger til en container for left og rightpanel
         frame.getContentPane().add(container, BorderLayout.CENTER);
