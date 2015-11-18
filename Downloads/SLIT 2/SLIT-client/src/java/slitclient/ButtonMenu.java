@@ -79,6 +79,7 @@ public abstract class ButtonMenu {
         bookingBtn.setFocusPainted(false);
         bookingBtn.setContentAreaFilled(false);
         bookingBtn.setSize(1, 1);
+        bookingBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         topPanel.add(bookingBtn);
         
         // Initialiserer moduleBtn
@@ -86,6 +87,7 @@ public abstract class ButtonMenu {
         moduleBtn.setFocusPainted(false);
         moduleBtn.setContentAreaFilled(false);
         moduleBtn.setSize(1, 1);
+        moduleBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         topPanel.add(moduleBtn);
         
         // Initialiserer mailBtn
@@ -93,6 +95,7 @@ public abstract class ButtonMenu {
         mailBtn.setFocusPainted(false);
         mailBtn.setContentAreaFilled(false);
         mailBtn.setSize(1, 1);
+        mailBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         topPanel.add(mailBtn);
         
         // Initialiserer settingsBtn
@@ -100,6 +103,7 @@ public abstract class ButtonMenu {
         settingsBtn.setFocusPainted(false);
         settingsBtn.setContentAreaFilled(false);
         settingsBtn.setSize(1, 1);
+        settingsBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         topPanel.add(settingsBtn);
         
          // Legger til fil-menyen i menylinja, og legger til menyelementer
