@@ -39,15 +39,15 @@ public abstract class MainViewMaster extends ButtonMenu {
     JPanel rightPanel = new JPanel();
     JPanel container = new JPanel();
     
-    JTextPane pane1 = new JTextPane();
-    JTextPane pane2 = new JTextPane();
-    JTextPane pane3 = new JTextPane();
-    JTextPane pane4 = new JTextPane();
-    JTextPane pane5 = new JTextPane();
-    JTextPane pane6 = new JTextPane();
-    JTextPane pane7 = new JTextPane();
-    JTextPane pane8 = new JTextPane();
-    JTextPane pane9 = new JTextPane();
+    JTextPane leftPane1 = new JTextPane();
+    JTextPane leftPane2 = new JTextPane();
+    JTextPane leftPane3 = new JTextPane();
+    JTextPane leftPane4 = new JTextPane();
+    JTextPane leftPane5 = new JTextPane();
+    JTextPane leftPane6 = new JTextPane();
+    JTextPane leftPane7 = new JTextPane();
+    JTextPane leftPane8 = new JTextPane();
+    JTextPane leftPane9 = new JTextPane();
     
     JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
     JSplitPane rightsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -105,67 +105,65 @@ public abstract class MainViewMaster extends ButtonMenu {
         frame.add(sp, BorderLayout.CENTER);
         
         // Initialiserer left JPanel
-        leftPanel.setLayout(new GridLayout(9,1)); // Borderlayout
+        leftPanel.setLayout(new GridLayout(9,1));
         leftPanel.setBackground(Color.white);
         leftPanel.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 1, Color.decode("#f0f0f0")));
         
-        pane1.setBackground(Color.decode("#f0f0f0"));
-        pane2.setBackground(Color.white);
-        pane3.setBackground(Color.decode("#f0f0f0"));
-        pane4.setBackground(Color.white);
-        pane5.setBackground(Color.decode("#f0f0f0"));
-        pane6.setBackground(Color.white);
-        pane7.setBackground(Color.decode("#f0f0f0"));
-        pane8.setBackground(Color.white);
-        pane9.setBackground(Color.decode("#f0f0f0"));
+        leftPane1.setBackground(Color.decode("#f0f0f0"));
+        leftPane2.setBackground(Color.white);
+        leftPane3.setBackground(Color.decode("#f0f0f0"));
+        leftPane4.setBackground(Color.white);
+        leftPane5.setBackground(Color.decode("#f0f0f0"));
+        leftPane6.setBackground(Color.white);
+        leftPane7.setBackground(Color.decode("#f0f0f0"));
+        leftPane8.setBackground(Color.white);
+        leftPane9.setBackground(Color.decode("#f0f0f0"));
         
-        leftPanel.add(pane1);
-        leftPanel.add(pane2);
-        leftPanel.add(pane3);
-        leftPanel.add(pane4);
-        leftPanel.add(pane5);
-        leftPanel.add(pane6);
-        leftPanel.add(pane7);
-        leftPanel.add(pane8);
-        leftPanel.add(pane9);
+        leftPanel.add(leftPane1);
+        leftPanel.add(leftPane2);
+        leftPanel.add(leftPane3);
+        leftPanel.add(leftPane4);
+        leftPanel.add(leftPane5);
+        leftPanel.add(leftPane6);
+        leftPanel.add(leftPane7);
+        leftPanel.add(leftPane8);
+        leftPanel.add(leftPane9);
         
-        pane1.setMargin( new Insets(5,5,5,5));
-        pane2.setMargin( new Insets(5,5,5,5));
-        pane3.setMargin( new Insets(5,5,5,5));
-        pane4.setMargin( new Insets(5,5,5,5));
-        pane5.setMargin( new Insets(5,5,5,5));
-        pane6.setMargin( new Insets(5,5,5,5));
-        pane7.setMargin( new Insets(5,5,5,5));
-        pane8.setMargin( new Insets(5,5,5,5));
-        pane9.setMargin( new Insets(5,5,5,5));
+        leftPane1.setMargin( new Insets(5,5,5,5));
+        leftPane2.setMargin( new Insets(5,5,5,5));
+        leftPane3.setMargin( new Insets(5,5,5,5));
+        leftPane4.setMargin( new Insets(5,5,5,5));
+        leftPane5.setMargin( new Insets(5,5,5,5));
+        leftPane6.setMargin( new Insets(5,5,5,5));
+        leftPane7.setMargin( new Insets(5,5,5,5));
+        leftPane8.setMargin( new Insets(5,5,5,5));
+        leftPane9.setMargin( new Insets(5,5,5,5));
         
-        pane1.setText("Hello");
-        pane2.setText("Hello");
-        pane3.setText("Hello");
-        pane4.setText("Hello");
-        pane5.setText("Hello");
-        pane6.setText("Hello");
-        pane7.setText("Hello");
-        pane8.setText("Hello");
-        pane9.setText("Hello");
+        leftPane1.setText("Hello");
+        leftPane2.setText("Halla");
+        leftPane3.setText("Hello");
+        leftPane4.setText("Hva skjer?");
+        leftPane5.setText("Hello");
+        leftPane6.setText("Heihei ja");
+        leftPane7.setText("Hello");
+        leftPane8.setText("HOLD NU KJÆFT!");
+        leftPane9.setText("Hello?");
         
-        pane1.setEditable(false);
-        pane2.setEditable(false);
-        pane3.setEditable(false);
-        pane4.setEditable(false);
-        pane5.setEditable(false);
-        pane6.setEditable(false);
-        pane7.setEditable(false);
-        pane8.setEditable(false);
-        pane9.setEditable(false);
+        leftPane1.setEditable(false);
+        leftPane2.setEditable(false);
+        leftPane3.setEditable(false);
+        leftPane4.setEditable(false);
+        leftPane5.setEditable(false);
+        leftPane6.setEditable(false);
+        leftPane7.setEditable(false);
+        leftPane8.setEditable(false);
+        leftPane9.setEditable(false);
 
         
         rightPanel.setBackground(Color.white);
         rightPanel.setBorder(BorderFactory.createMatteBorder(2, 1, 0, 0, Color.decode("#f0f0f0")));
-        p.put("text.today", "Today");
-        p.put("text.month", "Month");
-        p.put("text.year", "Year");
-        rightPanel.add(datePicker);
+        rightPanel.setLayout(new GridLayout(9,1));
+        
         
         /**
          * Legger til en actionListener som avslutter applikasjonen
