@@ -6,8 +6,6 @@
 package slitclient;
 
 import java.awt.Color;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import javax.ejb.EJB;
 import javax.swing.*;
 import service.messageBeanRemote;
@@ -26,8 +24,8 @@ public class Main {
      */
     
     public Main() {
-        //Boolean result = messageInstance.addMessage("Dette er en test");
-        //System.out.println("Result: " +result);
+        Boolean result = messageInstance.addMessage("Dette er en test");
+        System.out.println("Result: " +result);
         
         // TODO code application logic here
         
@@ -48,14 +46,37 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        new Main();
+        
+        //Kodesnutt for å fikse menubar på Mac OS X.
+        try {
+                System.setProperty("apple.laf.useScreenMenuBar", "true");
+                System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Test");
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            }
+            catch(ClassNotFoundException e) {
+                System.out.println("ClassNotFoundException: " + e.getMessage());
+            }
+            catch(InstantiationException e) {
+                System.out.println("InstantiationException: " + e.getMessage());
+            }
+            catch(IllegalAccessException e) {
+                System.out.println("IllegalAccessException: " + e.getMessage());
+            }
+            catch(UnsupportedLookAndFeelException e) {
+                System.out.println("UnsupportedLookAndFeelException: " + e.getMessage());
+            }
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    new Main(); //Her kjøres konstruktøren
+                }
+        });
     }
     
     public static void studentMainView() {
         // StudentMainView
         StudentMainView smw = new StudentMainView();
         smw.frame.setVisible(true);
-        smw.frame.setSize(1024,768);
+        smw.frame.setSize(1300,768);
         smw.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         smw.frame.setBackground(Color.WHITE);
         smw.frame.setLocationRelativeTo(null);
@@ -65,7 +86,7 @@ public class Main {
         //TeacherMainView
         TeacherMainView tmw = new TeacherMainView();
         tmw.frame.setVisible(true);
-        tmw.frame.setSize(1024,768);
+        tmw.frame.setSize(1300,768);
         tmw.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tmw.frame.setBackground(Color.WHITE);
         tmw.frame.setLocationRelativeTo(null);

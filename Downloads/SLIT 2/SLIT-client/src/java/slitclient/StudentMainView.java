@@ -5,10 +5,6 @@
  */
 package slitclient;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.*;
-
 /**
  *
  * @author Erlend
@@ -16,8 +12,7 @@ import javax.swing.*;
 public class StudentMainView extends MainViewMaster {
     
     public StudentMainView() {
-        // Elever skal ikke kunne endre på tekstfeltet.
-        super.infoTxt.setEditable(false);
+        
     }
     
     
