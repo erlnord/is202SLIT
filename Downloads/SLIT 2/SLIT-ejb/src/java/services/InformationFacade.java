@@ -12,11 +12,10 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author larsmartin
+ * @author Erlend
  */
 @Stateless
 public class InformationFacade extends AbstractFacade<Information> implements services.InformationFacadeRemote {
-
     @PersistenceContext(unitName = "SLIT-ejbPU")
     private EntityManager em;
 

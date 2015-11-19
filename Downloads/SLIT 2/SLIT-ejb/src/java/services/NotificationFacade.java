@@ -12,11 +12,10 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author larsmartin
+ * @author Erlend
  */
 @Stateless
 public class NotificationFacade extends AbstractFacade<Notification> implements services.NotificationFacadeRemote {
-
     @PersistenceContext(unitName = "SLIT-ejbPU")
     private EntityManager em;
 

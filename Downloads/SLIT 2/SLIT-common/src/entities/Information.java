@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author larsmartin
+ * @author Erlend
  */
 @Entity
 @Table(name = "Information")
@@ -32,7 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Information.findAll", query = "SELECT i FROM Information i"),
     @NamedQuery(name = "Information.findByInfoID", query = "SELECT i FROM Information i WHERE i.infoID = :infoID")})
 public class Information implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +43,7 @@ public class Information implements Serializable {
     @Column(name = "InfoText")
     private String infoText;
     @JoinColumn(name = "UserID", referencedColumnName = "UserID")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User userID;
 
     public Information() {

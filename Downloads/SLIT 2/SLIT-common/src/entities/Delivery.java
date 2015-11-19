@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author larsmartin
+ * @author Erlend
  */
 @Entity
 @Table(name = "Delivery")
@@ -34,7 +34,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Delivery.findByStatus", query = "SELECT d FROM Delivery d WHERE d.status = :status"),
     @NamedQuery(name = "Delivery.findByFeedback", query = "SELECT d FROM Delivery d WHERE d.feedback = :feedback")})
 public class Delivery implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,7 +49,7 @@ public class Delivery implements Serializable {
     @Column(name = "DeliveryFile")
     private byte[] deliveryFile;
     @JoinColumn(name = "UserID", referencedColumnName = "UserID")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User userID;
 
     public Delivery() {

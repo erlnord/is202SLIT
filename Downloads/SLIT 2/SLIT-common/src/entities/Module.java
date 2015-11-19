@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author larsmartin
+ * @author Erlend
  */
 @Entity
 @Table(name = "Module")
@@ -33,7 +33,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Module.findByModuleID", query = "SELECT m FROM Module m WHERE m.moduleID = :moduleID"),
     @NamedQuery(name = "Module.findByModuleName", query = "SELECT m FROM Module m WHERE m.moduleName = :moduleName")})
 public class Module implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,8 +45,12 @@ public class Module implements Serializable {
     @Lob
     @Column(name = "ModuleFile")
     private byte[] moduleFile;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "ModuleDescription")
+    private String moduleDescription;
     @JoinColumn(name = "UserID", referencedColumnName = "UserID")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User userID;
 
     public Module() {
@@ -79,6 +82,14 @@ public class Module implements Serializable {
 
     public void setModuleFile(byte[] moduleFile) {
         this.moduleFile = moduleFile;
+    }
+
+    public String getModuleDescription() {
+        return moduleDescription;
+    }
+
+    public void setModuleDescription(String moduleDescription) {
+        this.moduleDescription = moduleDescription;
     }
 
     public User getUserID() {

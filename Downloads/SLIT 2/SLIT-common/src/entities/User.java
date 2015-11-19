@@ -8,6 +8,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author larsmartin
+ * @author Erlend
  */
 @Entity
 @Table(name = "User")
@@ -38,7 +39,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findByPassPhrase", query = "SELECT u FROM User u WHERE u.passPhrase = :passPhrase"),
     @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")})
 public class User implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,17 +63,13 @@ public class User implements Serializable {
     @Size(max = 45)
     @Column(name = "Email")
     private String email;
-    @OneToMany(mappedBy = "userID")
-    private Collection<Schedule> scheduleCollection;
-    @OneToMany(mappedBy = "userID")
-    private Collection<Booking> bookingCollection;
-    @OneToMany(mappedBy = "userID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
     private Collection<Delivery> deliveryCollection;
-    @OneToMany(mappedBy = "userID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
     private Collection<Information> informationCollection;
-    @OneToMany(mappedBy = "userID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
     private Collection<Module> moduleCollection;
-    @OneToMany(mappedBy = "userID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
     private Collection<Notification> notificationCollection;
 
     public User() {
@@ -137,24 +133,6 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @XmlTransient
-    public Collection<Schedule> getScheduleCollection() {
-        return scheduleCollection;
-    }
-
-    public void setScheduleCollection(Collection<Schedule> scheduleCollection) {
-        this.scheduleCollection = scheduleCollection;
-    }
-
-    @XmlTransient
-    public Collection<Booking> getBookingCollection() {
-        return bookingCollection;
-    }
-
-    public void setBookingCollection(Collection<Booking> bookingCollection) {
-        this.bookingCollection = bookingCollection;
     }
 
     @XmlTransient

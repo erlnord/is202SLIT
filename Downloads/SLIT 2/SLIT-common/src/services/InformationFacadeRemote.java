@@ -11,7 +11,7 @@ import javax.ejb.Remote;
 
 /**
  *
- * @author larsmartin
+ * @author Erlend
  */
 @Remote
 public interface InformationFacadeRemote {

@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author larsmartin
+ * @author Erlend
  */
 @Entity
 @Table(name = "Notification")
@@ -32,7 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Notification.findByNotifID", query = "SELECT n FROM Notification n WHERE n.notifID = :notifID"),
     @NamedQuery(name = "Notification.findByMessage", query = "SELECT n FROM Notification n WHERE n.message = :message")})
 public class Notification implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +42,7 @@ public class Notification implements Serializable {
     @Column(name = "Message")
     private String message;
     @JoinColumn(name = "UserID", referencedColumnName = "UserID")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User userID;
 
     public Notification() {
