@@ -97,7 +97,7 @@ public abstract class MainViewMaster extends ButtonMenu {
         
         sp.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.decode("#f0f0f0")));
         
-        sp.setResizeWeight(0.8);
+        sp.setResizeWeight(0.7);
         sp.setDividerSize(0);
 
         sp.add(leftPanel);
@@ -192,6 +192,11 @@ public abstract class MainViewMaster extends ButtonMenu {
         super.bookingBtn.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             new TimePlan();
+        });
+        
+        super.settingsBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new SettingsWindow();
         });
     }
 }
