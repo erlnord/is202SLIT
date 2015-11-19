@@ -22,7 +22,10 @@ public class SettingsWindow extends ButtonMenu {
     public SettingsWindow() {
         JFrame frame = new JFrame("Innstillinger");
         frame.setLayout(new GridLayout (2,2));
-        
+        frame.add(topPanel, BorderLayout.NORTH);
+        topPanel.setBackground(Color.white);
+        frame.add(menuBar);
+        frame.setJMenuBar(menuBar);
         label1 = new JLabel ("") ; 
         frame.add (label1);
                 
