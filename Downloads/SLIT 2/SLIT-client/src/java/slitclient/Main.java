@@ -17,9 +17,10 @@ import services.UserFacadeRemote;
  */
 public class Main {
     
+    /**
     @EJB (name="UserFacade")
     private static UserFacadeRemote userInstance;
-
+    * /
     /**
      * @param args the command line arguments
      */

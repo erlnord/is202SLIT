@@ -129,15 +129,15 @@ public abstract class MainViewMaster extends ButtonMenu {
         leftPanel.add(leftPane8);
         leftPanel.add(leftPane9);
         
-        leftPane1.setMargin( new Insets(5,5,5,5));
-        leftPane2.setMargin( new Insets(5,5,5,5));
-        leftPane3.setMargin( new Insets(5,5,5,5));
-        leftPane4.setMargin( new Insets(5,5,5,5));
-        leftPane5.setMargin( new Insets(5,5,5,5));
-        leftPane6.setMargin( new Insets(5,5,5,5));
-        leftPane7.setMargin( new Insets(5,5,5,5));
-        leftPane8.setMargin( new Insets(5,5,5,5));
-        leftPane9.setMargin( new Insets(5,5,5,5));
+        leftPane1.setMargin( new Insets(10,10,10,10));
+        leftPane2.setMargin( new Insets(10,10,10,10));
+        leftPane3.setMargin( new Insets(10,10,10,10));
+        leftPane4.setMargin( new Insets(10,10,10,10));
+        leftPane5.setMargin( new Insets(10,10,10,10));
+        leftPane6.setMargin( new Insets(10,10,10,10));
+        leftPane7.setMargin( new Insets(10,10,10,10));
+        leftPane8.setMargin( new Insets(10,10,10,10));
+        leftPane9.setMargin( new Insets(10,10,10,10));
         
         leftPane1.setText("Hello");
         leftPane2.setText("Halla");
