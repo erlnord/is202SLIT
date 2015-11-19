@@ -77,6 +77,10 @@ public class Main {
         tmw.frame.setBackground(Color.WHITE);
         tmw.frame.setLocationRelativeTo(null);
     }
+       
+    public static void Mail() {
+        Mail mail = new Mail();
         
+    }
 
 }

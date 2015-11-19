@@ -5,10 +5,12 @@
  */
 package slitclient;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static javafx.scene.paint.Color.color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenu;
@@ -68,6 +70,7 @@ public abstract class ButtonMenu {
         
         // Initialiserer top JPanel
         topPanel.setLayout(new GridLayout(1, 5, 10, 10));
+        topPanel.setBackground(Color.WHITE);
         
         // Initialiserer infoBtn
         infoBtn.setBorderPainted(false); // Slipper Ã¥ se linjene til knappen
