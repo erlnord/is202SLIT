@@ -62,7 +62,7 @@ public class Main {
         // StudentMainView
         StudentMainView smw = new StudentMainView();
         smw.frame.setVisible(true);
-        smw.frame.setSize(1300,768);
+        smw.frame.setSize(1024, 768);
         smw.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         smw.frame.setBackground(Color.WHITE);
         smw.frame.setLocationRelativeTo(null);
@@ -72,7 +72,7 @@ public class Main {
         //TeacherMainView
         TeacherMainView tmw = new TeacherMainView();
         tmw.frame.setVisible(true);
-        tmw.frame.setSize(1300,768);
+        tmw.frame.setSize(1024, 768);
         tmw.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tmw.frame.setBackground(Color.WHITE);
         tmw.frame.setLocationRelativeTo(null);

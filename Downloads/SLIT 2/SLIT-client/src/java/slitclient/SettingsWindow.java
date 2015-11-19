@@ -18,29 +18,33 @@ public class SettingsWindow extends ButtonMenu {
     JCheckBox show2;
     JLabel label1;
     JLabel label2;
+    JPanel panel1;
     
     public SettingsWindow() {
         JFrame frame = new JFrame("Innstillinger");
-        frame.setLayout(new GridLayout (2,2));
+        panel1 = new JPanel ();
+        panel1.setLayout (new GridLayout (2,2));
+        frame.add(panel1, BorderLayout.CENTER);
+        
         frame.add(topPanel, BorderLayout.NORTH);
         topPanel.setBackground(Color.white);
         frame.add(menuBar);
         frame.setJMenuBar(menuBar);
         label1 = new JLabel ("") ; 
-        frame.add (label1);
+        panel1.add (label1);
                 
         label2 = new JLabel("");
-        frame.add (label2);
+        panel1.add (label2);
         
         show1 = new JCheckBox ("show first label");
-        frame.add (show1);
+        panel1.add (show1);
         
         show2 = new JCheckBox ("show second label");
-        frame.add (show2);
+        panel1.add (show2);
         
 
 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-frame.setSize (600, 600); //1024x768, 800x600
+frame.setSize (1024, 768); 
 frame.setResizable(true);
 frame.setVisible(true);
 
