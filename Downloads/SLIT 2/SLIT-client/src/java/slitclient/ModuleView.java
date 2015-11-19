@@ -1,64 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package slitclient;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.ComponentOrientation;
-import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
 
 /**
  *
- * @author Atilla og Admir
+ * @author Atilla
  */
-//Arver felt og metoder fra klassen ButtonMenu
-public class ModuleView extends ButtonMenu { 
-   
-    //constructor for ModuleView
-    public ModuleView()
-    {
-        //lage frame og legger til top panel for buttons
-        JFrame frame = new JFrame("Modules");
-        frame.add(topPanel, BorderLayout.NORTH);
-        topPanel.setBackground(Color.white);
-        frame.add(menuBar);
-        frame.setJMenuBar(menuBar);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1024, 768);
-        JPanel panel = new JPanel();
-        
-        //int rekke, int kolonne, int horisontalt mellomrom, int vertikalt mellomrom
-        panel.setLayout(new GridLayout(4, 3, 5, 10));
-        JButton label1 = new JButton("Modul 1");
-        JButton label2 = new JButton("modul 2");
-        JButton label3 = new JButton("Modul 3");
-        JButton label4 = new JButton("Modul 4");
-        JButton label5 = new JButton("Modul 5");
-        JButton label6 = new JButton("Modul 6");
-        JButton label7 = new JButton("Modul 7");
-        JButton label8 = new JButton("Modul 8");
-        JButton label9 = new JButton("Modul 9");
-        JButton label10 = new JButton("Modul 10");
-        JButton label11 = new JButton("Modul 11");
-        JButton label12 = new JButton("Modul 12");
-        panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        panel.add(label1);
-        panel.add(label2);
-        panel.add(label3);
-        panel.add(label4);
-        panel.add(label5);
-        panel.add(label6);
-        panel.add(label7);
-        panel.add(label8);
-        panel.add(label9);
-        panel.add(label10);
-        panel.add(label11);
-        panel.add(label12);
-        frame.add(panel);
-        
-    }
+public class ModuleView extends ButtonMenu {
+    
+    JTextArea textArea1 = new JTextArea();
+    JTextArea textArea2 = new JTextArea();
+    JTextArea textArea3 = new JTextArea();
+    JPanel leftPanel = new JPanel();
+    JPanel rightPanel = new JPanel();
+    JPanel topLeftPanel = new JPanel();
+    JPanel centerLeftPanel = new JPanel();
+    JPanel bottomLeftPanel = new JPanel();
+    JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+    JSplitPane rightsp = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
+    
+    JSplitPane spTop = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
+    JSplitPane spContainer = new JSplitPane();
+    JSplitPane spCenter = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
+    JSplitPane spBottom = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
+    //JScrollPane scrollPane = new JScrollPane();
+    
+    public ModuleView () {
+    
+    JFrame frame = new JFrame("Modules");
+    frame.add(topPanel, BorderLayout.NORTH);
+    topPanel.setBackground(Color.white);
+    frame.add(menuBar);
+    frame.setJMenuBar(menuBar);
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(1024, 768);
+    
+    sp.setResizeWeight(0.5);
+    spTop.setResizeWeight(0.33);
+    sp.setDividerSize(0);
+    
+    spTop.add(topLeftPanel);
+    spTop.add(spContainer);
+    
+    frame.add(sp,BorderLayout.CENTER);
+    frame.add(spTop, BorderLayout.CENTER);
+    frame.add(spContainer);
+    
+    spContainer.setResizeWeight(0.5);
+    spContainer.setDividerSize(0);
+    spContainer.add(centerLeftPanel);
+    spContainer.add(bottomLeftPanel);
+    
+    centerLeftPanel.setBackground(Color.red);
+    
+    
+    sp.add(leftPanel);
+    sp.add(rightPanel);
+    spTop.add(topLeftPanel);
+    
+    spCenter.add(centerLeftPanel);
+    spBottom.add(bottomLeftPanel);
+    spContainer.add(centerLeftPanel);
+    spContainer.add(bottomLeftPanel);
+
+    leftPanel.setBackground(Color.white);
+    rightPanel.setBackground(Color.black);
+    
+    spTop.add(textArea1);
+
+    
 }
-
-
+    
+}
