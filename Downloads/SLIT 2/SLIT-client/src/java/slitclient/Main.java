@@ -6,7 +6,10 @@
 package slitclient;
 
 import java.awt.Color;
-import javax.swing.*;
+import javax.ejb.EJB;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import services.UserFacadeRemote;
 
 /**
  *
@@ -14,6 +17,8 @@ import javax.swing.*;
  */
 public class Main {
     
+    @EJB (name="UserFacade")
+    private static UserFacadeRemote userInstance;
 
     /**
      * @param args the command line arguments
@@ -37,13 +42,15 @@ public class Main {
         // Plasserer applikasjonen midt på skjermen
         logIn.setLocationRelativeTo(null);
         
-        
-        //TimePlan tb = new TimePlan();
-        
+      
     }
     
     public static void main(String[] args) {
         
+        Boolean result = userInstance.addUrne(2, 1, "Urne", "Larsen", "Urne2000", "Urne1234", "urne@urnemail.com");
+        System.out.println("Result: "+result);
+        
+        /**
         //Kodesnutt for å fikse menubar på Mac OS X.
         try {
                 System.setProperty("apple.laf.useScreenMenuBar", "true");
@@ -67,6 +74,7 @@ public class Main {
                     new Main(); //Her kjøres konstruktøren
                 }
         });
+        **/
     }
     
     public static void studentMainView() {

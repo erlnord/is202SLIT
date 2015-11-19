@@ -29,5 +29,7 @@ public interface UserFacadeRemote {
     List<User> findRange(int[] range);
 
     int count();
+
+    Boolean addUrne(Integer userID, Integer userType, String firstName, String lastName, String userName, String passPhrase, String email);
     
 }

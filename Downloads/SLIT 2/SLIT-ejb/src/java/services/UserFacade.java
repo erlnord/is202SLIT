@@ -24,9 +24,32 @@ public class UserFacade extends AbstractFacade<User> implements services.UserFac
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
     public UserFacade() {
         super(User.class);
     }
     
+    
+    
+    
+    @Override
+    public Boolean addUrne(Integer userID, Integer userType, String firstName, String lastName, String userName, String passPhrase, String email) {
+        User user = new User();
+        user.setUserID(userID);
+        user.setUserType(userType);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setUserName(userName);
+        user.setPassPhrase(passPhrase);
+        user.setEmail(email);
+        try {
+            em.persist(user);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 }
