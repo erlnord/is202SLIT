@@ -56,6 +56,7 @@ CREATE TABLE Module (
 ModuleID INT NOT NULL AUTO_INCREMENT,
 ModuleName VARCHAR(65),
 ModuleFile MEDIUMBLOB,
+ModuleDescription TEXT,
 UserID INT,
 PRIMARY KEY (ModuleID),
 CONSTRAINT fk_Module_User

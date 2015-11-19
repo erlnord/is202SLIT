@@ -6,7 +6,10 @@
 package slitclient;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  *
@@ -15,9 +18,12 @@ import javax.swing.JButton;
 public class TeacherMainView extends MainViewMaster {
     
     public TeacherMainView() {
-        JButton btnNewInfo = new JButton();
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JButton btnNewInfo = new JButton("Ny info");
         
-        frame.add(btnNewInfo, BorderLayout.SOUTH);
-    }
-          
+        frame.add(bottomPanel, BorderLayout.SOUTH);
+        bottomPanel.setBackground(Color.white);
+        bottomPanel.add(btnNewInfo);
+        
+    }  
 }
