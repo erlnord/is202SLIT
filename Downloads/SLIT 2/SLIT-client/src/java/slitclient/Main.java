@@ -47,35 +47,15 @@ public class Main {
     
     public static void main(String[] args) {
         
-        Boolean result = userInstance.addUrne(2, 1, "Urne", "Larsen", "Urne2000", "Urne1234", "urne@urnemail.com");
-        System.out.println("Result: "+result);
+        //Boolean result = userInstance.addUrne(2, 1, "Urne", "Larsen", "Urne2000", "Urne1234", "urne@urnemail.com");
+        //System.out.println("Result: "+result);
         
-        /**
+        
         //Kodesnutt for å fikse menubar på Mac OS X.
-        try {
-                System.setProperty("apple.laf.useScreenMenuBar", "true");
-                System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Test");
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            }
-            catch(ClassNotFoundException e) {
-                System.out.println("ClassNotFoundException: " + e.getMessage());
-            }
-            catch(InstantiationException e) {
-                System.out.println("InstantiationException: " + e.getMessage());
-            }
-            catch(IllegalAccessException e) {
-                System.out.println("IllegalAccessException: " + e.getMessage());
-            }
-            catch(UnsupportedLookAndFeelException e) {
-                System.out.println("UnsupportedLookAndFeelException: " + e.getMessage());
-            }
-            javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    new Main(); //Her kjøres konstruktøren
-                }
-        });
-        **/
+        new Main();
+                
     }
+        
     
     public static void studentMainView() {
         // StudentMainView

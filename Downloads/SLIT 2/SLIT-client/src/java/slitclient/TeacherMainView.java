@@ -5,6 +5,9 @@
  */
 package slitclient;
 
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+
 /**
  *
  * @author Erlend
@@ -12,7 +15,9 @@ package slitclient;
 public class TeacherMainView extends MainViewMaster {
     
     public TeacherMainView() {
+        JButton btnNewInfo = new JButton();
         
+        frame.add(btnNewInfo, BorderLayout.SOUTH);
     }
           
 }
