@@ -109,6 +109,11 @@ public abstract class MainViewMaster extends ButtonMenu {
             new SettingsWindow();
         });
         
+        super.moduleBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new ModuleWindow();
+        });
+        
         
         sp.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.decode("#f0f0f0")));
         

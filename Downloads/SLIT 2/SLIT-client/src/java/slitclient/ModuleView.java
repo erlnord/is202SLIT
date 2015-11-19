@@ -23,16 +23,9 @@ public class ModuleView extends ButtonMenu {
     JTextArea textArea3 = new JTextArea();
     JPanel leftPanel = new JPanel();
     JPanel rightPanel = new JPanel();
-    JPanel topLeftPanel = new JPanel();
-    JPanel centerLeftPanel = new JPanel();
-    JPanel bottomLeftPanel = new JPanel();
     JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
     JSplitPane rightsp = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
     
-    JSplitPane spTop = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
-    JSplitPane spContainer = new JSplitPane();
-    JSplitPane spCenter = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
-    JSplitPane spBottom = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
     //JScrollPane scrollPane = new JScrollPane();
     
     public ModuleView () {
@@ -47,39 +40,15 @@ public class ModuleView extends ButtonMenu {
     frame.setSize(1024, 768);
     
     sp.setResizeWeight(0.5);
-    spTop.setResizeWeight(0.33);
     sp.setDividerSize(0);
-    
-    spTop.add(topLeftPanel);
-    spTop.add(spContainer);
-    
-    frame.add(sp,BorderLayout.CENTER);
-    frame.add(spTop, BorderLayout.CENTER);
-    frame.add(spContainer);
-    
-    spContainer.setResizeWeight(0.5);
-    spContainer.setDividerSize(0);
-    spContainer.add(centerLeftPanel);
-    spContainer.add(bottomLeftPanel);
-    
-    centerLeftPanel.setBackground(Color.red);
-    
+        
+    frame.add(sp,BorderLayout.CENTER);    
     
     sp.add(leftPanel);
     sp.add(rightPanel);
-    spTop.add(topLeftPanel);
-    
-    spCenter.add(centerLeftPanel);
-    spBottom.add(bottomLeftPanel);
-    spContainer.add(centerLeftPanel);
-    spContainer.add(bottomLeftPanel);
-
     leftPanel.setBackground(Color.white);
     rightPanel.setBackground(Color.black);
     
-    spTop.add(textArea1);
-
-    
-}
+    }
     
 }

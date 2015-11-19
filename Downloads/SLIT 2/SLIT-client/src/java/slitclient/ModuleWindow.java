@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -58,7 +59,14 @@ public class ModuleWindow extends ButtonMenu {
         panel.add(label12);
         frame.add(panel);
         
+        label1.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new ModuleView();
+        });
+        
+        
     }
+    
 }
 
 
