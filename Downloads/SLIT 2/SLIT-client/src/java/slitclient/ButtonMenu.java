@@ -7,11 +7,14 @@ package slitclient;
 
 import java.awt.Cursor;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -120,5 +123,24 @@ public abstract class ButtonMenu {
         
         // Legger til hjelp-menyen i menylinja, og legger til elementer
         menuBar.add(helpMenu);
+        
+         /**
+         * Legger til en actionListener som avslutter applikasjonen
+         * dersom man trykker pÃ¥ "avslutt" i menyen.
+         * SpÃ¸r ogsÃ¥ brukeren om han/hun er sikker pÃ¥ at applikasjonen skal
+         * avsluttes.
+         */
+        exitApplication.addActionListener(new ActionListener() {
+            String message = "Where were you when application was kill?";
+            String title = "Avslutt applikasjon";
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Application is kill RIP.");
+                        System.exit(0);
+                    }
+            }
+        }); 
     }
 }

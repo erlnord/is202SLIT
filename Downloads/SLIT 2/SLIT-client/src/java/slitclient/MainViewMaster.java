@@ -93,6 +93,21 @@ public abstract class MainViewMaster extends ButtonMenu {
         // Må alltid legges til på NORTH
         frame.add(topPanel, BorderLayout.NORTH);
         topPanel.setBackground(Color.white);
+        // Lager en actionListener pÃ¥ infoBtn for Ã¥ teste at ting funker
+        // Må legges til i hver klasse
+        super.infoBtn.addActionListener ((ActionEvent e) -> {
+            JOptionPane.showMessageDialog(null, "Du trykte på en knapp.");
+        });
+        
+        super.bookingBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new TimePlan();
+        });
+        
+        super.settingsBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new SettingsWindow();
+        });
         
         
         sp.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.decode("#f0f0f0")));
@@ -165,39 +180,9 @@ public abstract class MainViewMaster extends ButtonMenu {
         rightPanel.setLayout(new GridLayout(9,1));
         
         
-        /**
-         * Legger til en actionListener som avslutter applikasjonen
-         * dersom man trykker pÃ¥ "avslutt" i menyen.
-         * SpÃ¸r ogsÃ¥ brukeren om han/hun er sikker pÃ¥ at applikasjonen skal
-         * avsluttes.
-         */
-        exitApplication.addActionListener(new ActionListener() {
-            String message = "Where were you when application was kill?";
-            String title = "Avslutt applikasjon";
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                    int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
-                    if (reply == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "Application is kill RIP.");
-                        System.exit(0);
-                    }
-            }
-        }); 
+       
         
-        // Lager en actionListener pÃ¥ infoBtn for Ã¥ teste at ting funker
-        super.infoBtn.addActionListener ((ActionEvent e) -> {
-            JOptionPane.showMessageDialog(null, "Du trykte på en knapp.");
-        });
         
-        super.bookingBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new TimePlan();
-        });
-        
-        super.settingsBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new SettingsWindow();
-        });
     }
 }
 
