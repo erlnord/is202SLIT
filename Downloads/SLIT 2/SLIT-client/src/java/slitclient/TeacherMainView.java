@@ -20,10 +20,12 @@ public class TeacherMainView extends MainViewMaster {
     public TeacherMainView() {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton btnNewInfo = new JButton("Ny info");
+        JButton btnCheckProgress = new JButton("Se elevers progresjon");
         
         frame.add(bottomPanel, BorderLayout.SOUTH);
         bottomPanel.setBackground(Color.white);
         bottomPanel.add(btnNewInfo);
+        bottomPanel.add(btnCheckProgress);
         
     }  
 }

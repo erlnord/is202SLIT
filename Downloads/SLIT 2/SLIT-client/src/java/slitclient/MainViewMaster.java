@@ -10,13 +10,13 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Properties;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -48,6 +48,8 @@ public abstract class MainViewMaster extends ButtonMenu {
     JTextPane leftPane7 = new JTextPane();
     JTextPane leftPane8 = new JTextPane();
     JTextPane leftPane9 = new JTextPane();
+    
+    JTextArea area1 = new JTextArea();
     
     JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
     JSplitPane rightsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -93,31 +95,11 @@ public abstract class MainViewMaster extends ButtonMenu {
         // Må alltid legges til på NORTH
         frame.add(topPanel, BorderLayout.NORTH);
         topPanel.setBackground(Color.white);
-        // Lager en actionListener pÃ¥ infoBtn for Ã¥ teste at ting funker
-        // Må legges til i hver klasse
-        super.infoBtn.addActionListener ((ActionEvent e) -> {
-            JOptionPane.showMessageDialog(null, "Du trykte på en knapp.");
-        });
-        
-        super.bookingBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new TimePlan();
-        });
-        
-        super.settingsBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new SettingsWindow();
-        });
-        
-        super.moduleBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new ModuleWindow();
-        });
-        
+
         
         sp.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.decode("#f0f0f0")));
         
-        sp.setResizeWeight(0.7);
+        sp.setResizeWeight(0.9);
         sp.setDividerSize(0);
 
         sp.add(leftPanel);
@@ -149,25 +131,25 @@ public abstract class MainViewMaster extends ButtonMenu {
         leftPanel.add(leftPane8);
         leftPanel.add(leftPane9);
         
-        leftPane1.setMargin( new Insets(10,10,10,10));
-        leftPane2.setMargin( new Insets(10,10,10,10));
-        leftPane3.setMargin( new Insets(10,10,10,10));
-        leftPane4.setMargin( new Insets(10,10,10,10));
-        leftPane5.setMargin( new Insets(10,10,10,10));
-        leftPane6.setMargin( new Insets(10,10,10,10));
-        leftPane7.setMargin( new Insets(10,10,10,10));
-        leftPane8.setMargin( new Insets(10,10,10,10));
-        leftPane9.setMargin( new Insets(10,10,10,10));
+        leftPane1.setMargin( new Insets(5,5,5,5));
+        leftPane2.setMargin( new Insets(5,5,5,5));
+        leftPane3.setMargin( new Insets(5,5,5,5));
+        leftPane4.setMargin( new Insets(5,5,5,5));
+        leftPane5.setMargin( new Insets(5,5,5,5));
+        leftPane6.setMargin( new Insets(5,5,5,5));
+        leftPane7.setMargin( new Insets(5,5,5,5));
+        leftPane8.setMargin( new Insets(5,5,5,5));
+        leftPane9.setMargin( new Insets(5,5,5,5));
         
-        leftPane1.setText("Hello");
-        leftPane2.setText("Halla");
-        leftPane3.setText("Helllo");
-        leftPane4.setText("Hva skjer?");
-        leftPane5.setText("Hello");
-        leftPane6.setText("Heihei ja");
-        leftPane7.setText("Hello");
-        leftPane8.setText("HOLD NU KJÆFT!");
-        leftPane9.setText("Hello?");
+        leftPane1.setText("PS: Dropin for godkjenning av modul torsdag den 13.11 er flyttet til fredag den 15 november."+ "\n\nHallgeir Nilsen,  2014-11-18");
+        leftPane2.setText("Jeg kommer på laben ca kl 11, ellers er jeg på kontoret fra kl 10, og ut dagen (unntatt når jeg er på lab...)"+ "\n\nHallgeir Nilsen,  2014-11-15");
+        leftPane3.setText("Hei,  bra oppmøte på labben idag. Jeg har bestemt meg for å være tilgjengelig noen dager." +"\n\nEven Åby Larsen,  2014-10-09");
+        leftPane4.setText("Siste forelesning): Følgende tema er ønsket: " +"\n\nEven Åby Larsen,  2014-11-02");
+        leftPane5.setText("Til neste forelesning: Om å kjøre utenom BlueJ; Casting, ny ver av dagens eksempel. ++" +"\n\nHallgeir Nilsen,  2014-10-29");
+        leftPane6.setText("Hei alle, og velkommen tebage etter påskeferie.  Se i Fronter, IS-110, Fagstoff; Forelesninger." +"\n\nEven Åby Larsen,  2014-10-21");
+        leftPane7.setText("Jeg har lagt ut eksemplene fra siste forelesning. Jeg har rettet alle kompileringsfeil." +"\n\nHallgeir Nilsen,  2014-10-15");
+        leftPane8.setText("Framover nå blir det lab med hjelpelærer kun på fredager. Scriptet som Even nevnte er kjørt. " +"\n\nEven Åby Larsen,  2014-10-08");
+        leftPane9.setText("Minner om forelesning kl 1315 i dag. Temaet blir subklasser og arv."+ "\n\nEven Åby Larsen,  2014-10-02");
         
         leftPane1.setEditable(false);
         leftPane2.setEditable(false);
@@ -182,10 +164,35 @@ public abstract class MainViewMaster extends ButtonMenu {
         
         rightPanel.setBackground(Color.white);
         rightPanel.setBorder(BorderFactory.createMatteBorder(2, 1, 0, 0, Color.decode("#f0f0f0")));
-        rightPanel.setLayout(new GridLayout(9,1));
+        rightPanel.setLayout(new GridLayout(1,1));
+        
+        rightPanel.add(area1);
+        
+        area1.setText("Neste forelesning: " + "\nIS-109 - Onsdag 18. November - Kl: 13:15" + "\n\n\nIS-109 - Onsdag 27. November - Kl: 13:15" + "\n\n\nIS-109 - Onsdag 1. Desember - Kl: 10:15");
         
         
-       
+        
+        // Lager en actionListener pÃ¥ infoBtn for Ã¥ teste at ting funker
+        // Må legges til i hver klasse
+        super.infoBtn.addActionListener ((ActionEvent e) -> {
+            JOptionPane.showMessageDialog(null, "Du trykte på en knapp.");
+        });
+        
+        super.bookingBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new TimePlan();
+        });
+        
+        super.settingsBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new SettingsWindow();
+        });
+        
+        super.moduleBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new ModuleWindow();
+        });
+        
         
         
     }
