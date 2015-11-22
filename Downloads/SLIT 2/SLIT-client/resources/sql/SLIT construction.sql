@@ -49,15 +49,15 @@ VideoFile LONGBLOB,
 ModuleID INT,
 PRIMARY KEY (VideoRscID),
 CONSTRAINT fk_VideoRsc_Module
-FOREIGN KEY (ModuleID) REFERENCES Module (ModuleID))
+FOREIGN KEY (ModuleID) REFERENCES Module(ModuleID))
 ENGINE = InnoDB;
 
-CREATE TABLE TxtRsc (
-TxtRscID INT NOT NULL AUTO_INCREMENT,
-TxtFile MEDIUMBLOB,
+CREATE TABLE HyperlinkRsc (
+HyperlinkRscID INT NOT NULL AUTO_INCREMENT,
+Hyperlink VARCHAR(65),
 ModuleID INT,
-PRIMARY KEY (TxtRscID),
-CONSTRAINT fk_TxtRsc_Module
+PRIMARY KEY (HyperlinkRscID),
+CONSTRAINT fk_Hyperlink_Module
 FOREIGN KEY (ModuleID) REFERENCES Module(ModuleID))
 ENGINE = InnoDB;
 
@@ -136,3 +136,16 @@ INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 1, 4, "Ikke
 INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 1, "Ikke vurdert");
 INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 2, "Ikke vurdert");
 INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 3, "Ikke vurdert");
+
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("vg.no", 1);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("dagbladet.no", 1);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("youtube.com", 1);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("vg.no", 2);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("gamer.no", 2);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("itavisen.no", 2);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("java.com", 3);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("vg.no", 3);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("java.com", 4);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("java.com", 4);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("java.com", 5);
+INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("java.com", 6);
