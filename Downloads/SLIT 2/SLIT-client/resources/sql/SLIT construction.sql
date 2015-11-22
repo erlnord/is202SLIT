@@ -57,6 +57,29 @@ ENGINE = InnoDB;
 
 INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
 VALUES (1, "Urlund", "North", "arne", "passord", "arne@urlundmail.com");
+INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
+VALUES (1, "Ola", "Hansen", "olehansen", "passord", "olahansen@gmail.com");
+INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
+VALUES (1, "Kevin", "Pascal", "kevinp", "passord", "kevinpascal@urlundmail.com");
+INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
+VALUES (2, "Hallgeir", "Nilsen", "hallgeir", "passord", "hallgeir.nilsen@uia.no");
+INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
+VALUES (2, "Even", "Larsen", "evenlarsen", "passord", "even.larsen@uia.no");
+INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
+VALUES (1, "Trygve", "Åse Lunde", "superdydde", "megadydde", "dydde@dyddemail.com");
+INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
+VALUES (3, "Lars Martin", "Risdal", "larsemann", "passord12", "lmrisdal@icloud.com");
+INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
+VALUES (1, "Kjetil", "Lolsen", "kjettil", "passord", "lolsen@yahoo.com");
+
+INSERT INTO Notification (Message, UserID)
+VALUES ("Endret frist for levering av modul 5. Fristen er nå 22. November", 1);
+INSERT INTO Notification (Message, UserID)
+VALUES ("", 1);
+INSERT INTO Notification (Message, UserID)
+VALUES ("Endret frist for levering av modul 5. Fristen er nå 22. November", 1);
+INSERT INTO Notification (Message, UserID)
+VALUES ("Endret frist for levering av modul 5. Fristen er nå 22. November", 1);
 
 INSERT INTO Information (InfoText, UserID)
 VALUES ("IS-109: Godkjenning av modul 4. Se plan for torsdag 6 og fredag 7. november 
