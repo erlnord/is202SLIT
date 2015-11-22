@@ -36,7 +36,6 @@ ENGINE = InnoDB;
 CREATE TABLE Module (
 ModuleID INT NOT NULL AUTO_INCREMENT,
 ModuleName VARCHAR(65),
-ModuleResource MEDIUMBLOB,
 ModuleDescription TEXT,
 UserID INT NOT NULL,
 PRIMARY KEY (ModuleID),
@@ -119,3 +118,13 @@ heldigvis gode læringsmål for hvert kapittel. De læringsmålene vi kommer til
 like de som står i bokaVi kan ikke godkjenne moduler i IS-110 før kurset starter til høsten, men hvis dere 
 jobber dere gjennom noen av modulene nå, kan dere få dem godkjent ganske kjapt til høsten", 5);
 
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('1', 'Modul 1', '5');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('2', 'Modul 2', '5');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('3', 'Modul 3', '4');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('4', 'Modul 4', '4');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('5', 'Modul 5', '5');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('6', 'Modul 6', '4');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('7', 'Modul 7', '5');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('8', 'Modul 8', '4');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('9', 'Modul 9', '5');
+INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('10', 'Modul 10', '4');
