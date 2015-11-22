@@ -4,6 +4,10 @@ CREATE SCHEMA IF NOT EXISTS SLIT;
 
 USE SLIT;
 
+/* Opretter tabellen "bruker"
+Tabellen inneholder en brukerID som er unik for hver bruker.
+I tillegg fornavn, etternavn, brukernavn, passord og epostadresse.
+*/
 CREATE TABLE User (
 UserID INT NOT NULL AUTO_INCREMENT,
 UserType INT,
@@ -15,6 +19,10 @@ Email VARCHAR(45),
 PRIMARY KEY (UserID))
 ENGINE = InnoDB;
 
+/* Oppretter tabellen Informasjon. 
+Tabellen brukes til å lagre informasjon som blir lagt ut på informasjon-siden i applikasjonen.
+Bruker Foreign key userID for å se hvem som har lagt ut informasjonen.
+*/
 CREATE TABLE Information (
 InfoID INT NOT NULL AUTO_INCREMENT,
 InfoText TEXT,
@@ -24,6 +32,9 @@ CONSTRAINT fk_Information_User
 FOREIGN KEY (UserID) REFERENCES User(UserID))
 ENGINE = InnoDB;
 
+/* Oppretter tabellen notifikasjoner. Tabellen lagrer notifikasjoner som blir sendt
+innad i programmet. Foreign key er UserID, for å se hvem som har sendt meldingene. 
+*/
 CREATE TABLE Notification (
 NotifID INT NOT NULL AUTO_INCREMENT,
 Message VARCHAR(255),
@@ -33,6 +44,9 @@ CONSTRAINT fk_Notification_User
 FOREIGN KEY (UserID) REFERENCES User(UserID))
 ENGINE = InnoDB;
 
+/* Lager tabellen modul. Tabellen lagrer informasjon og unik ID på hver av de forskjellige modulene.
+FK UserID blir brukt for å se hvilken lærer som har lagt ut modulen. 
+*/
 CREATE TABLE Module (
 ModuleID INT NOT NULL AUTO_INCREMENT,
 ModuleName VARCHAR(65),
@@ -43,6 +57,8 @@ CONSTRAINT fk_Module_User
 FOREIGN KEY (UserID) REFERENCES User(UserID))
 ENGINE = InnoDB;
 
+/* Oppretter tabellen videorsc. Lagrer en videofil som brukes som ressurs til en modul.
+*/
 CREATE TABLE VideoRsc (
 VideoRscID INT NOT NULL AUTO_INCREMENT,
 VideoFile LONGBLOB,
@@ -52,6 +68,8 @@ CONSTRAINT fk_VideoRsc_Module
 FOREIGN KEY (ModuleID) REFERENCES Module(ModuleID))
 ENGINE = InnoDB;
 
+/* Opretter tabellen hyperlinkrsc. Lagrer en hyperlink som blir brukt som ressurs til en modul.
+*/
 CREATE TABLE HyperlinkRsc (
 HyperlinkRscID INT NOT NULL AUTO_INCREMENT,
 Hyperlink VARCHAR(65),
@@ -61,6 +79,9 @@ CONSTRAINT fk_Hyperlink_Module
 FOREIGN KEY (ModuleID) REFERENCES Module(ModuleID))
 ENGINE = InnoDB;
 
+/* Oppretter tabellen Delivery.
+Blir brukt til å lagre informasjon om innleveringen til en fil. 
+*/
 CREATE TABLE Delivery (
 DeliveryID INT NOT NULL AUTO_INCREMENT,
 Status INT,
@@ -75,6 +96,8 @@ CONSTRAINT fk_Delivery_Module
 FOREIGN KEY (ModuleID) REFERENCES Module(ModuleID))
 ENGINE = InnoDB;
 
+/* Legger inn eksempelinformasjon om brukere. 
+*/
 INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
 VALUES (1, "Urlund", "North", "arne", "passord", "arne@urlundmail.com");
 INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
@@ -92,6 +115,8 @@ VALUES (3, "Lars Martin", "Risdal", "larsemann", "passord12", "lmrisdal@icloud.c
 INSERT INTO User (UserType, FirstName, LastName, UserName, PassPhrase, Email)
 VALUES (1, "Kjetil", "Lolsen", "kjettil", "passord", "lolsen@gmail.com");
 
+/* Legger inn eksempelnotifikasjoner. 
+*/
 INSERT INTO Notification (Message, UserID)
 VALUES ("Endret frist for levering av modul 5. Fristen er nå 22. November", 1);
 INSERT INTO Notification (Message, UserID)
@@ -102,6 +127,8 @@ der du viser prosjekt du har gjort selv. Når ikke annet er oppgitt skjer dette 
 INSERT INTO Notification (Message, UserID)
 VALUES ("Det blir lab imorgen 4.11, Kenneth er der fra 10.15 til 12.", 2);
 
+/* Legger inn eksempelinformasjonstekster.
+*/
 INSERT INTO Information (InfoText, UserID)
 VALUES ("IS-109: Godkjenning av modul 4. Se plan for torsdag 6 og fredag 7. november 
 og framover. Jeg og Even kan godkjenne moddul 4, avtal ledig tidspunkt med Even, 
@@ -118,6 +145,8 @@ heldigvis gode læringsmål for hvert kapittel. De læringsmålene vi kommer til
 like de som står i bokaVi kan ikke godkjenne moduler i IS-110 før kurset starter til høsten, men hvis dere 
 jobber dere gjennom noen av modulene nå, kan dere få dem godkjent ganske kjapt til høsten", 5);
 
+/* Legger inn eksempelinformasjon om moduler.
+*/
 INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('1', 'Modul 1', '5');
 INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('2', 'Modul 2', '5');
 INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('3', 'Modul 3', '4');
@@ -129,6 +158,8 @@ INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('8', 'Modul 8', '
 INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('9', 'Modul 9', '5');
 INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('10', 'Modul 10', '4');
 
+/* Legger inn eksempelinformasjon om innleveringer. 
+*/
 INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (2, 1, 1, "Godkjent");
 INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (2, 1, 2, "Godkjent");
 INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (3, 1, 3, "Ikke godkjent");
@@ -137,6 +168,8 @@ INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 1, "Ikke
 INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 2, "Ikke vurdert");
 INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 3, "Ikke vurdert");
 
+/* Legger inn eksempelinformasjon om hyperlinkressurser.
+*/
 INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("vg.no", 1);
 INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("dagbladet.no", 1);
 INSERT INTO HyperlinkRsc (Hyperlink, ModuleID) VALUES ("youtube.com", 1);
