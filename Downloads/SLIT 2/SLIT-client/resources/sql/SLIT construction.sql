@@ -128,3 +128,11 @@ INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('7', 'Modul 7', '
 INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('8', 'Modul 8', '4');
 INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('9', 'Modul 9', '5');
 INSERT INTO slit.module (ModuleID, ModuleName, UserID) VALUES ('10', 'Modul 10', '4');
+
+INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (2, 1, 1, "Godkjent");
+INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (2, 1, 2, "Godkjent");
+INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (3, 1, 3, "Ikke godkjent");
+INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 1, 4, "Ikke vurdert");
+INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 1, "Ikke vurdert");
+INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 2, "Ikke vurdert");
+INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 3, "Ikke vurdert");
