@@ -7,13 +7,12 @@ package slitclient;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridLayout;
-import javax.swing.BorderFactory;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  *
@@ -21,30 +20,11 @@ import javax.swing.JTextField;
  */
 public class ModuleView extends ButtonMenu {
     
+    
+    
     JTextArea textArea1 = new JTextArea();
-    JTextArea textArea2 = new JTextArea();
-    JTextArea textArea3 = new JTextArea();
-    JTextArea textArea4 = new JTextArea();
     
-    JPanel leftPanel = new JPanel();
-    JPanel leftTopPanel = new JPanel();
-    JPanel leftCenterPanel = new JPanel();
-    JPanel leftBottomPanel = new JPanel();
-    
-    JPanel rightPanel = new JPanel();
-    
-    JPanel rightTopPanel = new JPanel ();
-    JPanel rightBottomPanel = new JPanel();
-    
-    JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-    JSplitPane rightsp = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
-    
-    JSplitPane rightPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    
-    JSplitPane leftTopPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    JSplitPane leftCenterPane = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
-    JSplitPane leftBottomPane = new JSplitPane (JSplitPane.VERTICAL_SPLIT);
-     
+
     //JScrollPane scrollPane = new JScrollPane();
     
     public ModuleView () {
@@ -58,52 +38,27 @@ public class ModuleView extends ButtonMenu {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(1024, 768);
   
-    sp.setResizeWeight(0.7);      
-    leftTopPane.setResizeWeight(0.3);
-    sp.setDividerSize(1);
-    
-    frame.add(sp,BorderLayout.CENTER);
-    sp.add(leftTopPane);
-    sp.add(rightsp);
-    sp.setBackground(Color.white);
-    
-    rightsp.add(rightTopPanel);
-    rightsp.add(rightBottomPanel);
-    rightsp.setResizeWeight(0.5);
-    rightsp.setDividerSize(1);
-    rightsp.setBackground(Color.white);
-    
-    rightBottomPanel.setLayout(new BorderLayout());
-    rightTopPanel.setBackground(Color.white);
-    rightBottomPanel.setBackground(Color.white);
-    
-    rightTopPanel.setLayout(new GridLayout(2, 2));
-    rightTopPanel.add(textArea4);
-    textArea4.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode("#f0f0f0")));
    
- 
-    leftTopPane.setResizeWeight(0.3);
-    leftTopPane.add(leftTopPanel);
-    leftTopPane.add(leftBottomPane);
-    leftTopPane.setDividerSize(1);
-    leftTopPane.setBackground(Color.white);
+    JPanel panel1 = new JPanel(new GridBagLayout());
+    frame.add(panel1);
     
-    leftBottomPane.setResizeWeight(0.5);
-    leftBottomPane.add(leftCenterPanel);
-    leftBottomPane.add(leftBottomPanel);
-    leftBottomPane.setDividerSize(1);
-    leftBottomPane.setBackground(Color.white);
- 
+    GridBagConstraints c1 = new GridBagConstraints();
+    textArea1 = new JTextArea(1, 30);
     
-    leftTopPanel.setLayout(new BorderLayout());
-    leftCenterPanel.setLayout(new BorderLayout());
-    leftBottomPanel.setLayout(new BorderLayout());
+    c1.gridx = (int) 1.0;
+    c1.gridy = 5;
+    c1.gridwidth = 2 ;  
+    c1.weightx = 1;
+    c1.weighty = 5;
+    c1.anchor = GridBagConstraints.NORTHWEST;
+    textArea1.setBackground(Color.LIGHT_GRAY);
+    c1.anchor = GridBagConstraints.FIRST_LINE_START;
+    panel1.add(textArea1, c1);
     
-    leftTopPanel.add(textArea1);
-    leftCenterPanel.add(textArea2);
-    leftBottomPanel.add(textArea3);
-    
-    
+    //JScrollPane scrollPane1 = new JSPane(textArea1);
+    // panel1.add(scrollPane1);
+    //scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+    //scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     }
     
 }
