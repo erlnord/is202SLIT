@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -28,6 +29,7 @@ public class ModuleWindow extends ButtonMenu {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1024, 768);
+        frame.setLocationRelativeTo(null);
         JPanel panel = new JPanel();
         
         //int rekke, int kolonne, int horisontalt mellomrom, int vertikalt mellomrom
@@ -62,6 +64,28 @@ public class ModuleWindow extends ButtonMenu {
         label1.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             new ModuleView();
+        });
+        
+        // Lager en actionListener pÃ¥ infoBtn for Ã¥ teste at ting funker
+        // Må legges til i hver klasse
+        super.infoBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new StudentMainView();
+        });
+        
+        super.bookingBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new TimePlan();
+        });
+        
+        super.settingsBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new SettingsWindow();
+        });
+        
+        super.moduleBtn.addActionListener ((ActionEvent e) -> {
+            frame.dispose();
+            new ModuleWindow();
         });
         
         
