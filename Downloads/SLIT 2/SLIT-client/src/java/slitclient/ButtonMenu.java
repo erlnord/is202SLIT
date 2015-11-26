@@ -11,6 +11,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javafx.scene.paint.Color.color;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenu;
@@ -146,6 +147,61 @@ public abstract class ButtonMenu {
             }
         }); 
         
+        // ActionListeners for knappene.
+        // Hver actionlistener har en for-løkke som lukker alle åpne frames
+        // Før den kaller en metode i main som oppretter en ny frame for hver av
+        // vinduene. 
+        infoBtn.addActionListener ((ActionEvent e) -> {
+            for (java.awt.Window win : java.awt.Dialog.getWindows()) {
+                win.dispose();
+            }
+            for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
+                frame.dispose();
+            }
+            Main.studentMainView(); 
+        });
+        
+        bookingBtn.addActionListener ((ActionEvent e) -> {
+            for (java.awt.Window win : java.awt.Dialog.getWindows()) {
+                win.dispose();
+            }
+            for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
+                frame.dispose();
+            }
+            Main.TimePlan();
+        });
+        
+        mailBtn.addActionListener((ActionEvent e) -> {
+            for (java.awt.Window win : java.awt.Dialog.getWindows()) {
+                win.dispose();
+            }
+            for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
+                frame.dispose();
+            }
+            Main.Mail();
+        });
+        
+        settingsBtn.addActionListener ((ActionEvent e) -> {
+            for (java.awt.Window win : java.awt.Dialog.getWindows()) {
+                win.dispose();
+            }
+            for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
+                frame.dispose();
+            }
+            Main.SettingsWindow();
+        });
+        
+        moduleBtn.addActionListener ((ActionEvent e) -> {
+            for (java.awt.Window win : java.awt.Dialog.getWindows()) {
+                win.dispose();
+            }
+            for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
+                frame.dispose();
+            }
+            Main.ModuleWindow();
+        });
         
     }
-}
+}   
+
+    

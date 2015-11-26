@@ -58,6 +58,7 @@ public class SettingsWindow extends ButtonMenu {
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(1024, 768);
+    frame.setLocationRelativeTo(null);
     
     
     JPanel panel1_1 = new JPanel();

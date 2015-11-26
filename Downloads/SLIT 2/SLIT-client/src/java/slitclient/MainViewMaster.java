@@ -174,29 +174,7 @@ public abstract class MainViewMaster extends ButtonMenu {
         
         // Lager en actionListener pÃ¥ infoBtn for Ã¥ teste at ting funker
         // Må legges til i hver klasse
-        super.infoBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            Main.studentMainView();
-        });
-        
-        super.bookingBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new TimePlan();
-        });
-        
-        super.settingsBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new SettingsWindow();
-        });
-        
-        super.moduleBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new ModuleWindow();
-        });
-        super.mailBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            new Mail();
-        });
+
     }
         
         

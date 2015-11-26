@@ -61,26 +61,29 @@ public class Main {
     public static void studentMainView() {
         // StudentMainView
         StudentMainView smw = new StudentMainView();
-        smw.frame.setVisible(true);
-        smw.frame.setSize(1024, 768);
-        smw.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        smw.frame.setBackground(Color.WHITE);
-        smw.frame.setLocationRelativeTo(null);
+        
     }
     
     public static void teacherMainView() {
         //TeacherMainView
         TeacherMainView tmw = new TeacherMainView();
-        tmw.frame.setVisible(true);
-        tmw.frame.setSize(1024, 768);
-        tmw.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        tmw.frame.setBackground(Color.WHITE);
-        tmw.frame.setLocationRelativeTo(null);
+        
     }
        
+    public static void TimePlan() {
+        TimePlan tp = new TimePlan();
+    }
+    
     public static void Mail() {
         Mail mail = new Mail();
         
     }
+    
+    public static void ModuleWindow() {
+        ModuleWindow mw = new ModuleWindow();
+    }
 
-}
+    public static void SettingsWindow() {
+        SettingsWindow sw = new SettingsWindow();
+    }
+}   

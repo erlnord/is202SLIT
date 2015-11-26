@@ -5,6 +5,9 @@
  */
 package slitclient;
 
+import java.awt.Color;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Erlend
@@ -12,7 +15,11 @@ package slitclient;
 public class StudentMainView extends MainViewMaster {
     
     public StudentMainView() {
-        
+        frame.setVisible(true);
+        frame.setSize(1024, 768);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBackground(Color.WHITE);
+        frame.setLocationRelativeTo(null);
     }
     
     

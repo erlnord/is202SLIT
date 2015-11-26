@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -27,5 +28,10 @@ public class TeacherMainView extends MainViewMaster {
         bottomPanel.add(btnNewInfo);
         bottomPanel.add(btnCheckProgress);
         
+        frame.setVisible(true);
+        frame.setSize(1024, 768);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBackground(Color.WHITE);
+        frame.setLocationRelativeTo(null);
     }  
 }
