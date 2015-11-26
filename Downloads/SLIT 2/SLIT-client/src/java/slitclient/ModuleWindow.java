@@ -63,7 +63,7 @@ public class ModuleWindow extends ButtonMenu {
         
         label1.addActionListener ((ActionEvent e) -> {
             frame.dispose();
-            new ModuleView();
+            new ModuleViewTeacher();
         });
         
         // Lager en actionListener pÃ¥ infoBtn for Ã¥ teste at ting funker

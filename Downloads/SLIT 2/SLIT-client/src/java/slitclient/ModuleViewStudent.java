@@ -22,14 +22,13 @@ import javax.swing.JTextField;
  *
  * @author Atilla
  */
-public class ModuleView extends ButtonMenu {
+public class ModuleViewStudent extends ButtonMenu {
     
 
-    //JScrollPane scrollPane = new JScrollPane();
-    
-    public ModuleView () {
+ 
+    public ModuleViewStudent () {
     //legger til hovedframen
-    JFrame frame = new JFrame("Modules");
+    JFrame frame = new JFrame("Module 1");
     frame.add(topPanel, BorderLayout.NORTH);
     topPanel.setBackground(Color.white);
     frame.add(menuBar);
@@ -49,10 +48,10 @@ public class ModuleView extends ButtonMenu {
     JPanel panel1_2 = new JPanel();
     JPanel panel1_3 = new JPanel();
     
-// setter dimensjoner på det respektive panelet slik at det er halve skjermbredden
-    panel1_1.setBorder(BorderFactory.createTitledBorder("Læringsmål"));
+    
+    panel1_1.setBorder(BorderFactory.createTitledBorder("Info"));
     panel1_2.setBorder(BorderFactory.createTitledBorder("Ressurser"));
-    panel1_3.setBorder(BorderFactory.createTitledBorder("Godkjenning"));
+    panel1_3.setBorder(BorderFactory.createTitledBorder("Godkjenning/læringsmål"));
     
     
     JTextField textField1 = new JTextField(500);
@@ -118,7 +117,7 @@ public class ModuleView extends ButtonMenu {
     
     blaGjennom.setPreferredSize(new Dimension(frame.getWidth()/2 - 40, 20)); //setter button størrelse i forhold til bredden og høyden på framen og de andre komponentene, høyde etter komma
     lastOpp.setPreferredSize(new Dimension(frame.getWidth()/2 - 40, 20)); //setter button størrelse i forhold til bredden og høyden på framen og de andre komponentene, høyde etter komma
-    
+
     blaGjennom.setText("Bla gjennom");
     lastOpp.setText("Last opp!");
     
@@ -127,7 +126,7 @@ public class ModuleView extends ButtonMenu {
     JLabel path = new JLabel("Valgt Path:");
     upperPanel.add(path);
     
-    JTextField pathField = new JTextField(50); 
+    JTextField pathField = new JTextField(200); 
     upperPanel.add(pathField);//legger til tekstfeltet i upperpanel
     upperPanel.add(lastOpp); //legger til last opp knappen i upperpanel
     
@@ -143,11 +142,6 @@ public class ModuleView extends ButtonMenu {
     
     }
     
-    
 
-    //JScrollPane scrollPane1 = new JSPane(textArea1);
-    // panel1.add(scrollPane1);
-    //scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-    //scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     }
     
