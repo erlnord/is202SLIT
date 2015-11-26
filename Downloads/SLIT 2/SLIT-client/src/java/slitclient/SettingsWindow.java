@@ -2,8 +2,6 @@
 package slitclient;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.ComponentOrientation;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
@@ -100,17 +98,6 @@ public class SettingsWindow extends ButtonMenu {
     container.add (panel1_2);
     container.add (panel1_3);
     frame.add(container);
-    
-    jl1.setPreferredSize(new Dimension(frame.getWidth()- 400, 20));
-    tf1.setPreferredSize(new Dimension(frame.getWidth()- 200, 20));
-    jb1.setPreferredSize(new Dimension(frame.getWidth()- 900, 20));
-
-
-     jl3.setPreferredSize(new Dimension(frame.getWidth()- 400, 20));
-     tf2.setPreferredSize(new Dimension(frame.getWidth()- 400, 20));
-     tf3.setPreferredSize(new Dimension(frame.getWidth()- 400, 20));
-     tf4.setPreferredSize(new Dimension(frame.getWidth()- 200, 20));
-     jb3.setPreferredSize(new Dimension(frame.getWidth()- 900, 20));
     
     
     }
