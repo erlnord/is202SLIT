@@ -6,7 +6,7 @@
 package slitclient;
 
 import java.awt.Color;
-import javax.ejb.EJB;
+// import javax.ejb.EJB;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
