@@ -1,73 +1,118 @@
+//lastOpp.setPreferredSize(new Dimension(frame.getWidth()/2 -30, 10));
 package slitclient;
-
-import static com.sun.glass.ui.Cursor.setVisible;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.Event.*;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import slitclient.ButtonMenu;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 
 
 
 public class SettingsWindow extends ButtonMenu {
-    JCheckBox show1; 
-    JCheckBox show2;
-    JLabel label1;
-    JLabel label2;
-    JPanel panel1;
-    
+   JFrame frame = new JFrame("Innstillinger");
+   JPanel panel1 = new JPanel(); 
+   JLabel jl1;
+   JTextField tf1;
+   JButton jb1;
+   JLabel jl2;
+   JComboBox dropdownmeny;
+   JButton jb2;
+   JLabel jl3;
+   JTextField tf2;
+   JTextField tf3;
+   JTextField tf4;
+   JButton jb3;
+          
+    /**
+     *
+     */
     public SettingsWindow() {
-        JFrame frame = new JFrame("Innstillinger");
-        panel1 = new JPanel ();
-        panel1.setLayout (new GridLayout (2,2));
-        frame.add(panel1, BorderLayout.CENTER);
+    
+    jl1 = new JLabel ("vil du ha varsler videresendt til din personlige epost?");
+    tf1 = new JTextField ("skriv inn epost", 45);
+    jb1 = new JButton("Opprett Regel");
+    jl2 = new JLabel ("velg selv hvor tidlig du skal få varsler");
+    String [] dager = {"1 dag" , "2 dager", "3 dager", "4 dager", "5 dager"};
+    dropdownmeny = new JComboBox(dager);
+    jb2 = new JButton ("Opprett Regel");
+    jl3 = new JLabel ("Endre passord?");
+    tf2 = new JTextField ("nytt passord", 45);
+    tf3 = new  JTextField ("bekreft nytt passord", 45);
+    tf4 = new  JTextField ("Nåværende passord", 45);
+    jb3 = new JButton ("Skift passord");
         
-        frame.add(topPanel, BorderLayout.NORTH);
-        topPanel.setBackground(Color.white);
-        frame.add(menuBar);
-        frame.setJMenuBar(menuBar);
-        label1 = new JLabel ("") ; 
-        panel1.add (label1);
-                
-        label2 = new JLabel("");
-        panel1.add (label2);
-        
-        show1 = new JCheckBox ("show first label");
-        panel1.add (show1);
-        
-        show2 = new JCheckBox ("show second label");
-        panel1.add (show2);
-        
-
-frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-frame.setSize (1024, 768); 
-frame.setResizable(true);
-frame.setVisible(true);
-
-       // Event e = new Event ();
-       // show1.addItemListener (e);
-       // show2.addItemListener (e);
-    }
-    public class evert implements ItemListener {
-        public void itemStateChanged (ItemEvent e){
-            if (show1.isSelected () ) {
-                label1.setText ("Du har takket ja til mottak av epost fra systemet");
-            }else {label1.setText ("Ønsker du å motta epost fra systemet?");
-            }
-            if (show2.isSelected()){
-                label2.setText ("you pushed second checkbox");
-            }else {label2.setText ("JAAAAAA");
-            
-            }
-        }
-    }
-
  
+    //hovedramme   
+    frame.add(topPanel, BorderLayout.NORTH);
+    topPanel.setBackground(Color.white);
+    frame.add(menuBar);
+    frame.setJMenuBar(menuBar);
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(1024, 768);
+    
+    
+    JPanel panel1_1 = new JPanel();
+    JPanel panel1_2 = new JPanel();
+    JPanel panel1_3 = new JPanel();
+    
+    // setter dimensjoner på det respektive panelet slik at det er halve skjermbredden
+    panel1_1.setBorder(BorderFactory.createTitledBorder("Epost"));
+    panel1_2.setBorder(BorderFactory.createTitledBorder("Varsling"));
+    panel1_3.setBorder(BorderFactory.createTitledBorder("Passord"));
+
+       
+    
+    //bruker gridlayout på panelene inni hovedpanelet
+    panel1_1.setLayout(new FlowLayout());
+    panel1_2.setLayout(new FlowLayout());
+    panel1_3.setLayout(new FlowLayout());
+    
+ 
+    //legger til textfelt i underpanelene
+    panel1_1.add (jl1);
+    panel1_1.add (tf1);
+    panel1_1.add (jb1);
+    panel1_2.add (jl2);
+    panel1_2.add (dropdownmeny);
+    panel1_3.add (jl3);
+    panel1_3.add (tf2);
+    panel1_3.add (tf3);
+    panel1_3.add (tf4);
+    panel1_3.add (jb3);
+  
+
+//legger til panel
+    
+    JPanel container = new JPanel();
+    container.setLayout(new GridLayout (3,1));
+    container.add (panel1_1);
+    container.add (panel1_2);
+    container.add (panel1_3);
+    frame.add(container);
+    
+    jl1.setPreferredSize(new Dimension(frame.getWidth()- 400, 20));
+    tf1.setPreferredSize(new Dimension(frame.getWidth()- 200, 20));
+    jb1.setPreferredSize(new Dimension(frame.getWidth()- 900, 20));
 
 
-        
+     jl3.setPreferredSize(new Dimension(frame.getWidth()- 400, 20));
+     tf2.setPreferredSize(new Dimension(frame.getWidth()- 400, 20));
+     tf3.setPreferredSize(new Dimension(frame.getWidth()- 400, 20));
+     tf4.setPreferredSize(new Dimension(frame.getWidth()- 200, 20));
+     jb3.setPreferredSize(new Dimension(frame.getWidth()- 900, 20));
+    
+    
+    }
 }
+
