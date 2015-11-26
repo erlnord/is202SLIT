@@ -70,7 +70,7 @@ public class ModuleWindow extends ButtonMenu {
         // Må legges til i hver klasse
         super.infoBtn.addActionListener ((ActionEvent e) -> {
             frame.dispose();
-            new StudentMainView();
+            Main.studentMainView(); 
         });
         
         super.bookingBtn.addActionListener ((ActionEvent e) -> {

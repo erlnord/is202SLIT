@@ -7,11 +7,16 @@ package slitclient;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import static java.awt.FlowLayout.CENTER;
+import java.awt.Font;
 import java.awt.GridLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 
 /**
@@ -19,122 +24,85 @@ import javax.swing.JTextArea;
  * @author Erlend
  */
 public class Mail extends ButtonMenu {
-    JFrame mailFrame;
-    
-    
-    JLabel fromLabel1;
-    JLabel fromLabel2;
-    JLabel fromLabel3;
-    JLabel fromLabel4;
-    JLabel fromLabel5;
-    JLabel fromLabel6;
-    JLabel fromLabel7;
-    JLabel fromLabel8;
-    JLabel fromLabel9;
-    JLabel fromLabel10;
-    JLabel fromLabel11;
-    JLabel fromLabel12;
-    
-    JLabel thumb1;
-    JLabel thumb2;
-    JLabel thumb3;
-    JLabel thumb4;
-    JLabel thumb5;
-    JLabel thumb6;
-    JLabel thumb7;
-    JLabel thumb8;
-    JLabel thumb9;
-    JLabel thumb10;
-    JLabel thumb11;
-    JLabel thumb12; 
-    
-    JTextArea newMail;
-    
-    
-    JButton sendButton;
-    JButton cancelButton;
-    JPanel lPane;
-    JPanel rightPanel; 
-    
+   JFrame mailFrame = new JFrame();
+   JPanel container = new JPanel();
+   JPanel p1 = new JPanel();
+   JPanel p2 = new JPanel(); 
+   
+ 
+
+   JLabel fromLbl = new JLabel("Sender:");
+   JLabel topicLbl = new JLabel("Emne:");
+   
+   JLabel fromLbl1 = new JLabel("Hallgeir");
+   JLabel topicLbl1 = new JLabel("Hei. Møter er satt opp til tirsdag 20.11");
+   
+       
     public Mail() {
-        mailFrame = new JFrame("Mail");
+        mailFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // Setter layout på JFrame til FLowLayout
+        p1.setBackground(Color.WHITE);
+        p1.setBorder(BorderFactory.createTitledBorder("Innboks"));
+        p2.setBackground(Color.WHITE);
+        p2.setBorder(BorderFactory.createTitledBorder("Melding"));
+        p1.setLayout(new GridLayout(0, 2));
+        p2.setLayout(new GridLayout(0, 2)); 
+        
+        container.setLayout(new GridLayout(1, 2));
+        
+        
         mailFrame.setVisible(true);
         mailFrame.setSize(1024, 768);
-        mailFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mailFrame.setLocationRelativeTo(null);
+        
+        // Legger til topPanel
+        mailFrame.add(topPanel, BorderLayout.NORTH);
+        topPanel.setBackground(Color.white);
+        // Legger til menubar
         mailFrame.add(menuBar);
         mailFrame.setJMenuBar(menuBar);
-        mailFrame.add(topPanel, BorderLayout.NORTH);
-        lPane = new JPanel();
-        lPane.setLayout(new GridLayout(2, 12));
-        lPane.setBackground(Color.WHITE);
-        
-        fromLabel1 = new JLabel("Melding fra:");
-        fromLabel2 = new JLabel("Even");
-        fromLabel3 = new JLabel("Hallgeir");
-        fromLabel4 = new JLabel("Oddvar");
-        fromLabel5 = new JLabel("Geir");
-        fromLabel6 = new JLabel("Hans");
-        fromLabel7 = new JLabel("Nils");
-        fromLabel8 = new JLabel("Sander");
-        fromLabel9 = new JLabel("Andrine");
-        fromLabel10 = new JLabel("Katrine");
-        fromLabel11 = new JLabel("Anders");
-        fromLabel12 = new JLabel("Sindre");
-        
-        thumb1 = new JLabel("Tittel:");
-        thumb2 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb3 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb4 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb5 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb6 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb7 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb8 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb9 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb10 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb11 = new JLabel("Hei! Jeg er en testmelding. testestestest");
-        thumb12 = new JLabel("Hei! Jeg er en testmelding. testestestest");
         
         
+        mailFrame.add(container);
+        
+        // PANEL 1
+        
+        
+
+        
+        
+        fromLbl.setFont(new Font("Verdana", Font.CENTER_BASELINE, 16));
+        fromLbl.setOpaque(true);
+        fromLbl.setBackground(Color.GRAY);
+        p1.add(fromLbl);
+        
+        topicLbl.setFont(new Font("Verdana", Font.CENTER_BASELINE, 16));
+        topicLbl.setOpaque(true); 
+        topicLbl.setBackground(Color.GRAY);
+        p1.add(topicLbl);
+        
+        p1.add(fromLbl1);
+        p1.add(topicLbl1);
+        
+        JButton button = new JButton("KLIKEKRINO");
+        p2.add(button);
+        JButton nuttton = new JButton("KILLLLKELRKLEKRLERKEL");
+        p2.add(nuttton);
+        
+        //p2.add(fromLbl);
+        
+        container.add(p1);
+        container.add(p2);
+        //mailFrame.add(p3, BorderLayout.EAST);
+        //mailFrame.pack();
         
         
         
-        //lPane.setLayout(new FlowLayout());
-        
-        lPane.add(fromLabel1);
-        lPane.add(thumb1);
-        lPane.add(fromLabel2);
-        lPane.add(thumb2);
-        lPane.add(fromLabel3);
-        lPane.add(thumb3);
-        lPane.add(fromLabel4);
-        lPane.add(thumb4);
-        lPane.add(fromLabel5);
-        lPane.add(thumb5);
-        lPane.add(fromLabel6);
-        lPane.add(thumb6);
-        lPane.add(fromLabel7);
-        lPane.add(thumb7);
-        lPane.add(fromLabel8);
-        lPane.add(thumb8);
-        lPane.add(fromLabel9);
-        lPane.add(thumb9);
-        lPane.add(fromLabel10);
-        lPane.add(thumb10);
-        lPane.add(fromLabel11);
-        lPane.add(thumb11);
-        lPane.add(fromLabel12);
-        lPane.add(thumb12);
-        
-        lPane.validate();
-        lPane.repaint();
-        
-        mailFrame.add(lPane, BorderLayout.CENTER);
-        
-        mailFrame.validate();
-        mailFrame.repaint(); 
-    }   
-    
-    
-    
+        }
+         
 }
+
+    
+    
+

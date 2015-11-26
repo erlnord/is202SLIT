@@ -138,6 +138,9 @@ public class ModuleView extends ButtonMenu {
     frame.add(panel1, BorderLayout.WEST);  
     frame.add(panel2, BorderLayout.EAST);
     
+    frame.setLocationRelativeTo(null);
+   // frame.pack(); 
+    
     }
     
     
