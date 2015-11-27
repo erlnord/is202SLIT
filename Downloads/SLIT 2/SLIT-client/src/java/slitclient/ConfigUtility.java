@@ -20,7 +20,7 @@ import java.util.Properties;
  */
 public class ConfigUtility {
     private File configFile = new File("smtp.properties");
-    private Properties configProps;
+    Properties configProps;
      
     public Properties loadProperties() throws IOException {
         Properties defaultProps = new Properties();
@@ -57,4 +57,9 @@ public class ConfigUtility {
         configProps.store(outputStream, "host setttings");
         outputStream.close();
     }  
+    
+    // getter-metode for å få props
+    public Properties getProps() {
+        return configProps;
+}
 }

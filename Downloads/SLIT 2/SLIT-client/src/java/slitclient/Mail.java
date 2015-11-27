@@ -13,9 +13,23 @@ import static java.awt.FlowLayout.CENTER;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Store;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -74,11 +88,9 @@ public class Mail extends ButtonMenu {
    
    MouseListener ml; 
         
-        
+    JButton inbxBtn = new JButton("Se innboks");    
     public Mail() {
        
-        
-        
         
         mailFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -194,6 +206,9 @@ public class Mail extends ButtonMenu {
         displayMessage.setEditable(false);
         displayMessage.setFont(new Font("Verdana", Font.ITALIC, 14));
         p2.add(displayMessage, BorderLayout.CENTER);
+        p2.add(inbxBtn, BorderLayout.SOUTH);
+        
+       
         
         // Legger til panel 1 og 2 i container
         container.add(p1);
@@ -244,8 +259,63 @@ public class Mail extends ButtonMenu {
             //mailFrame.dispose();
             Main.SwingEmailSender();
         });
+
+    //private void inbxBtnActionPerformed(java.awt.event.ActionEvent evt) throws NoSuchProviderException, MessagingException {
+        inbxBtn.addActionListener((ActionEvent e) -> {
+        Properties props = new Properties(); 
+        props.setProperty("mail.imap.host", "imap.gmail.com");
+        props.setProperty("mail.imap.user", "sliterino@gmail.com");
+        props.setProperty("mail.imap.socketFactory", "995");
+        props.setProperty("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.setProperty("mail.imap.port", "995");
+
+        
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("sliterino@gmail.com", "slitfuck");
+            }
+        });
+        
+        try {
+            Store store = session.getStore("imaps");
+            store.connect("imap.gmail.com", "sliterino@gmail.com", "slitfuck");
+            Folder fldr = store.getFolder("INBOX");
+            fldr.open(Folder.READ_ONLY);
+            Message[] msg = fldr.getMessages();
+            Address[] address;
+            
+            final StringBuilder sb = new StringBuilder();
+                for (Message message : msg) {
+
+                     sb.append("SentDate : ").
+                     append(message.getSentDate()).
+                     append("\n").
+                     append("From : ").
+                    append(message.getFrom()[0]).
+                    append("\n").append("Subject : ").
+                    append(message.getSubject()).
+                    append("\n").
+                    append("Message : ").
+                    append("\n").
+                    append(message.getContent().toString());
+
+                }
+                displayMessage.setText(sb.toString());
+       // } catch(Exception e) {
+         //   System.out.println(e);
+            
+        }   catch (MessagingException ex) {
+                Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        });
+    
     }
        
+        
       
 }
 
