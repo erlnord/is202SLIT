@@ -241,7 +241,8 @@ public class Mail extends ButtonMenu {
         };
         
         newMessageBtn.addActionListener((ActionEvent e) -> {
-            displayMessage.setText("COW");
+            //mailFrame.dispose();
+            Main.SwingEmailSender();
         });
     }
        

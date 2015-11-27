@@ -15,6 +15,7 @@
             <included-library dirs="200">reference.SLIT-common.jar</included-library>
             <included-library dirs="200">file.reference.SLIT_2-SLIT-common</included-library>
             <included-library dirs="200">file.reference.jdatepicker-1.3.4.jar</included-library>
+            <included-library dirs="200">file.reference.mail.jar</included-library>
         </data>
         <references xmlns="http://www.netbeans.org/ns/ant-project-references/1">
             <reference>

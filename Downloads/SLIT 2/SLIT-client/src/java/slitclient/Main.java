@@ -47,7 +47,7 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        
+
         //Boolean result = userInstance.addUrne(2, 1, "Urne", "Larsen", "Urne2000", "Urne1234", "urne@urnemail.com");
         //System.out.println("Result: "+result);
         
@@ -85,5 +85,10 @@ public class Main {
 
     public static void SettingsWindow() {
         SettingsWindow sw = new SettingsWindow();
+    }
+    
+    public static void SwingEmailSender() {
+        SwingEmailSender ses = new SwingEmailSender();
+        ses.setVisible(true);
     }
 }   
