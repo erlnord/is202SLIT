@@ -216,7 +216,7 @@ public class Mail extends ButtonMenu {
                     + "Superboys: 1200. \n"
                     + "Bad boys: 1230\n"
                     + "Good girls: 1300 \n"
-                    + "Barbecue stain: 1500");
+                    + "Barbecue stain: 1530");
         } else if (me.getSource() == topicLbl2) {
             displayMessage.setText("Loggen fra github må leveres innen torsdag.\n"
                     + "Dette er svært viktig for at vi skal se hvordan dere har jobbet sammen \n"
