@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slitclient;
+package slitclient.mail;
 
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
  
+import slitclient.JFilePicker;
 import slitclient.JFilePicker;
  
 /**

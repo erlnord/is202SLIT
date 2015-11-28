@@ -5,6 +5,11 @@
  */
 package slitclient;
 
+import slitclient.mainview.TeacherMainView;
+import slitclient.mainview.StudentMainView;
+import slitclient.mail.Mail;
+import slitclient.module.ModuleWindow;
+import slitclient.mail.SwingEmailSender;
 import beans.InformationBeanRemote;
 import beans.ModuleBeanRemote;
 import java.awt.Color;

@@ -26,45 +26,45 @@ public abstract class ButtonMenu {
     // Lager hovedknappene, som blir brukt til ÃƒÂ¥ manÃƒÂ¸vrere seg rundt 
     // i systemet. Bruker bilder som ikoner.
     // Initialiserer infoBtn
-    ImageIcon infoImg = new ImageIcon(getClass().getResource("/images/info.jpg"));
-    JButton infoBtn = new JButton(infoImg);
+    protected ImageIcon infoImg = new ImageIcon(getClass().getResource("/images/info.jpg"));
+    protected JButton infoBtn = new JButton(infoImg);
     
     // Initialiserer bookingBtn
-    ImageIcon bookingImg = new ImageIcon(getClass().getResource("/images/booking.jpg"));
-    JButton bookingBtn = new JButton(bookingImg);
+    protected ImageIcon bookingImg = new ImageIcon(getClass().getResource("/images/booking.jpg"));
+    protected JButton bookingBtn = new JButton(bookingImg);
     
     // Initialiserer moduleBtn
-    ImageIcon moduleImg = new ImageIcon(getClass().getResource("/images/module.jpg"));
-    JButton moduleBtn = new JButton(moduleImg);
+    protected ImageIcon moduleImg = new ImageIcon(getClass().getResource("/images/module.jpg"));
+    protected JButton moduleBtn = new JButton(moduleImg);
     
     // Initialiserer mailBtn
-    ImageIcon mailImg = new ImageIcon(getClass().getResource("/images/mail.jpg"));
-    JButton mailBtn = new JButton(mailImg);
+    protected ImageIcon mailImg = new ImageIcon(getClass().getResource("/images/mail.jpg"));
+    protected JButton mailBtn = new JButton(mailImg);
     
     // Initialiserer settingsBtn
-    ImageIcon settingsImg = new ImageIcon(getClass().getResource("/images/settings.jpg"));
-    JButton settingsBtn = new JButton(settingsImg);
+    protected ImageIcon settingsImg = new ImageIcon(getClass().getResource("/images/settings.jpg"));
+    protected JButton settingsBtn = new JButton(settingsImg);
     
-    JPanel topPanel = new JPanel();
+    protected JPanel topPanel = new JPanel();
     
       // Lager en menylinje
-    JMenuBar menuBar = new JMenuBar();
+    protected JMenuBar menuBar = new JMenuBar();
     
     // Lager "Fil"-delen av menyen og alt som hÃƒÂ¸rer til
-    JMenu fileMenu = new JMenu("Fil");
-    JMenu openFile = new JMenu("Ãƒâ€¦pne");
-    JMenuItem fromLocal = new JMenuItem("Lokalt lagret");
-    JMenuItem fromCloud = new JMenuItem("Fra sky");
-    JMenuItem saveFile = new JMenuItem("Lagre");
-    JMenuItem saveAsFile = new JMenuItem("Lagre Som");
-    JMenuItem exitApplication = new JMenuItem("Avslutt applikasjonen");
+    protected JMenu fileMenu = new JMenu("Fil");
+    protected JMenu openFile = new JMenu("Ãƒâ€¦pne");
+    protected JMenuItem fromLocal = new JMenuItem("Lokalt lagret");
+    protected JMenuItem fromCloud = new JMenuItem("Fra sky");
+    protected JMenuItem saveFile = new JMenuItem("Lagre");
+    protected JMenuItem saveAsFile = new JMenuItem("Lagre Som");
+    protected JMenuItem exitApplication = new JMenuItem("Avslutt applikasjonen");
     
     // Lager "Kontakt"-delen av menyen og alt som hÃƒÂ¸rer til
-    JMenu contactMenu = new JMenu("Kontakt");
+    protected JMenu contactMenu = new JMenu("Kontakt");
     
     // Lager "Hjelp"-delen av menyen og alt som hÃƒÂ¸rer til
-    JMenu helpMenu = new JMenu("Hjelp");
-    JMenuItem changeUser = new JMenuItem("Bytt brukertype");
+    protected JMenu helpMenu = new JMenu("Hjelp");
+    protected JMenuItem changeUser = new JMenuItem("Bytt brukertype");
     
     public ButtonMenu(){
         

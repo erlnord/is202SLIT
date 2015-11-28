@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slitclient;
+package slitclient.mail;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -58,7 +58,7 @@ public class ConfigUtility {
         outputStream.close();
     }  
     
-    // getter-metode for å få props
+    // getter-metode for ï¿½ fï¿½ props
     public Properties getProps() {
         return configProps;
 }

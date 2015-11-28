@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slitclient;
+package slitclient.mail;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,6 +31,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import slitclient.ButtonMenu;
+import slitclient.Main;
 
 /**
  *

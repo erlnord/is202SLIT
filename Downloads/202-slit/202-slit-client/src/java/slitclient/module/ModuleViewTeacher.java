@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slitclient;
+package slitclient.module;
 
 import beans.ModuleTransfer;
 import java.awt.BorderLayout;
@@ -25,6 +25,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListModel;
+import slitclient.ButtonMenu;
+import slitclient.Main;
 
 /**
  *

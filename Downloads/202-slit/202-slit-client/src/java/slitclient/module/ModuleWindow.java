@@ -1,4 +1,4 @@
-package slitclient;
+package slitclient.module;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import slitclient.ButtonMenu;
+import slitclient.Main;
 
 /**
  *

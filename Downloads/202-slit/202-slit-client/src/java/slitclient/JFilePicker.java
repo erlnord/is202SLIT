@@ -1,5 +1,6 @@
 package slitclient;
 
+import slitclient.mail.FileTypeFilter;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
