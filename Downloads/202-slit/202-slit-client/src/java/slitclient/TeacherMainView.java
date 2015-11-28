@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -73,7 +74,7 @@ public class TeacherMainView extends MainViewMaster {
         regContainer.setLayout(new BorderLayout());
         regContainer.add(regPanel, BorderLayout.CENTER);
         regContainer.add(regBotPanel, BorderLayout.SOUTH);
-        regContainer.setBackground(Color.WHITE);
+        regContainer.setBorder(BorderFactory.createTitledBorder("Ny info"));
         
         JTextArea area1 = new JTextArea("");
         JButton submitBtn = new JButton("Lagre");
@@ -83,9 +84,11 @@ public class TeacherMainView extends MainViewMaster {
         //regPanel.add(area1);
         regBotPanel.add(cancelBtn);
         regBotPanel.add(submitBtn);
+        regBotPanel.setBorder(BorderFactory.createTitledBorder("Confirm"));
         
         regPanel.setLayout(new BorderLayout());
         regPanel.add(area1, BorderLayout.CENTER);
+        regPanel.setBorder(BorderFactory.createTitledBorder("Skriv her"));
         
         /*
         submitBtn.addActionListener(new ActionListener() {
@@ -96,6 +99,7 @@ public class TeacherMainView extends MainViewMaster {
             }
         });*/
         
+        /*
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -106,22 +110,22 @@ public class TeacherMainView extends MainViewMaster {
                     System.out.println("fuckerinos");
                 }
             }
-        });
+        });*/
         
-        /*
+        
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 
                 Main.getInformationBean().addInfo(area1.getText(), 4);
                 
-                System.out.println("Info added.");
+                System.out.println("Info added");
             }
-        });*/
+        });
         
-        /*
+        
         // Liste ut alle brukere
-        
+        /*
         submitBtn.addActionListener (new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -131,8 +135,8 @@ public class TeacherMainView extends MainViewMaster {
                     area1.append(u.getFirstName()+"\n");
                 }
             }
-        });
-        */
+        });*/
+        
         
         cancelBtn.addActionListener ((ActionEvent e) -> {
             frame2.dispose();
