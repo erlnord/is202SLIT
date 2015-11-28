@@ -160,7 +160,7 @@ public class InformationJpaController implements Serializable {
             ArrayList<InformationTransfer> liste = new ArrayList();
             for (Information i : results) {
                 InformationTransfer it = new InformationTransfer(i.getId(),
-                i.getInfoText(), i.getUserID());
+                i.getInfoText(), i.getUserID(), i.getInfoDate());
                 
                 liste.add(it);
             }
