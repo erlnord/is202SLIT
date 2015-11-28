@@ -200,6 +200,10 @@ INSERT INTO Module (ModuleID, ModuleName, UserID, ModuleDescription, ModuleAppro
 VALUES ('9', 'Modul 9', '5', "", "", "");
 INSERT INTO Module (ModuleID, ModuleName, UserID, ModuleDescription, ModuleApproval, ModuleResource) 
 VALUES ('10', 'Modul 10', '4', "", "", "");
+INSERT INTO Module (ModuleID, ModuleName, UserID, ModuleDescription, ModuleApproval, ModuleResource) 
+VALUES ('11', 'Modul 11', '4', "", "", "");
+INSERT INTO Module (ModuleID, ModuleName, UserID, ModuleDescription, ModuleApproval, ModuleResource) 
+VALUES ('12', 'Modul 12', '4', "", "", "");
 
 /* Legger inn eksempelinformasjon om innleveringer. 
 */
