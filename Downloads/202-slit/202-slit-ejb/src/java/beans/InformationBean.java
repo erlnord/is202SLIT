@@ -7,6 +7,7 @@ package beans;
 
 import entities.Information;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -31,15 +32,13 @@ public class InformationBean implements InformationBeanRemote {
     private EntityManagerFactory emf = null;
     
     @Override
-    public void addInfo(String InfoText, Integer UserID) {
+    public void addInfo(String InfoText, Integer UserID, Date InfoDate) {
         Information info = new Information();
         info.setInfoText(InfoText);
         info.setUserID(UserID);
+        info.setInfoDate(InfoDate);
         
         em.persist(info);
-        
-        System.out.println("User added.");
-        //return true;
     }
     
     public EntityManager getEntityManager() {
@@ -92,7 +91,7 @@ public class InformationBean implements InformationBeanRemote {
             ArrayList<InformationTransfer> liste = new ArrayList();
             for (Information i : results) {
                 InformationTransfer it = new InformationTransfer(i.getId(),
-                i.getInfoText(), i.getUserID());
+                i.getInfoText(), i.getUserID(), i.getInfoDate());
                 
                 liste.add(it);
             }

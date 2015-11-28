@@ -6,11 +6,14 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -27,7 +30,18 @@ public class Information implements Serializable {
     
     private String InfoText;
     private Integer UserID;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date InfoDate;
 
+    public Date getInfoDate() {
+        return InfoDate;
+    }
+
+    public void setInfoDate(Date InfoDate) {
+        this.InfoDate = InfoDate;
+    }
+    
     public String getInfoText() {
         return InfoText;
     }

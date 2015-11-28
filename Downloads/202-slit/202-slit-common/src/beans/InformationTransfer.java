@@ -6,6 +6,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -18,25 +19,23 @@ public class InformationTransfer implements Serializable {
     private int id;
     private String InfoText;
     private int UserID;
+    private Date InfoDate;
     
-    public InformationTransfer (int id, String InfoText, int UserID) {
+    public InformationTransfer (int id, String InfoText, int UserID, Date InfoDate) {
         this.id = id;
         this.InfoText = InfoText;
         this.UserID = UserID;
+        this.InfoDate = InfoDate;
     }
     
-    /*
-    public ModuleTransfer (int ModuleID, String ModuleDescription, 
-            String ModuleApproval, String ModuleResource, int UserID) {
-        
-        this.ModuleID = ModuleID;
-        this.ModuleDescription = ModuleDescription;
-        this.ModuleApproval = ModuleApproval;
-        this.ModuleResource = ModuleResource;
-        this.UserID = UserID;
-    }*/
-    
+    public Date getInfoDate() {
+        return InfoDate;
+    }
 
+    public void setInfoDate(Date InfoDate) {
+        this.InfoDate = InfoDate;
+    }
+    
     public String getInfoText() {
         return InfoText;
     }

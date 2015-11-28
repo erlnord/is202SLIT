@@ -5,6 +5,7 @@
  */
 package beans;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -14,7 +15,8 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface InformationBeanRemote {
-    void addInfo(String InfoText, Integer UserID);
+    
+    void addInfo(String InfoText, Integer UserID, Date InfoDate);
     
     List<InformationTransfer> findInformationEntities(boolean all);
 }
