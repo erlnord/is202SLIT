@@ -47,7 +47,7 @@ public class UserBean implements UserBeanRemote {
     public List<UserTransfer> sfindAllUsers() {
         
         TypedQuery<Users> query =
-            em.createQuery("SELECT e FROM User e", Users.class);
+            em.createQuery("SELECT e FROM Users e", Users.class);
         
         List<Users> results = query.getResultList();
         
