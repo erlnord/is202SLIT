@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import static java.awt.FlowLayout.LEFT;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
@@ -19,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -45,7 +47,7 @@ public class ModuleViewTeacher extends ButtonMenu {
     // Panel 1
     JPanel panel1 = new JPanel();    
     panel1.setLayout(new GridLayout(3, 1));
-    panel1.setBorder(BorderFactory.createTitledBorder("MODUL 1"));//lager border rundt hele panel1 med overskrift
+    panel1.setBorder(BorderFactory.createTitledBorder("MODUL "+Main.getModuleType()));//lager border rundt hele panel1 med overskrift
     panel1.setPreferredSize(new Dimension(frame.getWidth()/2 - 10, frame.getHeight()/2 - 10)); // setter dimensjoner p� det respektive panelet slik at det er halve skjermbredden
     
     JPanel panel1_1 = new JPanel();
@@ -55,8 +57,8 @@ public class ModuleViewTeacher extends ButtonMenu {
     JPanel bottomPanel = new JPanel(new GridLayout(1, 2));
     JPanel bottomLeft = new JPanel(new FlowLayout(LEFT));
     JPanel bottomRight = new JPanel (new FlowLayout(LEFT));
-    JButton btnLagre = new JButton("Lagre");     
-    JButton btnLagre1 = new JButton("Lagre");
+    JButton btnLagreLeft = new JButton("Lagre");     
+    JButton btnLagreRight = new JButton("Lagre");
     JCheckBox godkjent = new JCheckBox ("Godkjent");
     JCheckBox ikkeGodkjent = new JCheckBox("Ikke godkjent");
     
@@ -64,8 +66,8 @@ public class ModuleViewTeacher extends ButtonMenu {
     bottomPanel.setBackground(Color.white);
     bottomPanel.add(bottomLeft);
     bottomPanel.add(bottomRight);
-    bottomLeft.add(btnLagre);
-    bottomRight.add(btnLagre1);
+    bottomLeft.add(btnLagreLeft);
+    bottomRight.add(btnLagreRight);
     bottomRight.add(godkjent);
     bottomRight.add(ikkeGodkjent);
     
@@ -106,7 +108,7 @@ public class ModuleViewTeacher extends ButtonMenu {
     panel1_2.add(scroll2);
     panel1_3.add(scroll3);
     
-    ModuleTransfer mf = Main.getModuleBean().findModule(1);
+    ModuleTransfer mf = Main.getModuleBean().findModule(Main.getModuleType());
     textArea1.setText(mf.getModuleDescription());
     textArea2.setText(mf.getModuleResource());
     textArea3.setText(mf.getModuleApproval());
@@ -116,6 +118,13 @@ public class ModuleViewTeacher extends ButtonMenu {
     panel1.add(panel1_1);
     panel1.add(panel1_2);
     panel1.add(panel1_3);
+    
+    
+    btnLagreLeft.addActionListener((ActionEvent e) -> {
+          Main.getModuleBean().updateModule(Main.getModuleType(), textArea1.getText(), 
+                  textArea3.getText(), textArea2.getText(), 4);
+          JOptionPane.showMessageDialog(null, "Modultekst oppdatert.");
+    });
     
     
     // Panel 2 - Godkjenning

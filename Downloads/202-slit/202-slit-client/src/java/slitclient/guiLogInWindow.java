@@ -103,12 +103,14 @@ public class guiLogInWindow extends JFrame {
                 super.dispose(); //Destroy the JFrame object
                 logInCondition = "student";
                 // Kaller metoden som bygger neste objekt
+                Main.setUserType(1);
                 Main.studentMainView();
             } else if(userTxt.getText().equalsIgnoreCase("teacher")) {
                 super.setVisible(false); // Ser ikkje meg lenger
                 super.dispose(); // Begone, heathen
                 logInCondition = "teacher";
                 // Kaller metoden som bygger lærer
+                Main.setUserType(2);
                 Main.teacherMainView();
             } else {
                 // Bruker har skrevet feil passord, eller finnes ikke i databasen

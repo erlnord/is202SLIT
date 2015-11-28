@@ -25,8 +25,6 @@ import javax.swing.JTextField;
  * @author Atilla
  */
 public class ModuleViewStudent extends ButtonMenu {
-    
-
  
     public ModuleViewStudent () {
     //legger til hovedframen
@@ -44,7 +42,7 @@ public class ModuleViewStudent extends ButtonMenu {
     JPanel panel1 = new JPanel();    
     panel1.setLayout(new GridLayout(3, 1));
     //lager border rundt hele panel1 med overskrift
-    panel1.setBorder(BorderFactory.createTitledBorder("MODUL 1"));
+    panel1.setBorder(BorderFactory.createTitledBorder("MODUL "+Main.getModuleType()));
     // setter dimensjoner på det respektive panelet slik at det er halve skjermbredden
     panel1.setPreferredSize(new Dimension(frame.getWidth()/2 - 10, 
             frame.getHeight()/2 - 10)); 
@@ -88,7 +86,7 @@ public class ModuleViewStudent extends ButtonMenu {
     panel1_2.add(scroll2);
     panel1_3.add(scroll3);
     
-    ModuleTransfer mf = Main.getModuleBean().findModule(1);
+    ModuleTransfer mf = Main.getModuleBean().findModule(Main.getModuleType());
     textArea1.setText(mf.getModuleDescription());
     textArea2.setText(mf.getModuleResource());
     textArea3.setText(mf.getModuleApproval());
@@ -102,10 +100,6 @@ public class ModuleViewStudent extends ButtonMenu {
     panel1.add(panel1_1);
     panel1.add(panel1_2);
     panel1.add(panel1_3);
-    
-    
-    
-    
     
     
     // Panel 2 - OPPLASTING

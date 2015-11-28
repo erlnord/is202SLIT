@@ -64,6 +64,7 @@ public abstract class ButtonMenu {
     
     // Lager "Hjelp"-delen av menyen og alt som hÃƒÂ¸rer til
     JMenu helpMenu = new JMenu("Hjelp");
+    JMenuItem changeUser = new JMenuItem("Bytt brukertype");
     
     public ButtonMenu(){
         
@@ -125,6 +126,7 @@ public abstract class ButtonMenu {
         
         // Legger til hjelp-menyen i menylinja, og legger til elementer
         menuBar.add(helpMenu);
+        helpMenu.add(changeUser);
         
          /**
          * Legger til en actionListener som avslutter applikasjonen
@@ -145,6 +147,24 @@ public abstract class ButtonMenu {
             }
         }); 
         
+        changeUser.addActionListener(new ActionListener() {
+            String message = "Vil du bytte brukertype?";
+            String title = "Brukerbytte";
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        if (Main.getUserType() == 1) {
+                            Main.setUserType(2);
+                            JOptionPane.showMessageDialog(null, "Brukertype er nå 'teacher'.");
+                        } else {
+                            Main.setUserType(1);
+                            JOptionPane.showMessageDialog(null, "Brukertype er nå 'student'.");
+                        }
+                    }
+            }
+        }); 
+        
         // ActionListeners for knappene.
         // Hver actionlistener har en for-løkke som lukker alle åpne frames
         // Før den kaller en metode i main som oppretter en ny frame for hver av
@@ -156,9 +176,15 @@ public abstract class ButtonMenu {
             for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
                 frame.dispose();
             }
-            Main.studentMainView(); 
+            
+            if (Main.getUserType() == 1) {
+                Main.studentMainView();
+            } else {
+                Main.teacherMainView();
+            }
         });
         
+        /*
         bookingBtn.addActionListener ((ActionEvent e) -> {
             for (java.awt.Window win : java.awt.Dialog.getWindows()) {
                 win.dispose();
@@ -166,8 +192,13 @@ public abstract class ButtonMenu {
             for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
                 frame.dispose();
             }
-            Main.TimePlan();
-        });
+            
+            if (Main.getUserType() == 1) {
+                Main.TimePlan();
+            } else {
+                Main.TimePlan();
+            }
+        });*/
         
         mailBtn.addActionListener((ActionEvent e) -> {
             for (java.awt.Window win : java.awt.Dialog.getWindows()) {
@@ -176,7 +207,12 @@ public abstract class ButtonMenu {
             for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
                 frame.dispose();
             }
-            Main.Mail();
+            
+            if (Main.getUserType() == 1) {
+                Main.Mail();
+            } else {
+                Main.Mail();
+            }
         });
         
         settingsBtn.addActionListener ((ActionEvent e) -> {
@@ -186,7 +222,12 @@ public abstract class ButtonMenu {
             for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
                 frame.dispose();
             }
-            Main.SettingsWindow();
+            
+            if (Main.getUserType() == 1) {
+                Main.SettingsWindow();
+            } else {
+                Main.SettingsWindow();
+            }
         });
         
         moduleBtn.addActionListener ((ActionEvent e) -> {
@@ -196,10 +237,12 @@ public abstract class ButtonMenu {
             for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
                 frame.dispose();
             }
-            Main.ModuleWindowStudent();
+            
+            if (Main.getUserType() == 1) {
+                Main.ModuleWindow();
+            } else {
+                Main.ModuleWindow();
+            }
         });
-        
     }
 }   
-
-    

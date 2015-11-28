@@ -44,17 +44,6 @@ public class TeacherMainView extends MainViewMaster {
             newInfo();
         });
         
-        for (ActionListener al : super.moduleBtn.getActionListeners())
-            {
-                super.moduleBtn.removeActionListener(al);
-                System.out.println("removed actionlistener");
-            }
-        
-        super.moduleBtn.addActionListener ((ActionEvent e) -> {
-            frame.dispose();
-            Main.ModuleWindowTeacher();
-        });
-        
     }  
     
     public void newInfo() {

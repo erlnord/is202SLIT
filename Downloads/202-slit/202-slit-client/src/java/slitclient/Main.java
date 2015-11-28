@@ -30,6 +30,9 @@ public class Main {
     @EJB
     private static InformationBeanRemote infoInstance;
     
+    private static int UserType;
+    private static int ModuleType;
+    
     /**
      * @param args the command line arguments
      */
@@ -53,6 +56,22 @@ public class Main {
     
     public static ModuleBeanRemote getModuleBean() {
             return moduleInstance;
+    }
+    
+    public static int getUserType() {
+        return UserType;
+    }
+
+    public static void setUserType(int UserType) {
+        Main.UserType = UserType;
+    }
+    
+    public static int getModuleType() {
+        return ModuleType;
+    }
+
+    public static void setModuleType(int ModuleType) {
+        Main.ModuleType = ModuleType;
     }
     
     public static void main(String[] args) {
@@ -105,12 +124,8 @@ public class Main {
         ses.setVisible(true);
     }
     
-    public static void ModuleWindowStudent() {
-        new ModuleWindowStudent();
-    }
-    
-    public static void ModuleWindowTeacher() {
-        new ModuleWindowTeacher();
+    public static void ModuleWindow() {
+        new ModuleWindow();
     }
 
     public static void SettingsWindow() {
