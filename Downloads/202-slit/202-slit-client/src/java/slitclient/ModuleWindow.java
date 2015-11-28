@@ -64,73 +64,121 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(1);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button2.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(2);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button3.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(3);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button4.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(4);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button5.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(5);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button6.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(6);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button7.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(7);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button8.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(8);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button9.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(9);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button10.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(10);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button11.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(11);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         button12.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(12);
             System.out.println("Modul "+Main.getModuleType());
-            new ModuleViewTeacher();
+            if (Main.getUserType() == 1) {
+                new ModuleViewStudent();
+            } else {
+                new ModuleViewTeacher();
+            }
         });
         
     }

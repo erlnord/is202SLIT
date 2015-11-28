@@ -47,7 +47,7 @@ public class ModuleViewTeacher extends ButtonMenu {
     // Panel 1
     JPanel panel1 = new JPanel();    
     panel1.setLayout(new GridLayout(3, 1));
-    panel1.setBorder(BorderFactory.createTitledBorder("MODUL "+Main.getModuleType()));//lager border rundt hele panel1 med overskrift
+    panel1.setBorder(BorderFactory.createTitledBorder("Modul "+Main.getModuleType()));//lager border rundt hele panel1 med overskrift
     panel1.setPreferredSize(new Dimension(frame.getWidth()/2 - 10, frame.getHeight()/2 - 10)); // setter dimensjoner p� det respektive panelet slik at det er halve skjermbredden
     
     JPanel panel1_1 = new JPanel();
@@ -113,6 +113,9 @@ public class ModuleViewTeacher extends ButtonMenu {
     textArea2.setText(mf.getModuleResource());
     textArea3.setText(mf.getModuleApproval());
     
+    textArea1.setCaretPosition(0);
+    textArea2.setCaretPosition(0);
+    textArea3.setCaretPosition(0);
     
     // Legg panelene til i hovedpanel.
     panel1.add(panel1_1);

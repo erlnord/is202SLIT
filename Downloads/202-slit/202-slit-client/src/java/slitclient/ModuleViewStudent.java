@@ -42,8 +42,8 @@ public class ModuleViewStudent extends ButtonMenu {
     JPanel panel1 = new JPanel();    
     panel1.setLayout(new GridLayout(3, 1));
     //lager border rundt hele panel1 med overskrift
-    panel1.setBorder(BorderFactory.createTitledBorder("MODUL "+Main.getModuleType()));
-    // setter dimensjoner på det respektive panelet slik at det er halve skjermbredden
+    panel1.setBorder(BorderFactory.createTitledBorder("Modul "+Main.getModuleType()));
+    // Setter dimensjoner på det respektive panelet slik at det er halve skjermbredden
     panel1.setPreferredSize(new Dimension(frame.getWidth()/2 - 10, 
             frame.getHeight()/2 - 10)); 
     
