@@ -5,18 +5,17 @@
  */
 package slitclient.mainview;
 
-import beans.InformationTransfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import slit.user.UserTransfer;
 import slitclient.Main;
 
 /**
@@ -102,12 +101,13 @@ public class TeacherMainView extends MainViewMaster {
             }
         });*/
         
-        
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 
-                Main.getInformationBean().addInfo(area1.getText(), 4);
+                Date now = new Date();
+                
+                Main.getInformationBean().addInfo(area1.getText(), 4, now);
                 
                 System.out.println("Info added");
             }
