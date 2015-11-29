@@ -20,7 +20,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import slit.user.UserTransfer;
 
 
 
@@ -100,27 +99,6 @@ public class guiLogInWindow extends JFrame {
             // lukker vi denne klassen og kaller metoden fra main
             // som bygger studentMainView-klassen
             
-            for (UserTransfer u : Main.getUserBean().findAllUsers()) {
-                if (userTxt.getText().equals(u.getUserName())) {
-                    String password = new String(passwordField.getPassword());
-                    if (password.equals(u.getPassPhrase())) {
-                        System.out.println("Found user: " + u.getFirstName());
-                        Main.setUserType(u.getUserType());
-                        if (Main.getUserType() == 1) {
-                            Main.studentMainView();
-                        } else {
-                            Main.teacherMainView();
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig");
-                    }
-                }/* else {
-                    JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig");
-                }*/
-            }
-        
-            
-            /*
             if(userTxt.getText().equalsIgnoreCase("student")){
                 super.setVisible(false); // Cant see me
                 super.dispose(); //Destroy the JFrame object
@@ -140,9 +118,8 @@ public class guiLogInWindow extends JFrame {
                 // Legger til mer sofisitikert metode senere.
             JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig"
             + " Vennligst prøv igjen");
-            }*/
+            }
         });
-        
         
         /**
          * Legger til en MouseListener som klarerer tekstfeltet
@@ -182,10 +159,8 @@ public class guiLogInWindow extends JFrame {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 registerUser();
             }
-        });
-        
+        });   
     }
-    
     
     public void registerUser() {
         super.dispose();
