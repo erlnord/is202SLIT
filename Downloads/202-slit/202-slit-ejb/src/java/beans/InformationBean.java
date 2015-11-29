@@ -20,7 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
  *
  * @author larsmartin
  */
-@Stateless
+@Stateless(name="InformationBean")
 public class InformationBean implements InformationBeanRemote {
 
     // Add business logic below. (Right-click in editor and choose

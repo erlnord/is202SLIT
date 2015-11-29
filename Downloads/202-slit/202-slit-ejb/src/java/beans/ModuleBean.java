@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author lmgr
  */
-@Stateless(mappedName="ModuleBean")
+@Stateless(name="ModuleBean")
 public class ModuleBean implements ModuleBeanRemote {
 
     @PersistenceContext

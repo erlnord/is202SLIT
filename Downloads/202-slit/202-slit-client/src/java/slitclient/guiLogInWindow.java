@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import slit.user.UserTransfer;
 
 
 
@@ -98,6 +99,21 @@ public class guiLogInWindow extends JFrame {
             // Dersom logIn-informasjonen stemmer overens med student, 
             // lukker vi denne klassen og kaller metoden fra main
             // som bygger studentMainView-klassen
+            
+            for (UserTransfer u : Main.getUserBean().findAllUsers()) {
+                if (userTxt.getText().equals(u.getUserName())) {
+                    System.out.println("Found user: " +u.getFirstName());
+                    Main.setUserType(u.getUserType());
+                    if (Main.getUserType() == 1) {
+                        Main.studentMainView();
+                    } else {
+                        Main.teacherMainView();
+                    }
+                }
+            } 
+        
+            
+            /*
             if(userTxt.getText().equalsIgnoreCase("student")){
                 super.setVisible(false); // Cant see me
                 super.dispose(); //Destroy the JFrame object
@@ -117,7 +133,7 @@ public class guiLogInWindow extends JFrame {
                 // Legger til mer sofisitikert metode senere.
             JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig"
             + " Vennligst prøv igjen");
-            }
+            }*/
         });
         
         

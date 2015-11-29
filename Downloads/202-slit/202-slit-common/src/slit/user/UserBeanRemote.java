@@ -24,5 +24,7 @@ public interface UserBeanRemote {
     void removeUser(int id);
     
     UserTransfer printUser (int UserID);
+
+    List<UserTransfer> findAllUsers();
     
 }

@@ -19,7 +19,7 @@ import slit.user.UserTransfer;
  *
  * @author larsmartin
  */
-@Stateless(mappedName="UserBean")
+@Stateless(name="UserBean")
 public class UserBean implements UserBeanRemote {
 
     @PersistenceContext
@@ -42,14 +42,34 @@ public class UserBean implements UserBeanRemote {
     FROM Employee e JOIN e.phones p
     GROUP BY e
     */
+    
+    
+    @Override
+    public List<UserTransfer> findAllUsers() {
+        TypedQuery<Users> q = em.createQuery("Select c from Users c", Users.class);
+        
+        List<Users> result = q.getResultList();
+        
+        ArrayList<UserTransfer> list = new ArrayList();
+        for (Users u : result) {
+            UserTransfer ut = new UserTransfer(u.getUserID(), u.getUserType(), 
+            u.getFirstName(),u.getLastName(), u.getUserName(),
+            u.getPassPhrase(),u.getEmail());
+            
+            list.add(ut);
+        }
+        
+        return list;
+    }
+    
 
     @Override
     public List<UserTransfer> sfindAllUsers() {
         
-        TypedQuery<Users> query =
+        TypedQuery<Users> query2 =
             em.createQuery("SELECT e FROM Users e", Users.class);
         
-        List<Users> results = query.getResultList();
+        List<Users> results = query2.getResultList();
         
         ArrayList<UserTransfer> liste = new ArrayList();
         for (Users u : results) {
@@ -60,20 +80,7 @@ public class UserBean implements UserBeanRemote {
             liste.add(ut);
         }
         return liste;
-        
     }
-    
-        /*
-            List<Users> results = q.getResultList();
-            
-            ArrayList<UserTransfer> liste = new ArrayList();
-            for (Users u : results) {
-                UserTransfer ut = new UserTransfer(u.getUserID(), u.getUserType(), u.getFirstName(),
-                u.getLastName(), u.getUserName(), u.getPassPhrase(),
-                u.getEmail());
-
-                liste.add(ut);
-            }*/
     
     @Override
     public UserTransfer findUser(int id) {
@@ -103,6 +110,7 @@ public class UserBean implements UserBeanRemote {
             user.getFirstName(), user.getLastName(), user.getUserName(),
             user.getPassPhrase(), user.getEmail());
     }
+
 }
 
     

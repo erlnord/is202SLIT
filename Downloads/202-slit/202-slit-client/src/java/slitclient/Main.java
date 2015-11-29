@@ -12,9 +12,7 @@ import slitclient.module.ModuleWindow;
 import slitclient.mail.SwingEmailSender;
 import beans.InformationBeanRemote;
 import beans.ModuleBeanRemote;
-import java.awt.Color;
 import javax.ejb.EJB;
-import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import slit.user.UserBeanRemote;
@@ -26,13 +24,13 @@ import slit.user.UserBeanRemote;
  */
 public class Main {
     
-    @EJB(mappedName="ModuleBean")
+    @EJB(name="ModuleBean")
     private static ModuleBeanRemote moduleInstance;
     
-    @EJB(mappedName="UserBean")
+    @EJB(name="UserBean")
     private static UserBeanRemote userInstance;
     
-    @EJB
+    @EJB(name="InformationBean")
     private static InformationBeanRemote infoInstance;
     
     private static int UserType;
