@@ -102,15 +102,22 @@ public class guiLogInWindow extends JFrame {
             
             for (UserTransfer u : Main.getUserBean().findAllUsers()) {
                 if (userTxt.getText().equals(u.getUserName())) {
-                    System.out.println("Found user: " +u.getFirstName());
-                    Main.setUserType(u.getUserType());
-                    if (Main.getUserType() == 1) {
-                        Main.studentMainView();
+                    String password = new String(passwordField.getPassword());
+                    if (password.equals(u.getPassPhrase())) {
+                        System.out.println("Found user: " + u.getFirstName());
+                        Main.setUserType(u.getUserType());
+                        if (Main.getUserType() == 1) {
+                            Main.studentMainView();
+                        } else {
+                            Main.teacherMainView();
+                        }
                     } else {
-                        Main.teacherMainView();
+                        JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig");
                     }
-                }
-            } 
+                }/* else {
+                    JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig");
+                }*/
+            }
         
             
             /*
@@ -185,7 +192,6 @@ public class guiLogInWindow extends JFrame {
         JFrame frame2 = new JFrame();
         frame2.setVisible(true);
         frame2.setSize(600,170);
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setBackground(Color.WHITE);
         // Plasserer applikasjonen midt på skjermen
         frame2.setLocationRelativeTo(null);

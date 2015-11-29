@@ -114,8 +114,12 @@ public class Main {
         new TeacherMainView();
     }
     
-    public static void TimePlan() {
-        new TimePlan();
+    public static void StudentBooking() {
+        new StudentBooking();
+    }
+    
+    public static void TeacherBooking() {
+        new TeacherBooking();
     }
     
     public static void Mail() {

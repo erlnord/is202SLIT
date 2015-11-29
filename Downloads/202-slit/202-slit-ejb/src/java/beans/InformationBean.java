@@ -41,27 +41,12 @@ public class InformationBean implements InformationBeanRemote {
         em.persist(info);
     }
     
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
-    
+    @Override
     public List<InformationTransfer> findInformationEntities() {
-        return findInformationEntities(true/*, -1, -1*/);
-    }
-    
-
-    //public List<InformationTransfer> findInformationEntities(/*int maxResults, int firstResult*/) {
-    //    return findInformationEntities(false/*, maxResults, firstResult*/);
-    //}
-    
-    public List<InformationTransfer> findInformationEntities(boolean all/*, int maxResults, int firstResult*/) {
-        EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Information.class));
             Query q = em.createQuery(cq);
-            
-            if (!all) {
                 q.setMaxResults(7);
                 
                 /*
@@ -79,13 +64,13 @@ public class InformationBean implements InformationBeanRemote {
               
                 int count;
                 
-                if (rowCnt < 7)
-                    count = rowCnt;
+                if (rowCnt < 1)
+                    count = 1;
                 else
-                    count = 7 - rowCnt;
+                    count = rowCnt - 7;
                     
                 q.setFirstResult(count);
-            }
+            
             
             List<Information> results = q.getResultList();
             ArrayList<InformationTransfer> liste = new ArrayList();

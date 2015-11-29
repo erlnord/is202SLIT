@@ -5,12 +5,12 @@
  */
 package slitclient.mainview;
 
+import beans.InformationTransfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -79,28 +79,28 @@ public class TeacherMainView extends MainViewMaster {
         regPanel.add(area1, BorderLayout.CENTER);
         regPanel.setBorder(BorderFactory.createTitledBorder("Skriv her"));
         
-        /*
+        
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 System.out.println(Main.getModuleBean().findModule(1));
                 //System.out.println(Main.getUserBean().printUser(1));
             }
-        });*/
+        });
         
         /*
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 
-                for (InformationTransfer i : Main.getInformationBean().findInformationEntities(false)) {
+                for (InformationTransfer i : Main.getInformationBean().findInformationEntities()) {
                     area1.append(i.getInfoText());
                     
-                    System.out.println("fuckerinos");
+                    System.out.println("fuckerinos");                    
                 }
             }
         });*/
-        
+        /*
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -111,7 +111,7 @@ public class TeacherMainView extends MainViewMaster {
                 
                 System.out.println("Info added");
             }
-        });
+        });*/
         
         
         // Liste ut alle brukere
@@ -121,7 +121,7 @@ public class TeacherMainView extends MainViewMaster {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 //System.out.println(Main.getUserBean().sfindAllUsers());
                 
-                for (UserTransfer u : Main.getUserBean().sfindAllUsers()) {
+                for (UserTransfer u : Main.getUserBean().findAllUsers()) {
                     area1.append(u.getFirstName()+"\n");
                 }
             }

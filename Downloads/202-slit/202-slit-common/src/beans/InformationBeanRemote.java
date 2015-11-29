@@ -18,5 +18,5 @@ public interface InformationBeanRemote {
     
     void addInfo(String InfoText, Integer UserID, Date InfoDate);
     
-    List<InformationTransfer> findInformationEntities(boolean all);
+    List<InformationTransfer> findInformationEntities();
 }

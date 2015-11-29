@@ -58,6 +58,7 @@ public abstract class ButtonMenu {
     protected JMenuItem saveFile = new JMenuItem("Lagre");
     protected JMenuItem saveAsFile = new JMenuItem("Lagre Som");
     protected JMenuItem exitApplication = new JMenuItem("Avslutt applikasjonen");
+    protected JMenuItem logOut = new JMenuItem("Logg ut");
     
     // Lager "Kontakt"-delen av menyen og alt som hÃƒÂ¸rer til
     protected JMenu contactMenu = new JMenu("Kontakt");
@@ -119,6 +120,7 @@ public abstract class ButtonMenu {
         openFile.add(fromCloud);
         fileMenu.add(saveFile);
         fileMenu.add(saveAsFile);
+        fileMenu.add(logOut);
         fileMenu.add(exitApplication);
         
         // Legger til kontakt-menyen i menylinja, og legger til elementer
@@ -143,6 +145,24 @@ public abstract class ButtonMenu {
                     if (reply == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "Application is kill RIP.");
                         System.exit(0);
+                    }
+            }
+        }); 
+        
+        logOut.addActionListener(new ActionListener() {
+            String message = "Vil du logge ut?";
+            String title = "Logg ut";
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Du har nå logget av systemet.");
+                        Main.setUserType(0);
+                        for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
+                            frame.dispose();
+                        }
+                        new guiLogInWindow();
+                        
                     }
             }
         }); 
@@ -184,7 +204,7 @@ public abstract class ButtonMenu {
             }
         });
         
-        /*
+        
         bookingBtn.addActionListener ((ActionEvent e) -> {
             for (java.awt.Window win : java.awt.Dialog.getWindows()) {
                 win.dispose();
@@ -194,11 +214,11 @@ public abstract class ButtonMenu {
             }
             
             if (Main.getUserType() == 1) {
-                Main.TimePlan();
+                Main.StudentBooking();
             } else {
-                Main.TimePlan();
+                Main.TeacherBooking();
             }
-        });*/
+        });
         
         mailBtn.addActionListener((ActionEvent e) -> {
             for (java.awt.Window win : java.awt.Dialog.getWindows()) {
