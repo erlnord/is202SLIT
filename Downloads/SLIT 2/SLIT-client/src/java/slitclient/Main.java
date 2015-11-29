@@ -70,8 +70,12 @@ public class Main {
         
     }
        
-    public static void TimePlan() {
-        TimePlan tp = new TimePlan();
+    public static void studentBooking() {
+        StudentBooking sb = new StudentBooking();
+    }
+    
+    public static void teacherBooking() {
+        TeacherBooking tb = new TeacherBooking();
     }
     
     public static void Mail() {
