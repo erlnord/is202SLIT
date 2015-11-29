@@ -5,12 +5,12 @@
  */
 package slitclient.mainview;
 
-import beans.InformationTransfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -79,14 +79,14 @@ public class TeacherMainView extends MainViewMaster {
         regPanel.add(area1, BorderLayout.CENTER);
         regPanel.setBorder(BorderFactory.createTitledBorder("Skriv her"));
         
-        
+        /*
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 System.out.println(Main.getModuleBean().findModule(1));
                 //System.out.println(Main.getUserBean().printUser(1));
             }
-        });
+        });*/
         
         /*
         submitBtn.addActionListener(new ActionListener() {
@@ -100,7 +100,7 @@ public class TeacherMainView extends MainViewMaster {
                 }
             }
         });*/
-        /*
+        
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -111,7 +111,7 @@ public class TeacherMainView extends MainViewMaster {
                 
                 System.out.println("Info added");
             }
-        });*/
+        });
         
         
         // Liste ut alle brukere
