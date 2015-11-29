@@ -168,7 +168,7 @@ public abstract class ButtonMenu {
             for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
                 frame.dispose();
             }
-            Main.TimePlan();
+            Main.teacherBooking();
         });
         
         mailBtn.addActionListener((ActionEvent e) -> {
