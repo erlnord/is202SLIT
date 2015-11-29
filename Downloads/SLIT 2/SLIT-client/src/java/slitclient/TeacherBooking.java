@@ -46,7 +46,7 @@ public class TeacherBooking extends ButtonMenu {
     // PANEL 1
     
     JPanel p1 = new JPanel();
-    p1.setLayout(new GridLayout(3,1));
+    p1.setLayout(new GridLayout(3,5));
     
     JPanel p1_1 = new JPanel();
     JPanel p1_2 = new JPanel();
@@ -94,16 +94,14 @@ public class TeacherBooking extends ButtonMenu {
     
     
     
-    p1.add(p1_1);
-    p1.add(p1_2);
-    p1.add(p1_3);
+   
       
-    frame.add(p1, BorderLayout.WEST);
+    frame.add(p1, BorderLayout.CENTER);
       
     // PANEL 2 .3 rader. Rad 1 "Tirsdag"
       
-    JPanel p2 = new JPanel();
-    p2.setLayout(new GridLayout(3,3));
+    
+    
       
    JPanel p2_1 = new JPanel();
    JPanel p2_2 = new JPanel();
@@ -230,28 +228,15 @@ public class TeacherBooking extends ButtonMenu {
     p4_2.add(scroll12);
     p4_3.add(scroll13);
     
-    
-    p2.add(p2_1);
-    p2.add(p3_1);
-    p2.add(p4_1);
-     
-    p2.add(p2_2);
-    p2.add(p3_2);
-    p2.add(p4_2);
-       
-        
-    p2.add(p2_3);
-    p2.add(p3_3);
-    p2.add(p4_3);
-       
+   
      
      
-    frame.add(p2, BorderLayout.CENTER);
+  
     
     // Panel 5  1 rad Fredag
     
-    JPanel p5 = new JPanel();
-    p5.setLayout(new GridLayout(3,1));
+    
+    
     
     JPanel p5_1 = new JPanel();
     JPanel p5_2 = new JPanel();
@@ -293,11 +278,32 @@ public class TeacherBooking extends ButtonMenu {
     p5_2.add(scroll15);
     p5_3.add(scroll16);
     
-    p5.add(p5_1);
-     p5.add(p5_2);
-      p5.add(p5_3);
+     p1.add(p1_1);
+     p1.add(p2_1);
+      p1.add(p3_1);
+     p1.add(p4_1);
+     p1.add(p5_1);
+     
+     p1.add(p1_2);
+     p1.add(p2_2);
+    p1.add(p3_2);
+     p1.add(p4_2);
+     p1.add(p5_2);
+     
+     
+    p1.add(p1_3);
+  
+    p1.add(p2_3);
+    p1.add(p3_3);
+    p1.add(p4_3);
+       
+    
+    
+    
+    
+      p1.add(p5_3);
       
-      frame.add(p5, BorderLayout.EAST);
+     
       
       // ButtomPanel
       
