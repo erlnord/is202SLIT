@@ -143,6 +143,8 @@ public class Main {
     
     public static void Mail() {
         new Mail();
+        System.setProperty("javax.net.ssl.trustStore","JAVA_HOME\\lib\\security\\cacerts");
+        System.setProperty("javax.net.ssl.trustStorePassword","changeit");
     }
     
     public static void SwingEmailSender() {

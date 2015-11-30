@@ -256,12 +256,39 @@ public class Mail extends ButtonMenu {
 
     //private void inbxBtnActionPerformed(java.awt.event.ActionEvent evt) throws NoSuchProviderException, MessagingException {
         inbxBtn.addActionListener((ActionEvent e) -> {
-        Properties props = new Properties(); 
-        props.setProperty("mail.imap.host", "imap.gmail.com");
-        props.setProperty("mail.imap.user", "sliterino@gmail.com");
-        props.setProperty("mail.imap.socketFactory", "995");
-        props.setProperty("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.setProperty("mail.imap.port", "995");
+        String protocol = "imap";
+        String host = "imap.gmail.com";
+        String port = "993";
+ 
+ 
+        String userName = "sliterino@gmail.com";
+        String password = "slitfuck";
+        
+       // System.setProperty("javax.net.ssl.trustStore","JAVA_HOME\\lib\\security\\cacerts");
+       // System.setProperty("javax.net.ssl.trustStorePassword","changeit");
+        
+        EmailReceiver receiver = new EmailReceiver();
+        receiver.downloadEmails(protocol, host, port, userName, password);
+        
+       /* Properties props = new Properties(); 
+        props.setProperty("mail.pop3.host", "pop.gmail.com");
+        props.setProperty("mail.pop3.user", "sliterino@gmail.com");
+       // props.setProperty("mail.imap.socketFactory", "995");
+       // props.setProperty("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.setProperty("mail.pop3.port", "995");
+        props.setProperty("mail.pop3.ssl.trust", "pop.gmail.com");
+        props.setProperty("mail.pop3.starttls.enable", "true");
+        // SSL setting
+        props.setProperty(
+                String.format("mail.%s.socketFactory.class", protocol),
+                "javax.net.ssl.SSLSocketFactory");
+        props.setProperty(
+                String.format("mail.%s.socketFactory.fallback", protocol),
+                "false");
+        props.setProperty(
+                String.format("mail.%s.socketFactory.port", protocol),
+                String.valueOf(port));
+ 
 
         
         Session session = Session.getDefaultInstance(props, new Authenticator() {
@@ -272,12 +299,12 @@ public class Mail extends ButtonMenu {
         });
         
         try {
-            Store store = session.getStore("imaps");
-            store.connect("imap.gmail.com", "sliterino@gmail.com", "slitfuck");
+            Store store = session.getStore("pop3s");
+            store.connect("pop.gmail.com", "sliterino@gmail.com", "slitfuck");
             Folder fldr = store.getFolder("INBOX");
             fldr.open(Folder.READ_ONLY);
             Message[] msg = fldr.getMessages();
-            Address[] address;
+            Address[] address; 
             
             final StringBuilder sb = new StringBuilder();
                 for (Message message : msg) {
@@ -305,12 +332,13 @@ public class Mail extends ButtonMenu {
                 Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
             }
         
-        });
+        });*/
     
-    }
+    });
        
         
       
+}
 }
 
     
