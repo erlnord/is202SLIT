@@ -17,6 +17,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import slit.user.UserTransfer;
 
 /**
  *
@@ -157,7 +158,7 @@ public abstract class ButtonMenu {
                     int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "Du har nå logget av systemet.");
-                        Main.setUserType(0);
+                        Main.setCurrentUserID(0);
                         for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
                             frame.dispose();
                         }
@@ -167,6 +168,8 @@ public abstract class ButtonMenu {
             }
         }); 
         
+        UserTransfer uff = Main.getUserBean().findUser(Main.getCurrentUserID());
+        
         changeUser.addActionListener(new ActionListener() {
             String message = "Vil du bytte brukertype?";
             String title = "Brukerbytte";
@@ -174,16 +177,17 @@ public abstract class ButtonMenu {
             public void actionPerformed(ActionEvent e) {
                     int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION) {
-                        if (Main.getUserType() == 1) {
-                            Main.setUserType(2);
+                        if (uff.getUserType() == 1) {
+                            Main.setCurrentUserID(4);
                             JOptionPane.showMessageDialog(null, "Brukertype er nå 'teacher'.");
                         } else {
-                            Main.setUserType(1);
+                            Main.setCurrentUserID(1);
                             JOptionPane.showMessageDialog(null, "Brukertype er nå 'student'.");
                         }
                     }
             }
         }); 
+        
         
         // ActionListeners for knappene.
         // Hver actionlistener har en for-løkke som lukker alle åpne frames
@@ -197,7 +201,8 @@ public abstract class ButtonMenu {
                 frame.dispose();
             }
             
-            if (Main.getUserType() == 1) {
+            
+            if (uff.getUserType() == 1) {
                 Main.studentMainView();
             } else {
                 Main.teacherMainView();
@@ -213,7 +218,7 @@ public abstract class ButtonMenu {
                 frame.dispose();
             }
             
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 Main.StudentBooking();
             } else {
                 Main.TeacherBooking();
@@ -228,7 +233,7 @@ public abstract class ButtonMenu {
                 frame.dispose();
             }
             
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 Main.Mail();
             } else {
                 Main.Mail();
@@ -243,7 +248,7 @@ public abstract class ButtonMenu {
                 frame.dispose();
             }
             
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 Main.SettingsWindow();
             } else {
                 Main.SettingsWindow();
@@ -258,7 +263,7 @@ public abstract class ButtonMenu {
                 frame.dispose();
             }
             
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 Main.ModuleWindow();
             } else {
                 Main.ModuleWindow();

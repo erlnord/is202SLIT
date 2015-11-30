@@ -13,8 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -43,11 +42,14 @@ public class InformationBean implements InformationBeanRemote {
     
     @Override
     public List<InformationTransfer> findInformationEntities() {
-        try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Information.class));
-            Query q = em.createQuery(cq);
+            //CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            //cq.select(cq.from(Information.class));
+            //TypedQuery<Users> q = em.createQuery("Select c from Users c", Users.class);
+            //TypedQuery<Information> q = 
+            //        em.createQuery("Select c from Information c", Information.class);
+                /**
                 q.setMaxResults(7);
+                System.out.println(q.getMaxResults());
                 
                 /*
                 TypedQuery<Information> query = 
@@ -59,20 +61,32 @@ public class InformationBean implements InformationBeanRemote {
                                 Information.class);
                         */
                 
-                int rowCnt = (Integer) em.createNativeQuery
-                    ("SELECT count(*) FROM Information").getSingleResult();  
-              
-                int count;
+                //TypedQuery<Information> qvery = em.createQuery("SELECT count(s) FROM Information s", Information.class);
+                /*
+                Query query = em.createNativeQuery("Select count(s) FROM Information s");
+                List<Number> counts = (List<Number>) query.getResultList();
+                long count = counts.get(0).intValue();
+                */
+                //Number fuck = (Number) qvery.getSingleResult();
+                // lol = fuck.intValue();
                 
-                if (rowCnt < 1)
-                    count = 1;
-                else
-                    count = rowCnt - 7;
-                    
-                q.setFirstResult(count);
+                /*
+                int rowCnt = (Integer) em.createNativeQuery
+                    ("SELECT count(*) FROM Information e").getSingleResult().intValue();  
+                */
+                //int count;
+                
+                //count = 1;
+                  /*  
+                q.setFirstResult(1);
+                System.out.println(q.getFirstResult());
+            */
             
-            
+            TypedQuery<Information> q = 
+                    em.createQuery("Select c from Information c", Information.class);
+                  
             List<Information> results = q.getResultList();
+            
             ArrayList<InformationTransfer> liste = new ArrayList();
             for (Information i : results) {
                 InformationTransfer it = new InformationTransfer(i.getId(),
@@ -80,11 +94,7 @@ public class InformationBean implements InformationBeanRemote {
                 
                 liste.add(it);
             }
-            
             return liste;
-        } finally {
-            em.close();
-        }
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package slitclient;
 
+import beans.DeliveryBeanRemote;
 import slitclient.mainview.TeacherMainView;
 import slitclient.mainview.StudentMainView;
 import slitclient.mail.Mail;
@@ -15,6 +16,7 @@ import beans.ModuleBeanRemote;
 import javax.ejb.EJB;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.jboss.weld.context.ejb.Ejb;
 import slit.user.UserBeanRemote;
 
 
@@ -33,8 +35,13 @@ public class Main {
     @EJB(name="InformationBean")
     private static InformationBeanRemote infoInstance;
     
-    private static int UserType;
+    @EJB(name="DeliveryBean")
+    private static DeliveryBeanRemote deliveryInstance;
+    
+    private static int CurrentUserID;
     private static int ModuleType;
+    private static int UserType;
+
     
     /**
      * @param args the command line arguments
@@ -52,6 +59,10 @@ public class Main {
     public static UserBeanRemote getUserBean() {
             return userInstance;
     }
+
+    public static DeliveryBeanRemote getDeliveryBean() {
+        return deliveryInstance;
+    }
     
     public static InformationBeanRemote getInformationBean() {
             return infoInstance;
@@ -67,6 +78,14 @@ public class Main {
 
     public static void setUserType(int UserType) {
         Main.UserType = UserType;
+    }
+    
+    public static int getCurrentUserID() {
+        return CurrentUserID;
+    }
+
+    public static void setCurrentUserID(int CurrentUserID) {
+        Main.CurrentUserID = CurrentUserID;
     }
     
     public static int getModuleType() {

@@ -15,16 +15,18 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
+import slit.user.UserTransfer;
 import slitclient.ButtonMenu;
 import slitclient.Main;
 
@@ -61,8 +63,12 @@ public class ModuleViewTeacher extends ButtonMenu {
     JPanel bottomRight = new JPanel (new FlowLayout(LEFT));
     JButton btnLagreLeft = new JButton("Lagre");     
     JButton btnLagreRight = new JButton("Lagre");
-    JCheckBox godkjent = new JCheckBox ("Godkjent");
-    JCheckBox ikkeGodkjent = new JCheckBox("Ikke godkjent");
+    JRadioButton godkjent = new JRadioButton("Godkjent");
+    JRadioButton ikkeGodkjent = new JRadioButton("Ikke godkjent");
+    
+    ButtonGroup bg = new ButtonGroup();
+    bg.add(godkjent);
+    bg.add(ikkeGodkjent);
     
     frame.add(bottomPanel, BorderLayout.SOUTH);
     bottomPanel.setBackground(Color.white);
@@ -141,60 +147,32 @@ public class ModuleViewTeacher extends ButtonMenu {
     
     JPanel upperPanel = new JPanel();
     JPanel lowerPanel = new JPanel();
-    ListModel model = new DefaultListModel();
-    JList navneListe = new JList(model);   
+    DefaultListModel model = new DefaultListModel();
+    JList navneListe = new JList(model);
+    
+    navneListe.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // kan bare velge en
     JScrollPane scrollPane = new JScrollPane(navneListe);
     
-    upperPanel.setLayout(new GridLayout(1, 1));
+    JButton download = new JButton("Last ned");
+    
+    for (UserTransfer u : Main.getUserBean().findAllUsers()) {
+        model.addElement(u.getFirstName() + " " + u.getLastName());
+    }
+    
+    upperPanel.setLayout(new BorderLayout());
     upperPanel.setBorder(BorderFactory.createTitledBorder("Studenter"));
-
-    String	listData[] =
-		{
-			"Admir Begovic",
-			"Tor Hakli",
-			"Erlend Nord",
-			"Lars Martin Risdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal",
-                        "Atilla Sjusdal"                      
-		};
-
-		
-//navneListe.setPreferredSize(new Dimension(frame.getWidth() - 40, frame.getHeight()- 40));		
-    navneListe = new JList( listData );
-		scrollPane.setVisible(true);
-                
-                upperPanel.add(new JScrollPane(navneListe));
+        
+    scrollPane.setVisible(true);
+    upperPanel.add(new JScrollPane(navneListe),BorderLayout.CENTER);
+    upperPanel.add(download, BorderLayout.SOUTH);
     
 
     lowerPanel.setLayout(new FlowLayout());
     lowerPanel.setBorder(BorderFactory.createTitledBorder("KOMMENTAR"));
 
     JTextArea kommentarTf = new JTextArea();
-    kommentarTf.setPreferredSize(new Dimension(frame.getWidth()/2 - 30, frame.getHeight() - 20));
+    kommentarTf.setPreferredSize(new Dimension
+        (frame.getWidth()/2 - 30, frame.getHeight() - 20));
     lowerPanel.add(kommentarTf); //legger til kommentarfeltet i lowerpanel
     
     

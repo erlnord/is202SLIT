@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import slit.user.UserTransfer;
 import slitclient.ButtonMenu;
 import slitclient.Main;
 
@@ -62,11 +63,13 @@ public class ModuleWindow extends ButtonMenu {
         panel.add(button12);
         frame.add(panel);
         
+        UserTransfer uff = Main.getUserBean().findUser(Main.getCurrentUserID());
+        
         button1.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(1);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -76,7 +79,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(2);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -86,7 +89,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(3);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -96,7 +99,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(4);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -106,7 +109,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(5);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -116,7 +119,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(6);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -126,7 +129,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(7);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -136,7 +139,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(8);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -146,7 +149,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(9);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -156,7 +159,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(10);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -166,7 +169,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(11);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();
@@ -176,7 +179,7 @@ public class ModuleWindow extends ButtonMenu {
             frame.dispose();
             Main.setModuleType(12);
             System.out.println("Modul "+Main.getModuleType());
-            if (Main.getUserType() == 1) {
+            if (uff.getUserType() == 1) {
                 new ModuleViewStudent();
             } else {
                 new ModuleViewTeacher();

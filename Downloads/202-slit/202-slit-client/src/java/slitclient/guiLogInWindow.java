@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import slit.user.UserTransfer;
 
 
 
@@ -99,19 +100,47 @@ public class guiLogInWindow extends JFrame {
             // lukker vi denne klassen og kaller metoden fra main
             // som bygger studentMainView-klassen
             
+            /*
+            // Looper gjennom alle brukere og leter etter brukernavn
+            for (UserTransfer u : Main.getUserBean().findAllUsers()) {
+                // Sjekker etter brukernavn som er oppgitt
+                if (userTxt.getText().equals(u.getUserName())) {
+                    // Henter ut passord fra passwordfield
+                    String password = new String(passwordField.getPassword());
+                    // Sjekker at passordet stemmer med brukernavn
+                    if (password.equals(u.getPassPhrase())) {
+                        System.out.println("Found user: " + u.getFirstName());
+                        // Lagrer UserID til en lokal variabel
+                        Main.setCurrentUserID(u.getUserID());
+                        // Lagrer en variabel for å hente ut brukertypen
+                        UserTransfer uff = Main.getUserBean().findUser(u.getUserID());
+                        // sjekker om bruker er student eller foreleser
+                        if (uff.getUserType() == 1) {
+                            Main.studentMainView();
+                        } else {
+                            Main.teacherMainView();
+                        }
+                    } else {
+                        // Feilmelding ved feil brukernavn
+                        JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig");
+                    }
+                }
+            }
+        });*/
+            
             if(userTxt.getText().equalsIgnoreCase("student")){
                 super.setVisible(false); // Cant see me
                 super.dispose(); //Destroy the JFrame object
                 logInCondition = "student";
                 // Kaller metoden som bygger neste objekt
-                Main.setUserType(1);
+                Main.setCurrentUserID(1);
                 Main.studentMainView();
             } else if(userTxt.getText().equalsIgnoreCase("teacher")) {
                 super.setVisible(false); // Ser ikkje meg lenger
                 super.dispose(); // Begone, heathen
                 logInCondition = "teacher";
                 // Kaller metoden som bygger lærer
-                Main.setUserType(2);
+                Main.setCurrentUserID(4);
                 Main.teacherMainView();
             } else {
                 // Bruker har skrevet feil passord, eller finnes ikke i databasen

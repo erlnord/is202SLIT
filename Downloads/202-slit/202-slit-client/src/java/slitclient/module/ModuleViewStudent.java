@@ -11,15 +11,21 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import slitclient.ButtonMenu;
 import slitclient.Main;
 
 /**
@@ -27,7 +33,11 @@ import slitclient.Main;
  * @author Atilla
  */
 public class ModuleViewStudent extends slitclient.ButtonMenu {
- 
+    
+    JLabel path = new JLabel("Valgt Path:");
+    JLabel pathField = new JLabel();
+    JFileChooser fileChooser = new JFileChooser();
+    
     public ModuleViewStudent () {
     //legger til hovedframen
     JFrame frame = new JFrame("Module 1");
@@ -38,6 +48,7 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(1024, 768);
+    frame.setLocationRelativeTo(null);
   
    
     // Panel 1
@@ -140,12 +151,32 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
     blaGjennom.setText("Bla gjennom");
     lastOpp.setText("Last opp!");
     
+    blaGjennom.addActionListener ((ActionEvent e) -> {
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            pathField.setText(selectedFile.getAbsolutePath());
+            System.out.println(selectedFile.getName());
+        }
+    });
+    
+    lastOpp.addActionListener ((ActionEvent e) -> {
+        File selectedFile = fileChooser.getSelectedFile();
+        try {
+                uploadFile(selectedFile);
+            }
+            catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,
+                                                  ex.getLocalizedMessage(),
+                                                  "Problem uploading file:",
+                                                  JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+            }
+    });
     
     upperPanel.add(blaGjennom); //legger til knappen i upperpanel
-    JLabel path = new JLabel("Valgt Path:");
     upperPanel.add(path);
     
-    JTextField pathField = new JTextField(200);
     upperPanel.add(pathField);//legger til tekstfeltet i upperpanel
     upperPanel.add(lastOpp); //legger til last opp knappen i upperpanel
     
@@ -159,15 +190,42 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
     
     frame.add(container, BorderLayout.CENTER);
     
-    // Legg til paneler i hovedframen
-    //frame.add(panel1, BorderLayout.WEST);  
-    //frame.add(panel2, BorderLayout.EAST);
-    
-    frame.setLocationRelativeTo(null);
-   // frame.pack(); 
-    
     }
     
+    private void uploadFile(File file) throws IOException {
+        String filename = file.getName();
+        System.out.println("");
+        System.out.println("Uploading file" + filename);
+        byte[] content = readFile(file);
+        System.out.println("Create file transfer object");
+        Main.getDeliveryBean().addDelivery(1, "", content, 
+                Main.getUserBean().findUser(Main.getCurrentUserID()).getUserID()
+                , Main.getModuleType());
+    }
+    
+    private byte[] readFile(File file) throws IOException {
+        long longSize = (int) file.length();
+        if (longSize > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("File is too large to upload");
+        }
+        int size = (int) longSize;
+        byte[] content = new byte[size];
+        InputStream in = new FileInputStream(file);
 
+        int bytesRead = 0;
+        while (bytesRead < size) {
+            int n = in.read(content, bytesRead, size - bytesRead);
+            System.out.format("Read %d (total %d) bytes of %d\n",
+                              n, n + bytesRead, size);
+            if (n == -1) {
+                System.out.println("EOF");
+                break;
+            }
+            bytesRead += n;
+        }
+        in.close();
+        return content;
     }
+    
+}
     
