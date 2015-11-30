@@ -52,7 +52,7 @@ public class guiLogInWindow extends JFrame {
     JButton cancelBtn = new JButton("Avbryt");
     JButton regUserBtn = new JButton("Registrer");
     
-    String logInCondition = "";
+    int logInType; 
     
    
     public guiLogInWindow() {
@@ -100,7 +100,7 @@ public class guiLogInWindow extends JFrame {
             // lukker vi denne klassen og kaller metoden fra main
             // som bygger studentMainView-klassen
             
-            /*
+            
             // Looper gjennom alle brukere og leter etter brukernavn
             for (UserTransfer u : Main.getUserBean().findAllUsers()) {
                 // Sjekker etter brukernavn som er oppgitt
@@ -116,9 +116,13 @@ public class guiLogInWindow extends JFrame {
                         UserTransfer uff = Main.getUserBean().findUser(u.getUserID());
                         // sjekker om bruker er student eller foreleser
                         if (uff.getUserType() == 1) {
+                            super.dispose();
                             Main.studentMainView();
+                            logInType = 1;
                         } else {
+                            super.dispose();
                             Main.teacherMainView();
+                            logInType = 2;
                         }
                     } else {
                         // Feilmelding ved feil brukernavn
@@ -126,19 +130,20 @@ public class guiLogInWindow extends JFrame {
                     }
                 }
             }
-        });*/
+        });
             
-            if(userTxt.getText().equalsIgnoreCase("student")){
+        // Dette er den gamle metoden for å logge inn. Erstattet med en  mer sofistikert.
+            /*if(userTxt.getText().equalsIgnoreCase("student")){
                 super.setVisible(false); // Cant see me
                 super.dispose(); //Destroy the JFrame object
-                logInCondition = "student";
+                //logInCondition = "student";
                 // Kaller metoden som bygger neste objekt
                 Main.setCurrentUserID(1);
                 Main.studentMainView();
             } else if(userTxt.getText().equalsIgnoreCase("teacher")) {
                 super.setVisible(false); // Ser ikkje meg lenger
                 super.dispose(); // Begone, heathen
-                logInCondition = "teacher";
+
                 // Kaller metoden som bygger lærer
                 Main.setCurrentUserID(4);
                 Main.teacherMainView();
@@ -148,7 +153,7 @@ public class guiLogInWindow extends JFrame {
             JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig"
             + " Vennligst prøv igjen");
             }
-        });
+        }); */
         
         /**
          * Legger til en MouseListener som klarerer tekstfeltet
@@ -247,8 +252,8 @@ public class guiLogInWindow extends JFrame {
         
     }
     
-    public String getLogInCondition() {
-        return logInCondition;
+    public int getLogInType() {
+        return logInType;
     }
 
 }
