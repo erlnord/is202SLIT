@@ -16,6 +16,9 @@ import javax.mail.Store;
  *
  * @author www.codejava.net
  *
+ * 
+ * En klasse hentet fra codejava.net for å motta e-post. Dessverre fungerer den ikke, 
+ * siden jeg mangler SSL-certificate og ikke aner hvordan jeg skal fikse dette.
  */
 public class EmailReceiver {
  

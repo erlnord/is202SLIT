@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package slitclient.mail;
 
 import beans.NotificationTransfer;
@@ -10,6 +5,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import static java.awt.font.TextAttribute.FONT;
 import java.util.Date;
 import javax.swing.BorderFactory;
@@ -25,6 +22,10 @@ import slitclient.Main;
 /**
  *
  * @author Erlend
+ * 
+ * Denne klassen lager notifikasjonsvinduet. Notifikasjonsvinduet lar deg 
+ * sende notifikasjoner til alle andre brukere av systemet. Notifikasjonene
+ * du sender blir lagret i databasen.
  */
 public class NotificationWindow extends JFrame {
     JPanel container = new JPanel();
@@ -55,9 +56,10 @@ public class NotificationWindow extends JFrame {
         viewNotification.setWrapStyleWord(true);
         viewNotification.setLineWrap(true);
         viewNotification.setFont(new Font("Verdana", Font.ITALIC, 14));
+        viewNotification.setEditable(false);
         sendNotification.setColumns (160);
         sendNotification.setLineWrap (true);
-        sendNotification.setWrapStyleWord (false);
+        sendNotification.setWrapStyleWord (true);
         sendNotification.setFont(new Font("Verdana", Font.ITALIC, 14));
         
         // Initialiserings av innholdspanelene
@@ -101,6 +103,16 @@ public class NotificationWindow extends JFrame {
             System.out.println("Notifikasjon sendt." + "\n" + "Melding: " + sendNotification.getText());
                     }
         });
+        
+        // En mouselistener som tar vekk teksten i tekstfeltet dersom default-teksten er der.
+        sendNotification.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent me){
+                if(sendNotification.getText().equals("Skriv inn din notifikasjon her")) {
+                sendNotification.setText("");
+                }
+            }
+        }); 
     }
 }
 

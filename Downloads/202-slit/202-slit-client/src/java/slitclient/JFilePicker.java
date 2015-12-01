@@ -11,6 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * 
+ * @author www.codejava.net
+ * Hentet fra http://www.codejava.net/java-se/swing/file-picker-component-in-swing
+ * 
+ * En klasse som bygger videre på JFileChooser. Denne klassen gir oss en gui for å
+ * bla gjennom filer vi ønsker å laste opp i eposten. 
+ */
 public class JFilePicker extends JPanel {
 	private String textFieldLabel;
 	private String buttonLabel;

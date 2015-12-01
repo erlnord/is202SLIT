@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package slitclient.mail;
 
 import java.awt.BorderLayout;
@@ -37,6 +32,14 @@ import slitclient.Main;
 /**
  *
  * @author Erlend
+ * 
+ * En klasse som fungerer som GUI for mail-delen av klienten. 
+ * Notifikasjon og send mail-delene fungerer som de skal, men innboks-delen
+ * fungerer dessverre ikke. Dette fordi jeg mangler SSL-certificate.
+ * 
+ * panel1 til venstre simulerer hvordan vi så for oss at en innboks skulle
+ * fungere. panel2 til høyre inneholder knapper som tar deg videre til innboks-tjenesten
+ * (som ikke virker), send e-post tjenesten og notifikasjonstjenesten. 
  */
 public class Mail extends ButtonMenu {
    JFrame mailFrame = new JFrame();
@@ -186,13 +189,7 @@ public class Mail extends ButtonMenu {
         topicLbl8.addMouseListener(ml);
         p1.add(fromLbl8);
         p1.add(topicLbl8);
-        
-        // ActionListeners til topics
-        
-            
-        
-        
-        
+           
         // Ting til panel2
         displayMsgLbl.setFont(new Font("Verdana", Font.CENTER_BASELINE, 16));
         //p2.add(displayMsgLbl);
@@ -200,9 +197,9 @@ public class Mail extends ButtonMenu {
         p2.add(newMessageBtn, BorderLayout.NORTH);
         displayMessage.setEditable(false);
         displayMessage.setFont(new Font("Verdana", Font.ITALIC, 14));
-        p2.add(displayMessage, BorderLayout.CENTER);
+        //p2.add(displayMessage, BorderLayout.CENTER);
         p2.add(inbxBtn, BorderLayout.SOUTH);
-        p2.add(notificationBtn, BorderLayout.WEST);
+        p2.add(notificationBtn, BorderLayout.CENTER);
        
         
         // Legger til panel 1 og 2 i container
@@ -250,18 +247,21 @@ public class Mail extends ButtonMenu {
             }
         };
         
+        // Oppretter e-postvinduet over mail-vinduet
         newMessageBtn.addActionListener((ActionEvent e) -> {
             //mailFrame.dispose();
             Main.SwingEmailSender();
         });
         
+        // Oppretter notifikasjonsvinduet over mail-vinduet
         notificationBtn.addActionListener((ActionEvent e) -> {
             //mailFrame.dispose();
             Main.NotificationWindow();
         });
 
 
-    //private void inbxBtnActionPerformed(java.awt.event.ActionEvent evt) throws NoSuchProviderException, MessagingException {
+        // ActionListener til inox-knappen. Denne delen av koden fungere dessverre ikke, 
+        // da jeg mangler SSL-certificate.
         inbxBtn.addActionListener((ActionEvent e) -> {
         String protocol = "imap";
         String host = "imap.gmail.com";
@@ -277,69 +277,6 @@ public class Mail extends ButtonMenu {
         EmailReceiver receiver = new EmailReceiver();
         receiver.downloadEmails(protocol, host, port, userName, password);
         
-       /* Properties props = new Properties(); 
-        props.setProperty("mail.pop3.host", "pop.gmail.com");
-        props.setProperty("mail.pop3.user", "sliterino@gmail.com");
-       // props.setProperty("mail.imap.socketFactory", "995");
-       // props.setProperty("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.setProperty("mail.pop3.port", "995");
-        props.setProperty("mail.pop3.ssl.trust", "pop.gmail.com");
-        props.setProperty("mail.pop3.starttls.enable", "true");
-        // SSL setting
-        props.setProperty(
-                String.format("mail.%s.socketFactory.class", protocol),
-                "javax.net.ssl.SSLSocketFactory");
-        props.setProperty(
-                String.format("mail.%s.socketFactory.fallback", protocol),
-                "false");
-        props.setProperty(
-                String.format("mail.%s.socketFactory.port", protocol),
-                String.valueOf(port));
- 
-
-        
-        Session session = Session.getDefaultInstance(props, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("sliterino@gmail.com", "slitfuck");
-            }
-        });
-        
-        try {
-            Store store = session.getStore("pop3s");
-            store.connect("pop.gmail.com", "sliterino@gmail.com", "slitfuck");
-            Folder fldr = store.getFolder("INBOX");
-            fldr.open(Folder.READ_ONLY);
-            Message[] msg = fldr.getMessages();
-            Address[] address; 
-            
-            final StringBuilder sb = new StringBuilder();
-                for (Message message : msg) {
-
-                     sb.append("SentDate : ").
-                     append(message.getSentDate()).
-                     append("\n").
-                     append("From : ").
-                    append(message.getFrom()[0]).
-                    append("\n").append("Subject : ").
-                    append(message.getSubject()).
-                    append("\n").
-                    append("Message : ").
-                    append("\n").
-                    append(message.getContent().toString());
-
-                }
-                displayMessage.setText(sb.toString());
-       // } catch(Exception e) {
-         //   System.out.println(e);
-            
-        }   catch (MessagingException ex) {
-                Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-        });*/
     
     });
        

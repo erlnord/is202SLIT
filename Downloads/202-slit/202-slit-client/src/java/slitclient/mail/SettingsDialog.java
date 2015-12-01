@@ -26,6 +26,10 @@ import javax.swing.JTextField;
  * Displays a setting form that allows configuring SMTP settings.
  * Takk til http://www.codejava.net/coding/swing-application-for-sending-e-mail-with-attachments
  *
+ * Klassen er hentet i sin helhet fra linken ovenfor, bare lett modifisert av meg
+ * for å fungere med prosjektet vårt. 
+ * 
+ * Klassen lager en dialogboks som lar oss forandre på e-postinnstillingene i klienten.
  */
 public class SettingsDialog extends JDialog {
  

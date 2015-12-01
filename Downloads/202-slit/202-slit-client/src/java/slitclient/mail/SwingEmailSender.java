@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package slitclient.mail;
 
 import java.awt.Font;
@@ -33,6 +28,10 @@ import slitclient.JFilePicker;
 /**
  * A Swing application that allows sending e-mail messages from a SMTP server.
  * Takk til www.codejava.net/coding/swing-application-for-sending-e-mail-with-attachments
+ * 
+ * Koden er hentet i sin helhet fra linken ovenfor, bare lett modifisert av meg for å
+ * få den til å fungere i programmet vårt. Klassen er en GUI, som jobber sammen med de
+ * andre klassene i slitclient.mail for å sende epost fra klienten. 
  *
  */
 public class SwingEmailSender extends JFrame {

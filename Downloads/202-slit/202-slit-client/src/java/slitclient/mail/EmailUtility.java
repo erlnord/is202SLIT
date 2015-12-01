@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package slitclient.mail;
 
  
@@ -27,6 +22,8 @@ import javax.mail.internet.MimeMultipart;
 /**
  * Takk til www.codejava.net/coding/swing-application-for-sending-e-mail-with-attachments
  *
+ * En klasse som sender e-post. Hentet i sin helhet fra linken ovenfor, bare lett modifisert
+ * av meg for å få den til å fungere med programmet vårt. 
  */
 public class EmailUtility {
     public static void sendEmail(Properties smtpProperties, String toAddress,

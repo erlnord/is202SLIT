@@ -2,7 +2,12 @@ package slitclient.mail;
 
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
-
+/**
+ * Hentet fra http://www.codejava.net/java-se/swing/file-picker-component-in-swing
+ * @author www.codejava.net
+ * 
+ * Et filetypefilter som brukes av JFileChooser for å laste opp filer.
+ */
 public class FileTypeFilter extends FileFilter {
 
 	private String extension;
