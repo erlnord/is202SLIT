@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/Erlend/NetBeansProjects/is202SLIT/Downloads/202-slit/202-slit-common/src/beans/NotificationTransfer.java</file>
-            <file>file:/Users/Erlend/NetBeansProjects/is202SLIT/Downloads/202-slit/202-slit-common/src/beans/NotificationBeanRemote.java</file>
-            <file>file:/Users/Erlend/NetBeansProjects/is202SLIT/Downloads/202-slit/202-slit-common/src/beans/DeliveryTransfer.java</file>
+            <file>file:/C:/Users/lmgr/NetBeansProjects/is202SLIT/Downloads/202-slit/202-slit-common/src/beans/InformationTransfer.java</file>
+            <file>file:/C:/Users/lmgr/NetBeansProjects/is202SLIT/Downloads/202-slit/202-slit-common/src/beans/NotificationBeanRemote.java</file>
+            <file>file:/C:/Users/lmgr/NetBeansProjects/is202SLIT/Downloads/202-slit/202-slit-common/src/beans/DeliveryBeanRemote.java</file>
+            <file>file:/C:/Users/lmgr/NetBeansProjects/is202SLIT/Downloads/202-slit/202-slit-common/src/beans/NotificationTransfer.java</file>
         </group>
     </open-files>
 </project-private>

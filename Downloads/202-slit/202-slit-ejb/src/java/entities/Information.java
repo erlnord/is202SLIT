@@ -8,6 +8,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,7 @@ public class Information implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="InfoID")
     private int id;
     
     private String InfoText;

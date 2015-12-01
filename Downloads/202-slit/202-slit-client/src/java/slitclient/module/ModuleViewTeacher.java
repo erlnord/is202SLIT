@@ -5,6 +5,7 @@
  */
 package slitclient.module;
 
+import beans.DeliveryTransfer;
 import beans.ModuleTransfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,6 +15,7 @@ import static java.awt.FlowLayout.LEFT;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
@@ -26,6 +28,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import slit.user.UserTransfer;
 import slitclient.ButtonMenu;
 import slitclient.Main;
@@ -46,6 +50,7 @@ public class ModuleViewTeacher extends ButtonMenu {
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(1024, 768);
+    frame.setLocationRelativeTo(null);
   
    
     // Panel 1
@@ -154,10 +159,21 @@ public class ModuleViewTeacher extends ButtonMenu {
     JScrollPane scrollPane = new JScrollPane(navneListe);
     
     JButton download = new JButton("Last ned");
-    
+        
+    // Looper gjennom alle brukere for å legge til studenter i listen
     for (UserTransfer u : Main.getUserBean().findAllUsers()) {
-        model.addElement(u.getFirstName() + " " + u.getLastName());
+        
+        // Hvis bruker har brukertype = student så legges dem til i listen
+        if (u.getUserType() == 1)
+            model.addElement(u);
     }
+    
+    navneListe.addListSelectionListener(new ListSelectionListener() {
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            System.out.println(navneListe.getSelectedValue());
+        }
+    });
     
     upperPanel.setLayout(new BorderLayout());
     upperPanel.setBorder(BorderFactory.createTitledBorder("Studenter"));
@@ -165,7 +181,6 @@ public class ModuleViewTeacher extends ButtonMenu {
     scrollPane.setVisible(true);
     upperPanel.add(new JScrollPane(navneListe),BorderLayout.CENTER);
     upperPanel.add(download, BorderLayout.SOUTH);
-    
 
     lowerPanel.setLayout(new FlowLayout());
     lowerPanel.setBorder(BorderFactory.createTitledBorder("KOMMENTAR"));
@@ -175,22 +190,19 @@ public class ModuleViewTeacher extends ButtonMenu {
         (frame.getWidth()/2 - 30, frame.getHeight() - 20));
     lowerPanel.add(kommentarTf); //legger til kommentarfeltet i lowerpanel
     
-    
     kommentarTf.setLineWrap(true);
     kommentarTf.setWrapStyleWord(true);
     kommentarTf.setEditable(true);
-    
 
     panel2.add(upperPanel); //legger til upperpanel i panel2
     panel2.add(lowerPanel); //legger til lowerpanel i panel2
     
-    // Legg til paneler i hovedframen
-    frame.add(panel1, BorderLayout.WEST);  
-    frame.add(panel2, BorderLayout.EAST);
+    JPanel container = new JPanel();
+    container.setLayout(new GridLayout(1,2));
+    container.add(panel1);
+    container.add(panel2);
     
-    frame.setLocationRelativeTo(null);
-   // frame.pack(); 
-    
+    frame.add(container, BorderLayout.CENTER);
     }
 }
     

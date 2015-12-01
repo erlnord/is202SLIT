@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,14 +12,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import slitclient.ButtonMenu;
-
-
+import slitclient.Main;
 
 /**
  *
@@ -35,21 +38,27 @@ public abstract class MainViewMaster extends ButtonMenu {
     JPanel rightPanel = new JPanel();
     JPanel container = new JPanel();
     
-    JTextPane leftPane1 = new JTextPane();
-    JTextPane leftPane2 = new JTextPane();
-    JTextPane leftPane3 = new JTextPane();
-    JTextPane leftPane4 = new JTextPane();
-    JTextPane leftPane5 = new JTextPane();
-    JTextPane leftPane6 = new JTextPane();
-    JTextPane leftPane7 = new JTextPane();
+    JTextArea leftPane1 = new JTextArea();
+    //JTextPane leftPane2 = new JTextPane();
+    //JTextPane leftPane3 = new JTextPane();
+    //JTextPane leftPane4 = new JTextPane();
+    //JTextPane leftPane5 = new JTextPane();
+    //JTextPane leftPane6 = new JTextPane();
+    //JTextPane leftPane7 = new JTextPane();
+    
+    JScrollPane scroll1 = new JScrollPane(leftPane1);
+    //JScrollPane scroll2 = new JScrollPane(leftPane2);
+    //JScrollPane scroll3 = new JScrollPane(leftPane3);
+    //JScrollPane scroll4 = new JScrollPane(leftPane4);
+    //JScrollPane scroll5 = new JScrollPane(leftPane5);
+    //JScrollPane scroll6 = new JScrollPane(leftPane6);
+    //ScrollPane scroll7 = new JScrollPane(leftPane7);
     
     JTextArea area1 = new JTextArea();
     
     // Lager tekstfeltet der lÃ¦rerene kan legge ut nyheter
     //JTextArea infoTxt = new JTextArea();
     //JScrollPane infoScroll = new JScrollPane(infoTxt);
- 
-
     
     /**
      * Konstruktor for klassen MainViewMaster
@@ -70,7 +79,7 @@ public abstract class MainViewMaster extends ButtonMenu {
         frame.add(rightPanel, BorderLayout.EAST);
         
         // Initialiserer left JPanel
-        leftPanel.setLayout(new GridLayout(7,1));
+        leftPanel.setLayout(new GridLayout(1,1));
         //lager border rundt hele leftpanel med overskrif
         leftPanel.setBorder(BorderFactory.createTitledBorder("Informasjon"));
         
@@ -78,60 +87,49 @@ public abstract class MainViewMaster extends ButtonMenu {
         //rightPanel.setPreferredSize(d1);
         rightPanel.setMinimumSize(d1);
         
-        leftPane1.setBackground(Color.decode("#f0f0f0"));
-        leftPane2.setBackground(Color.white);
-        leftPane3.setBackground(Color.decode("#f0f0f0"));
-        leftPane4.setBackground(Color.white);
-        leftPane5.setBackground(Color.decode("#f0f0f0"));
-        leftPane6.setBackground(Color.white);
-        leftPane7.setBackground(Color.decode("#f0f0f0"));
+        //leftPane1.setBackground(Color.decode("#f0f0f0"));
+        //leftPane2.setBackground(Color.white);
+        //leftPane3.setBackground(Color.decode("#f0f0f0"));
+        //leftPane4.setBackground(Color.white);
+        //leftPane5.setBackground(Color.decode("#f0f0f0"));
+        //leftPane6.setBackground(Color.white);
+        //leftPane7.setBackground(Color.decode("#f0f0f0"));
         
-        leftPanel.add(leftPane1);
-        leftPanel.add(leftPane2);
-        leftPanel.add(leftPane3);
-        leftPanel.add(leftPane4);
-        leftPanel.add(leftPane5);
-        leftPanel.add(leftPane6);
-        leftPanel.add(leftPane7);
+        leftPanel.add(scroll1);
+        //leftPanel.add(scroll2);
+        //leftPanel.add(scroll3);
+        //leftPanel.add(scroll4);
+        //leftPanel.add(scroll5);
+        //leftPanel.add(scroll6);
+        //leftPanel.add(scroll7);
         
         leftPane1.setMargin( new Insets(2,7,2,2));
-        leftPane2.setMargin( new Insets(2,7,2,2));
-        leftPane3.setMargin( new Insets(2,7,2,2));
-        leftPane4.setMargin( new Insets(2,7,2,2));
-        leftPane5.setMargin( new Insets(2,7,2,2));
-        leftPane6.setMargin( new Insets(2,7,2,2));
-        leftPane7.setMargin( new Insets(2,7,2,2));
+        //leftPane2.setMargin( new Insets(2,7,2,2));
+        //leftPane3.setMargin( new Insets(2,7,2,2));
+        //leftPane4.setMargin( new Insets(2,7,2,2));
+        //leftPane5.setMargin( new Insets(2,7,2,2));
+        //leftPane6.setMargin( new Insets(2,7,2,2));
+        //leftPane7.setMargin( new Insets(2,7,2,2));
         
-        /*
-        leftPane1.setText("PS: Dropin for godkjenning av modul torsdag den 13."
-                + "11 er flyttet til fredag den 15 november."+ "\n\nHallgeir "
-                + "Nilsen,  2014-11-18");
-        leftPane2.setText("Jeg kommer på laben ca kl 11, ellers er jeg på "
-                + "kontoret fra kl 10, og ut dagen (unntatt når jeg er på "
-                + "lab...)"+ "\n\nHallgeir Nilsen,  2014-11-15");
-        leftPane3.setText("Hei,  bra oppmøte på labben idag. Jeg har bestemt "
-                + "meg for å være tilgjengelig noen dager." +"\n\nEven Åby "
-                + "Larsen,  2014-10-09");
-        leftPane4.setText("Siste forelesning): Følgende tema er ønsket: " 
-                +"\n\nEven Åby Larsen,  2014-11-02");
-        leftPane5.setText("Til neste forelesning: Om å kjøre utenom BlueJ; "
-                + "Casting, ny ver av dagens eksempel. ++" +"\n\nHallgeir "
-                + "Nilsen,  2014-10-29");
-        leftPane6.setText("Hei alle, og velkommen tebage etter påskeferie.  "
-                + "Se i Fronter, IS-110, Fagstoff; Forelesninger." +"\n\nEven "
-                + "Åby Larsen,  2014-10-21");
-        leftPane7.setText("Jeg har lagt ut eksemplene fra siste forelesning. "
-                + "Jeg har rettet alle kompileringsfeil." +"\n\nHallgeir "
-                + "Nilsen,  2014-10-15");*/
+        leftPane1.setBackground(Color.white);
+        
+        leftPane1.setLineWrap(true);
+        leftPane1.setWrapStyleWord(true);
+        leftPane1.setCaretPosition(0);
+        
+        for (InformationTransfer u : Main.getInformationBean().findAllInformation()) {
+            //leftPane1.append(u.getInfoText()+ "\n" + u.getInfoDate() + "\n"+"\n");
+            leftPane1.setText(u.getInfoText() + "\n" + u.getInfoDate() + "\n\n" + leftPane1.getText());
+        }
         
         
         leftPane1.setEditable(false);
-        leftPane2.setEditable(false);
-        leftPane3.setEditable(false);
-        leftPane4.setEditable(false);
-        leftPane5.setEditable(false);
-        leftPane6.setEditable(false);
-        leftPane7.setEditable(false);
+        //leftPane2.setEditable(false);
+        //leftPane3.setEditable(false);
+        //leftPane4.setEditable(false);
+        //leftPane5.setEditable(false);
+        //leftPane6.setEditable(false);
+        //leftPane7.setEditable(false);
         
         //lager border rundt hele rightpanel med overskrift
         Dimension d2 = new Dimension(350,frame.getHeight());
@@ -149,12 +147,7 @@ public abstract class MainViewMaster extends ButtonMenu {
                 + "13:15" + "\n\n\nIS-109 - Onsdag 1. Desember - Kl: 10:15");
         
         frame.pack();
+        
+        
     }
 }
-
-    
-    
-
-    
-    
-

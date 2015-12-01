@@ -62,26 +62,6 @@ public class UserBean implements UserBeanRemote {
         return list;
     }
     
-
-    @Override
-    public List<UserTransfer> sfindAllUsers() {
-        
-        TypedQuery<Users> query2 =
-            em.createQuery("SELECT e FROM Users e", Users.class);
-        
-        List<Users> results = query2.getResultList();
-        
-        ArrayList<UserTransfer> liste = new ArrayList();
-        for (Users u : results) {
-            UserTransfer ut = new UserTransfer(u.getUserID(), u.getUserType(), 
-            u.getFirstName(),u.getLastName(), u.getUserName(),
-            u.getPassPhrase(),u.getEmail());
-            
-            liste.add(ut);
-        }
-        return liste;
-    }
-    
     @Override
     public UserTransfer findUser(int id) {
         Users user = em.find(Users.class,id);        

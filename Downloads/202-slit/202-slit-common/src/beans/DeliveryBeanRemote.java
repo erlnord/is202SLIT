@@ -5,6 +5,7 @@
  */
 package beans;
 
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -17,4 +18,6 @@ public interface DeliveryBeanRemote {
             int UserID, int ModuleID);
     
     DeliveryTransfer findDelivery(int id);
+    
+    List<DeliveryTransfer> findAllDeliveries();
 }

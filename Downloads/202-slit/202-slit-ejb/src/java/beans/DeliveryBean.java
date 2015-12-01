@@ -6,9 +6,12 @@
 package beans;
 
 import entities.Delivery;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -30,6 +33,24 @@ public class DeliveryBean implements DeliveryBeanRemote {
         deliver.setUserID(UserID);
         deliver.setModuleID(ModuleID);
         em.persist(deliver);
+    }
+    
+    @Override
+    public List<DeliveryTransfer> findAllDeliveries() {
+        TypedQuery<Delivery> q = em.createQuery("Select c from Delivery c", 
+                Delivery.class);
+        
+        List<Delivery> result = q.getResultList();
+        
+        ArrayList<DeliveryTransfer> list = new ArrayList();
+        for (Delivery u : result) {
+            DeliveryTransfer ut = new DeliveryTransfer(u.getDeliveryID(), 
+                    u.getDeliveryStatus(), u.getFeedback(), u.getDeliveryFile(), 
+                    u.getUserID(), u.getModuleID());
+            
+            list.add(ut);
+        }
+        return list;
     }
     
     @Override

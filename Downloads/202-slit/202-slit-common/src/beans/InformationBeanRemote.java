@@ -17,6 +17,6 @@ import javax.ejb.Remote;
 public interface InformationBeanRemote {
     
     void addInfo(String InfoText, Integer UserID, Date InfoDate);
-    
-    List<InformationTransfer> findInformationEntities();
+
+    List<InformationTransfer> findAllInformation();
 }

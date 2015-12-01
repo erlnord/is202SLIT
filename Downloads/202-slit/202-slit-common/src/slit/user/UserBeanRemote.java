@@ -16,8 +16,6 @@ import javax.ejb.Remote;
 public interface UserBeanRemote {
    
     void addUser(int UserType, String FirstName, String LastName, String UserName, String PassPhrase, String Email);
-
-    List<UserTransfer> sfindAllUsers();
     
     UserTransfer findUser(int id);
     

@@ -76,7 +76,7 @@ Blir brukt til å lagre informasjon om innleveringen til en fil.
 */
 CREATE TABLE Delivery (
 DeliveryID INT NOT NULL AUTO_INCREMENT,
-Status INT,
+DeliveryStatus INT,
 Feedback VARCHAR (255),
 DeliveryFile MEDIUMBLOB,
 UserID INT NOT NULL,
@@ -121,21 +121,21 @@ VALUES ("Det blir lab imorgen 4.11, Kenneth er der fra 10.15 til 12.", 2);
 
 /* Legger inn eksempelinformasjonstekster.
 */
-INSERT INTO Information (InfoText, UserID)
+INSERT INTO Information (InfoText, UserID, InfoDate)
 VALUES ("IS-109: Godkjenning av modul 4. Se plan for torsdag 6 og fredag 7. november 
 og framover. Jeg og Even kan godkjenne moddul 4, avtal ledig tidspunkt med Even, 
 Hallgeir. Husk siste frist for godkjenning av modul 4 er onsdag 26. november kl 12.00 på dagen. 
 Både Even og jeg har andre forpliktelser, og er også bortreist noean dager før dette. 
 Derfor viktig at dere avtaler tidspunkt for godkjenning. Torsdag 13 november kan dere 
 komme innom kontoret mitt uten avtale for å se på godkjenning av modul 4. Ellers er både 
-Even og jeg tilgjengelige når vi er på kontoret.", 4);
-INSERT INTO Information (InfoText, UserID)
+Even og jeg tilgjengelige når vi er på kontoret.", 4, '2015-12-01 03:33:33');
+INSERT INTO Information (InfoText, UserID, InfoDate)
 VALUES ("Hva skal dere gjøre når dere er ferdig med modul 5? Det er noen som (snart) er ferdig med alle fem modulene. 
 Dere kan begynne på pensum for IS-110 hvis der vil være litt i forkant til høsten. Pensum er resten av boka. 
 Ettersom dette er første gang vi kjører kursene 109/110 er ikke materialet for IS-110 klart ennå, men boka har 
 heldigvis gode læringsmål for hvert kapittel. De læringsmålene vi kommer til å lage for 110 vil være ganske 
 like de som står i bokaVi kan ikke godkjenne moduler i IS-110 før kurset starter til høsten, men hvis dere 
-jobber dere gjennom noen av modulene nå, kan dere få dem godkjent ganske kjapt til høsten", 5);
+jobber dere gjennom noen av modulene nå, kan dere få dem godkjent ganske kjapt til høsten", 5, '2015-12-01 03:33:35');
 
 /* Legger inn eksempelinformasjon om moduler.
 */
@@ -208,13 +208,13 @@ VALUES ('12', 'Modul 12', '4', "", "", "");
 
 /* Legger inn eksempelinformasjon om innleveringer. 
 */
-INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (2, 1, 1, "Godkjent");
-INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (2, 1, 2, "Godkjent");
-INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (3, 1, 3, "Ikke godkjent");
-INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 1, 4, "Ikke vurdert");
-INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 1, "Ikke vurdert");
-INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 2, "Ikke vurdert");
-INSERT INTO Delivery (Status, UserID, ModuleID, Feedback) VALUES (1, 2, 3, "Ikke vurdert");
+INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (2, 1, 1, "Godkjent");
+INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (2, 1, 2, "Godkjent");
+INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (3, 1, 3, "Ikke godkjent");
+INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 1, 4, "Ikke vurdert");
+INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 1, "Ikke vurdert");
+INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 2, "Ikke vurdert");
+INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 3, "Ikke vurdert");
 
 /* Legger inn eksempelinformasjon om hyperlinkressurser.
 */

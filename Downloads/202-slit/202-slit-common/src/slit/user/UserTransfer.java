@@ -108,12 +108,17 @@ public class UserTransfer implements Serializable {
         this.UserID = UserID;
     }
     
+    /*
     @Override
     public String toString() {
         return "Id: " + UserID + "\nUsertype: " + UserTypeTxt + 
                 "\nFirstName: " + FirstName + 
                 "\nLastName: " + LastName + "\nUsername: " + UserName +
                 "\nEmail: " + Email;
+    }*/
+    @Override
+    public String toString() {
+        return FirstName + " " + LastName;
     }
 
 }

@@ -69,6 +69,8 @@ public class TeacherMainView extends MainViewMaster {
         JButton submitBtn = new JButton("Lagre");
         JButton cancelBtn = new JButton("Avbryt");
         
+        area1.setWrapStyleWord(true);
+        area1.setLineWrap(true);
         
         //regPanel.add(area1);
         regBotPanel.add(cancelBtn);
@@ -78,25 +80,29 @@ public class TeacherMainView extends MainViewMaster {
         regPanel.setLayout(new BorderLayout());
         regPanel.add(area1, BorderLayout.CENTER);
         regPanel.setBorder(BorderFactory.createTitledBorder("Skriv her"));
-        
-        /*
-        submitBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                System.out.println(Main.getModuleBean().findModule(1));
-                //System.out.println(Main.getUserBean().printUser(1));
-            }
-        });*/
-        
+                
         /*
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 
-                for (InformationTransfer i : Main.getInformationBean().findInformationEntities()) {
-                    area1.append(i.getInfoText());
+                for (InformationTransfer u : Main.getInformationBean().findAllInformation()) {
+                    area1.append(u.getInfoText()+"\n");
                     
                     System.out.println("fuckerinos");                    
+                }
+            }
+        });*/
+        
+        // Liste ut alle brukere
+        /*
+        submitBtn.addActionListener (new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                //System.out.println(Main.getUserBean().sfindAllUsers());
+                
+                for (UserTransfer u : Main.getUserBean().findAllUsers()) {
+                    area1.append(u.getFirstName()+"\n");
                 }
             }
         });*/
@@ -113,21 +119,6 @@ public class TeacherMainView extends MainViewMaster {
                 System.out.println("Info added");
             }
         });
-        
-        
-        // Liste ut alle brukere
-        /*
-        submitBtn.addActionListener (new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                //System.out.println(Main.getUserBean().sfindAllUsers());
-                
-                for (UserTransfer u : Main.getUserBean().findAllUsers()) {
-                    area1.append(u.getFirstName()+"\n");
-                }
-            }
-        });*/
-        
         
         cancelBtn.addActionListener ((ActionEvent e) -> {
             frame2.dispose();
