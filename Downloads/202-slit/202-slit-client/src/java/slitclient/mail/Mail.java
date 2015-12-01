@@ -82,7 +82,8 @@ public class Mail extends ButtonMenu {
    
    MouseListener ml; 
         
-    JButton inbxBtn = new JButton("Se innboks");    
+    JButton inbxBtn = new JButton("Se innboks"); 
+    JButton notificationBtn = new JButton("Notifikasjoner");
     public Mail() {
        
         
@@ -201,7 +202,7 @@ public class Mail extends ButtonMenu {
         displayMessage.setFont(new Font("Verdana", Font.ITALIC, 14));
         p2.add(displayMessage, BorderLayout.CENTER);
         p2.add(inbxBtn, BorderLayout.SOUTH);
-        
+        p2.add(notificationBtn, BorderLayout.WEST);
        
         
         // Legger til panel 1 og 2 i container
@@ -253,6 +254,12 @@ public class Mail extends ButtonMenu {
             //mailFrame.dispose();
             Main.SwingEmailSender();
         });
+        
+        notificationBtn.addActionListener((ActionEvent e) -> {
+            //mailFrame.dispose();
+            Main.NotificationWindow();
+        });
+
 
     //private void inbxBtnActionPerformed(java.awt.event.ActionEvent evt) throws NoSuchProviderException, MessagingException {
         inbxBtn.addActionListener((ActionEvent e) -> {

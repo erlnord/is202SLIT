@@ -13,11 +13,13 @@ import slitclient.module.ModuleWindow;
 import slitclient.mail.SwingEmailSender;
 import beans.InformationBeanRemote;
 import beans.ModuleBeanRemote;
+import beans.NotificationBeanRemote;
 import javax.ejb.EJB;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.jboss.weld.context.ejb.Ejb;
 import slit.user.UserBeanRemote;
+import slitclient.mail.NotificationWindow;
 
 
 /**
@@ -37,6 +39,9 @@ public class Main {
     
     @EJB(name="DeliveryBean")
     private static DeliveryBeanRemote deliveryInstance;
+    
+    @EJB(name="NotificationBean")
+    private static NotificationBeanRemote notificationInstance;
     
     private static int CurrentUserID;
     private static int ModuleType;
@@ -70,6 +75,10 @@ public class Main {
     
     public static ModuleBeanRemote getModuleBean() {
             return moduleInstance;
+    }
+    
+    public static NotificationBeanRemote getNotificationBean() {
+        return notificationInstance;
     }
     
     public static int getUserType() {
@@ -158,6 +167,11 @@ public class Main {
 
     public static void SettingsWindow() {
         new SettingsWindow();
+    }
+    
+    public static void NotificationWindow() {
+        NotificationWindow nw = new NotificationWindow();
+        nw.setVisible(true);
     }
 
 }
