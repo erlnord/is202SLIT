@@ -48,7 +48,7 @@ public class NotificationBean implements NotificationBeanRemote {
     
     @Override
     public List<NotificationTransfer> findAllNotifications() {
-        TypedQuery<Notification> q = em.createQuery("Select c from Notification c", Notification.class);
+        TypedQuery<Notification> q = em.createQuery("Select c from Notification c ORDER BY c.NotificationID DESC", Notification.class);
         
         List<Notification> result = q.getResultList();
         
