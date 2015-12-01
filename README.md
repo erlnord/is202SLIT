@@ -1,4 +1,7 @@
 # is202SLIT
+
+OBS: Prosjektet ligger i mappen som heter 202-slit. 
+
 Dette prosjektet er gjort av 6 elever ved Universitetet i Agder, høsten 2015. Prosjektet gitt ut på å lage en bedre måte å levere inn moduler/prosjekter til fagene IS-109 og 110, samt samle informasjon på en bedre måte. 
 
 Prosjektet er gjennomført ved bruk av Java, Beans, MySQL og ikke minst stackoverflow.com. 
