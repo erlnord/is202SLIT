@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Erlend
+ * @author Lars Martin
  */
 public class StudentMainView extends MainViewMaster {
     

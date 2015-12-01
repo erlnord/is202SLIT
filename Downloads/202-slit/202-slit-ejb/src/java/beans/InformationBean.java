@@ -45,7 +45,7 @@ public class InformationBean implements InformationBeanRemote {
     @Override
     public List<InformationTransfer> findAllInformation() {
         TypedQuery<Information> q = em.createQuery
-                ("Select c from Information c", Information.class);
+                ("Select c from Information c order by c.id desc", Information.class);
         List<Information> results = q.getResultList();
             
             ArrayList<InformationTransfer> liste = new ArrayList();

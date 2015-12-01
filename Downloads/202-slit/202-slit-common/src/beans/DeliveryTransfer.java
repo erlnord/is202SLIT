@@ -21,17 +21,28 @@ public class DeliveryTransfer implements Serializable {
     private byte[] deliveryFile;
     private int UserID;
     private int ModuleID;
+    private String FileName;
     
     public DeliveryTransfer(int DeliveryID, int DeliveryStatus,
-            String feedback, byte[] deliveryFile, int UserID, int ModuleID) {
+            String feedback, byte[] deliveryFile, int UserID, int ModuleID, 
+            String FileName) {
         this.DeliveryID = DeliveryID;
         this.DeliveryStatus = DeliveryStatus;
         this.feedback = feedback;
         this.deliveryFile = deliveryFile;
         this.UserID = UserID;
         this.ModuleID = ModuleID;
+        this.FileName = FileName;
     }
 
+    public String getFileName() {
+        return FileName;
+    }
+
+    public void setFileName(String FileName) {
+        this.FileName = FileName;
+    }
+    
     public int getDeliveryID() {
         return DeliveryID;
     }
@@ -78,9 +89,6 @@ public class DeliveryTransfer implements Serializable {
 
     public void setModuleID(int ModuleID) {
         this.ModuleID = ModuleID;
-    }
-
-    
-    
+    } 
     
 }

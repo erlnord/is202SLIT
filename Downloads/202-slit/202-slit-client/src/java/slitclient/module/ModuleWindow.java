@@ -13,8 +13,7 @@ import slitclient.ButtonMenu;
 import slitclient.Main;
 
 /**
- *
- * @author Atilla og Admir
+ * @author GUI: Atilla og Admir, funksjonalitet: Lars Martin.
  */
 //Arver felt og metoder fra klassen ButtonMenu
 public class ModuleWindow extends ButtonMenu { 
@@ -63,8 +62,15 @@ public class ModuleWindow extends ButtonMenu {
         panel.add(button12);
         frame.add(panel);
         
+        // Lager en variabel av UserBean sin findUser metode.
         UserTransfer uff = Main.getUserBean().findUser(Main.getCurrentUserID());
-        
+        /**
+         * Under følger 12 actionlisteners til alle 12 modulknappene.
+         * Alle knappene bruker en variabel fra Main som heter ModuleType.
+         * Denne variabelen blir satt fra 1-12 avhengig av hvilken knapp som
+         * blir trykket. Denne variabelen brukes så for å fylle ut
+         * modulinformasjonsfelt på modulsiden.
+         */
         button1.addActionListener ((ActionEvent e) -> {
             frame.dispose();
             Main.setModuleType(1);
@@ -185,9 +191,5 @@ public class ModuleWindow extends ButtonMenu {
                 new ModuleViewTeacher();
             }
         });
-        
     }
-    
 }
-
-

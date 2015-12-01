@@ -20,13 +20,16 @@ import slitclient.Main;
 
 /**
  *
- * @author Erlend
+ * @author Lars Martin
  */
 public class TeacherMainView extends MainViewMaster {
     
     public TeacherMainView() {
+        // Lager et panel på bunnen av teacher sin mainview
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        // Legger til knapp for å legge til ny informasjon.
         JButton btnNewInfo = new JButton("Ny info");
+        // Knapp for å vise elevers progresjon. Denne gjør ingenting pr. nå.
         JButton btnCheckProgress = new JButton("Se elevers progresjon");
         
         frame.setVisible(true);
@@ -41,11 +44,16 @@ public class TeacherMainView extends MainViewMaster {
         bottomPanel.add(btnCheckProgress);
         
         btnNewInfo.addActionListener ((ActionEvent e) -> {
+            // kjører newInfo metoden
             newInfo();
         });
         
     }  
     
+    /**
+     * En metode for å legge til ny informasjon.
+     * Denne lager en ny JFrame som vises over mainviewet.
+     */
     public void newInfo() {
         JFrame frame2 = new JFrame();
         frame2.setVisible(true);
@@ -80,46 +88,22 @@ public class TeacherMainView extends MainViewMaster {
         regPanel.setLayout(new BorderLayout());
         regPanel.add(area1, BorderLayout.CENTER);
         regPanel.setBorder(BorderFactory.createTitledBorder("Skriv her"));
-                
-        /*
+               
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                
-                for (InformationTransfer u : Main.getInformationBean().findAllInformation()) {
-                    area1.append(u.getInfoText()+"\n");
-                    
-                    System.out.println("fuckerinos");                    
-                }
-            }
-        });*/
-        
-        // Liste ut alle brukere
-        /*
-        submitBtn.addActionListener (new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                //System.out.println(Main.getUserBean().sfindAllUsers());
-                
-                for (UserTransfer u : Main.getUserBean().findAllUsers()) {
-                    area1.append(u.getFirstName()+"\n");
-                }
-            }
-        });*/
-        
-        
-        submitBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                
+                // Legger ved nåværende dato og tidspunkt ved ny info
                 Date now = new Date();
-                
+                // Bruker addInfo fra InformationBean for å legge til info
                 Main.getInformationBean().addInfo(area1.getText(), 4, now);
                 
                 System.out.println("Info added");
+                // Lukker vinduet når infoen er lagt til.
+                frame2.dispose();
             }
         });
         
+        // Avbrytknapp for ny info
         cancelBtn.addActionListener ((ActionEvent e) -> {
             frame2.dispose();
         });

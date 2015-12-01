@@ -5,6 +5,7 @@
  */
 package slitclient.module;
 
+import beans.DeliveryBeanRemote;
 import beans.DeliveryTransfer;
 import beans.ModuleTransfer;
 import java.awt.BorderLayout;
@@ -15,11 +16,16 @@ import static java.awt.FlowLayout.LEFT;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -36,9 +42,12 @@ import slitclient.Main;
 
 /**
  *
- * @author Atilla
+ * @author GUI: Atilla, funksjonalitet: Lars Martin
  */
 public class ModuleViewTeacher extends ButtonMenu {
+    
+    JFileChooser fileChooser = new JFileChooser();
+    List<UserTransfer> utList;
     
     public ModuleViewTeacher () {
         
@@ -121,10 +130,11 @@ public class ModuleViewTeacher extends ButtonMenu {
     panel1_2.add(scroll2);
     panel1_3.add(scroll3);
     
+    // Oppretter en variabel mf av ModuleTransfer for å kunne sette tekst.
     ModuleTransfer mf = Main.getModuleBean().findModule(Main.getModuleType());
-    textArea1.setText(mf.getModuleDescription());
-    textArea2.setText(mf.getModuleResource());
-    textArea3.setText(mf.getModuleApproval());
+    textArea1.setText(mf.getModuleDescription()); // Henter modulbeskrivelse
+    textArea2.setText(mf.getModuleResource()); // Henter modulressurser
+    textArea3.setText(mf.getModuleApproval()); // Henter modulkrav
     
     textArea1.setCaretPosition(0);
     textArea2.setCaretPosition(0);
@@ -135,7 +145,8 @@ public class ModuleViewTeacher extends ButtonMenu {
     panel1.add(panel1_2);
     panel1.add(panel1_3);
     
-    
+    // Actionlistener for å oppdatere modulteksten. Tar input fra tre tekstareas
+    // som oppdaterer modulen i databasen.
     btnLagreLeft.addActionListener((ActionEvent e) -> {
           Main.getModuleBean().updateModule(Main.getModuleType(), textArea1.getText(), 
                   textArea3.getText(), textArea2.getText(), 4);
@@ -153,7 +164,9 @@ public class ModuleViewTeacher extends ButtonMenu {
     JPanel upperPanel = new JPanel();
     JPanel lowerPanel = new JPanel();
     DefaultListModel model = new DefaultListModel();
-    JList navneListe = new JList(model);
+    JList navneListe = new JList();
+    
+              
     
     navneListe.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // kan bare velge en
     JScrollPane scrollPane = new JScrollPane(navneListe);
@@ -162,16 +175,16 @@ public class ModuleViewTeacher extends ButtonMenu {
         
     // Looper gjennom alle brukere for å legge til studenter i listen
     for (UserTransfer u : Main.getUserBean().findAllUsers()) {
-        
         // Hvis bruker har brukertype = student så legges dem til i listen
         if (u.getUserType() == 1)
             model.addElement(u);
-    }
+    }      
     
     navneListe.addListSelectionListener(new ListSelectionListener() {
         @Override
         public void valueChanged(ListSelectionEvent e) {
-            System.out.println(navneListe.getSelectedValue());
+            //System.out.println(navneListe.getSelectedValue());
+            
         }
     });
     
@@ -193,7 +206,7 @@ public class ModuleViewTeacher extends ButtonMenu {
     kommentarTf.setLineWrap(true);
     kommentarTf.setWrapStyleWord(true);
     kommentarTf.setEditable(true);
-
+    
     panel2.add(upperPanel); //legger til upperpanel i panel2
     panel2.add(lowerPanel); //legger til lowerpanel i panel2
     
@@ -203,6 +216,53 @@ public class ModuleViewTeacher extends ButtonMenu {
     container.add(panel2);
     
     frame.add(container, BorderLayout.CENTER);
+    
+    // Actionlistener for å laste ned en modul. Foreløpig blir bare
+    // delivery med ID = 8 lastet ned. Planen er at man skal kunne velge
+    // fra en JList over studenter som har levert og så laste ned deres 
+    // innlevering.
+    download.addActionListener ((ActionEvent e) -> {
+        DeliveryTransfer dt = Main.getDeliveryBean().findDelivery(8);
+            try {
+                // Kjører metoden downloadDelivery
+                downloadDelivery(dt);
+            }
+            catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+    });
+    
+    }
+    
+    /**
+     * Metode for å laste ned en innlevering. Denne metoden kjøres når
+     * download-knappen trykkes. Denne metoden ble hentet fra Even
+     * sitt SLITv3 prosjekt.
+     * 
+     * @param df
+     * @throws IOException 
+     */
+    private void downloadDelivery(DeliveryTransfer df) throws IOException {
+        DeliveryBeanRemote bean = Main.getDeliveryBean();
+        DeliveryTransfer ft = bean.findDelivery(df.getDeliveryID());
+        fileChooser.setSelectedFile(new File(ft.getFileName()));
+        int retval = fileChooser.showSaveDialog(null);
+        if (retval == JFileChooser.APPROVE_OPTION)
+            saveFile(fileChooser.getSelectedFile(), ft.getDeliveryFile());
+    }
+    
+    /**
+     * Metode for å lagre fil til disk.
+     * Denne metoden ble hentet fra Even sitt SLITv3 prosjekt.
+     * 
+     * @param file
+     * @param content
+     * @throws IOException 
+     */
+    private void saveFile(File file, byte[] content) throws IOException {
+        OutputStream out = new FileOutputStream(file);
+        out.write(content);
+        out.close();
     }
 }
     

@@ -25,13 +25,15 @@ public class DeliveryBean implements DeliveryBeanRemote {
     
     @Override
     public void addDelivery(int DeliveryStatus, 
-            String feedback, byte[] deliveryfile, int UserID, int ModuleID) {
+            String feedback, byte[] deliveryfile, int UserID, int ModuleID,
+            String FileName) {
         Delivery deliver = new Delivery();
         deliver.setDeliveryStatus(DeliveryStatus);
         deliver.setFeedback(feedback);
         deliver.setDeliveryFile(deliveryfile);
         deliver.setUserID(UserID);
         deliver.setModuleID(ModuleID);
+        deliver.setFileName(FileName);
         em.persist(deliver);
     }
     
@@ -46,7 +48,7 @@ public class DeliveryBean implements DeliveryBeanRemote {
         for (Delivery u : result) {
             DeliveryTransfer ut = new DeliveryTransfer(u.getDeliveryID(), 
                     u.getDeliveryStatus(), u.getFeedback(), u.getDeliveryFile(), 
-                    u.getUserID(), u.getModuleID());
+                    u.getUserID(), u.getModuleID(), u.getFileName());
             
             list.add(ut);
         }
@@ -59,7 +61,7 @@ public class DeliveryBean implements DeliveryBeanRemote {
         return new DeliveryTransfer(delivery.getDeliveryID(), 
                 delivery.getDeliveryStatus(), delivery.getFeedback(), 
                 delivery.getDeliveryFile(), delivery.getUserID(), 
-                delivery.getModuleID());
+                delivery.getModuleID(), delivery.getFileName());
     }
     
 }

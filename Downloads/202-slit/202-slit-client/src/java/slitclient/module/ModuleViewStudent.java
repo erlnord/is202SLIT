@@ -30,7 +30,7 @@ import slitclient.Main;
 
 /**
  *
- * @author Atilla
+ * @author GUI: Atilla, funksjonalitet: Lars Martin
  */
 public class ModuleViewStudent extends slitclient.ButtonMenu {
     
@@ -99,15 +99,15 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
     panel1_2.add(scroll2);
     panel1_3.add(scroll3);
     
+    // Oppretter en variabel mf av ModuleTransfer for å kunne hente tekst.
     ModuleTransfer mf = Main.getModuleBean().findModule(Main.getModuleType());
-    textArea1.setText(mf.getModuleDescription());
-    textArea2.setText(mf.getModuleResource());
-    textArea3.setText(mf.getModuleApproval());
+    textArea1.setText(mf.getModuleDescription()); // Henter modulbeskrivelse
+    textArea2.setText(mf.getModuleResource()); // Henter modulressurser
+    textArea3.setText(mf.getModuleApproval()); // Henter modulkrav
     
     textArea1.setCaretPosition(0);
     textArea2.setCaretPosition(0);
     textArea3.setCaretPosition(0);
-    
     
     // Legg panelene til i hovedpanel.
     panel1.add(panel1_1);
@@ -151,6 +151,10 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
     blaGjennom.setText("Bla gjennom");
     lastOpp.setText("Last opp!");
     
+    
+    /**
+     * Actionlistener for å bla gjennom filer og velge en fil
+     */
     blaGjennom.addActionListener ((ActionEvent e) -> {
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -160,6 +164,12 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
         }
     });
     
+    /**
+     * Actionlistener for å laste opp den selekterte filen.
+     * For å oppnå dette har vi brukt kode fra Even sitt SLITv3 prosjekt.
+     * Ved testing fant vi ut at denne funksjonen ikke støtter opplasting
+     * av filer større enn rundt 2 megabyte.
+     */
     lastOpp.addActionListener ((ActionEvent e) -> {
         File selectedFile = fileChooser.getSelectedFile();
         try {
@@ -192,17 +202,16 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
     
     }
     
-    private void uploadFile(File file) throws IOException {
-        String filename = file.getName();
-        System.out.println("");
-        System.out.println("Uploading file" + filename);
-        byte[] content = readFile(file);
-        System.out.println("Create file transfer object");
-        Main.getDeliveryBean().addDelivery(1, "", content, 
-                Main.getUserBean().findUser(Main.getCurrentUserID()).getUserID()
-                , Main.getModuleType());
-    }
-    
+    /**
+     * Metode for å lese inn en fil til et bytearray
+     * Denne metoden er hentet fra Even sitt SLITv3 prosjekt.
+     * Filen som skal bli lastet opp leses inn i et bytearray, og deretter
+     * lagres bytearrayet i databasen som en BLOB.
+     * 
+     * @param file
+     * @return
+     * @throws IOException 
+     */
     private byte[] readFile(File file) throws IOException {
         long longSize = (int) file.length();
         if (longSize > Integer.MAX_VALUE) {
@@ -225,6 +234,25 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
         }
         in.close();
         return content;
+    }
+    
+    /**
+     * Metode for å laste opp fil.
+     * Denne metoden tar en fil som input og laster opp i databasen.
+     * Her kjøres metodene readFile som gjør en fil om til bytearray og deretter
+     * kjøres metoden addDelivery fra DeliveryBean som legger til i databasen.
+     * @param file
+     * @throws IOException 
+     */
+    private void uploadFile(File file) throws IOException {
+        String filename = file.getName();
+        System.out.println("");
+        System.out.println("Uploading file" + filename);
+        byte[] content = readFile(file);
+        System.out.println("Create file transfer object");
+        Main.getDeliveryBean().addDelivery(1, "", content, 
+                Main.getUserBean().findUser(Main.getCurrentUserID()).getUserID()
+                , Main.getModuleType(), file.getName());
     }
     
 }

@@ -5,7 +5,6 @@
  */
 package entities;
 
-import beans.DeliveryTransfer;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
@@ -34,6 +33,16 @@ public class Delivery implements Serializable {
     private byte[] DeliveryFile;
     private int UserID;
     private int ModuleID;
+    @Column(name="DeliveryFileName")
+    private String FileName;
+
+    public String getFileName() {
+        return FileName;
+    }
+
+    public void setFileName(String FileName) {
+        this.FileName = FileName;
+    }
 
     public int getDeliveryID() {
         return DeliveryID;

@@ -15,7 +15,7 @@ import javax.ejb.Remote;
 @Remote
 public interface DeliveryBeanRemote {
     void addDelivery(int DeliveryStatus, String feedback, byte[] deliveryfile, 
-            int UserID, int ModuleID);
+            int UserID, int ModuleID, String FileName);
     
     DeliveryTransfer findDelivery(int id);
     

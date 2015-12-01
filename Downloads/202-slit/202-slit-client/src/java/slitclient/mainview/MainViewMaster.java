@@ -12,20 +12,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import slitclient.ButtonMenu;
 import slitclient.Main;
 
 /**
  *
- * @author Erlend
+ * @author Lars Martin
  */
 public abstract class MainViewMaster extends ButtonMenu {
     
@@ -36,6 +33,7 @@ public abstract class MainViewMaster extends ButtonMenu {
     //JPanel topPanel = new JPanel();
     JPanel leftPanel = new JPanel();
     JPanel rightPanel = new JPanel();
+    // lager en container som inneholder right og leftpanel
     JPanel container = new JPanel();
     
     JTextArea leftPane1 = new JTextArea();
@@ -61,7 +59,11 @@ public abstract class MainViewMaster extends ButtonMenu {
     //JScrollPane infoScroll = new JScrollPane(infoTxt);
     
     /**
-     * Konstruktor for klassen MainViewMaster
+     * Konstruktor for klassen MainViewMaster.
+     * Planen var egentlig at informasjon skulle fylles inn i alle textfeltene
+     * som ble opprettet, men vi fant ingen måte å legge til i neste tekstfelt
+     * hvis et allerede hadde tekst i seg. Derfor ble det endret til at all 
+     * informasjon blir lagt til i et enkelt tekstfelt.
      */
     public MainViewMaster() {
         //Legger til alle elementene i JFrame
@@ -117,9 +119,11 @@ public abstract class MainViewMaster extends ButtonMenu {
         leftPane1.setWrapStyleWord(true);
         leftPane1.setCaretPosition(0);
         
+        // Søker gjennom alle Informations i databasen og printer det ut til 
+        // forsiden/infosiden. Viser nyeste info først.
         for (InformationTransfer u : Main.getInformationBean().findAllInformation()) {
             //leftPane1.append(u.getInfoText()+ "\n" + u.getInfoDate() + "\n"+"\n");
-            leftPane1.setText(u.getInfoText() + "\n" + u.getInfoDate() + "\n\n" + leftPane1.getText());
+            leftPane1.append(u.getInfoText() + "\n" + u.getInfoDate() + "\n\n");
         }
         
         

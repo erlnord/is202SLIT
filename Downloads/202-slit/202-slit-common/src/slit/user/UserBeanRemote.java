@@ -25,4 +25,5 @@ public interface UserBeanRemote {
 
     List<UserTransfer> findAllUsers();
     
+    List<UserTransfer> findAllUsersbyID(int ID);
 }
