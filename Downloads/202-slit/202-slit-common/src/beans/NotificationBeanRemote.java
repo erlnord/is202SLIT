@@ -5,6 +5,7 @@
  */
 package beans;
 
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -17,6 +18,8 @@ public interface NotificationBeanRemote {
     void addNotification(String Message, int UserID);
 
     NotificationTransfer viewNotification(int NotificationID);
+    
+    List<NotificationTransfer> findAllNotifications();
 
 
 

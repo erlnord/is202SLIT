@@ -5,13 +5,16 @@
  */
 package slitclient.mail;
 
+import beans.NotificationTransfer;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import slit.user.UserTransfer;
 import slitclient.Main;
 
 /**
@@ -25,15 +28,18 @@ public class NotificationWindow extends JFrame {
     
     JButton newNotification = new JButton("Send notifikasjon");
     JTextField sendTo = new JTextField("Skriv inn navn her");
-    JTextArea viewNotification = new JTextArea("");
+    JTextArea viewNotification = new JTextArea("Testerino");
     JButton viewNotificationBtn = new JButton("Se en notifkasjon");
  
     public NotificationWindow() {
         super("Notifikasjoner");
-       // super.setSize(1024, 768);
+        super.setSize(800, 600);
         super.add(container);
         container.setLayout(new BorderLayout());
         super.setLocationRelativeTo(null);
+        
+        NotificationTransfer nf = Main.getNotificationBean().viewNotification(1);
+        viewNotification.setText(nf.getMessage());
         
         p1.add(newNotification);
         p1.add(sendTo);
@@ -44,7 +50,18 @@ public class NotificationWindow extends JFrame {
         container.add(p2, BorderLayout.EAST);
         
         viewNotificationBtn.addActionListener((ActionEvent e) -> {
-            viewNotification.setText(Main.getNotificationBean().viewNotification(1).getMessage());
+            for (NotificationTransfer nu : Main.getNotificationBean().findAllNotifications()) {
+                if(nu.getUserID()==1) {
+                viewNotification.setText(nu.getMessage()+"\n");
+                } else {
+                    System.out.println("RIPRIPRIPRIPRIP");
+                }
+            }
+            
+            
+            
+            
+            //viewNotification.setText(Main.getNotificationBean().viewNotification(1).getMessage());
         });
     }
 }

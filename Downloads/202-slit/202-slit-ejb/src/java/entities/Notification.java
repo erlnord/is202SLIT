@@ -23,7 +23,7 @@ public class Notification implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Notification")
+    @Column(name="NotificationID")
     private int NotificationID;
     
     private String Message;
