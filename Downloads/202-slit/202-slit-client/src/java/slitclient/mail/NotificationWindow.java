@@ -38,8 +38,8 @@ public class NotificationWindow extends JFrame {
         container.setLayout(new BorderLayout());
         super.setLocationRelativeTo(null);
         
-        NotificationTransfer nf = Main.getNotificationBean().viewNotification(1);
-        viewNotification.setText(nf.getMessage());
+       // NotificationTransfer nf = Main.getNotificationBean().viewNotification(1);
+       // viewNotification.setText(nf.getMessage());
         
         p1.add(newNotification);
         p1.add(sendTo);
@@ -49,12 +49,16 @@ public class NotificationWindow extends JFrame {
         container.add(p1, BorderLayout.WEST);
         container.add(p2, BorderLayout.EAST);
         
+        // Denne metoden sjekker brukeren sin ID, og viser alle meldinger som er
+        // knyttet til denne brukeren. 
         viewNotificationBtn.addActionListener((ActionEvent e) -> {
             for (NotificationTransfer nu : Main.getNotificationBean().findAllNotifications()) {
-                if(nu.getUserID()==1) {
-                viewNotification.setText(nu.getMessage()+"\n");
-                } else {
-                    System.out.println("RIPRIPRIPRIPRIP");
+                if(nu.getUserID()==Main.getCurrentUserID()) {
+                viewNotification.append(nu.getMessage()+"\n");
+                System.out.println("Notifikasjoner funnet. BrukerID:" + Main.getCurrentUserID());
+                } else if(nu.getUserID()!=Main.getCurrentUserID()){
+                    System.out.println("Ingen funnet.");
+                    viewNotification.setText("Du har ikke mottatt noen notifikasjoner.");
                 }
             }
             

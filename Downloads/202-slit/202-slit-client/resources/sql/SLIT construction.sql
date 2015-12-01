@@ -37,10 +37,10 @@ ENGINE = InnoDB;
 innad i programmet. Foreign key er UserID, for å se hvem som har sendt meldingene. 
 */
 CREATE TABLE Notification (
-NotifID INT NOT NULL AUTO_INCREMENT,
+NotificationID INT NOT NULL AUTO_INCREMENT,
 Message VARCHAR(255),
 UserID INT NOT NULL,
-PRIMARY KEY (NotifID),
+PRIMARY KEY (NotificationID),
 CONSTRAINT fk_Notification_User
 FOREIGN KEY (UserID) REFERENCES Users(UserID))
 ENGINE = InnoDB;
@@ -230,3 +230,6 @@ INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 4);
 INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 4);
 INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 5);
 INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 6);
+
+INSERT INTO Notification (Message, UserID) VALUES ("Hei buddy", 2);
+INSERT INTO Notification (Message, UserID) Values ("Hei støggen", 1);
