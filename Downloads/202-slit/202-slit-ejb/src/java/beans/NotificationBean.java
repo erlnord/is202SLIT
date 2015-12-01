@@ -6,14 +6,13 @@
 package beans;
 
 import entities.Notification;
-import entities.Users;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import slit.user.UserTransfer;
 
 /**
  *
@@ -28,10 +27,11 @@ public class NotificationBean implements NotificationBeanRemote {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void addNotification(String Message, int UserID) {
+    public void addNotification(String Message, int UserID, Date NoteDate) {
         Notification n = new Notification(); 
         n.setMessage(Message);
         n.setUserID(UserID);
+        n.setNoteDate(NoteDate);
         em.persist(n);
     }
 
@@ -43,7 +43,7 @@ public class NotificationBean implements NotificationBeanRemote {
            // return null;
         
    // } else
-    return new NotificationTransfer(n.getNotificationID(), n.getMessage(), n.getUserID());
+    return new NotificationTransfer(n.getNotificationID(), n.getMessage(), n.getUserID(), n.getNoteDate());
     }
     
     @Override
@@ -54,7 +54,7 @@ public class NotificationBean implements NotificationBeanRemote {
         
         ArrayList<NotificationTransfer> list = new ArrayList();
         for (Notification n : result) {
-           NotificationTransfer nt = new NotificationTransfer(n.getNotificationID(), n.getMessage(), n.getUserID());
+           NotificationTransfer nt = new NotificationTransfer(n.getNotificationID(), n.getMessage(), n.getUserID(), n.getNoteDate());
             
             list.add(nt);
         }

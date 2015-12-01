@@ -54,11 +54,11 @@ public class NotificationWindow extends JFrame {
         // Initialisering av tekstfeltene
         viewNotification.setWrapStyleWord(true);
         viewNotification.setLineWrap(true);
-        viewNotification.setFont(new Font("Verdana", Font.CENTER_BASELINE, 16));
+        viewNotification.setFont(new Font("Verdana", Font.ITALIC, 14));
         sendNotification.setColumns (160);
         sendNotification.setLineWrap (true);
         sendNotification.setWrapStyleWord (false);
-        sendNotification.setFont(new Font("Verdana", Font.CENTER_BASELINE, 16));
+        sendNotification.setFont(new Font("Verdana", Font.ITALIC, 14));
         
         // Initialiserings av innholdspanelene
         p1.add(newNotification, BorderLayout.NORTH);

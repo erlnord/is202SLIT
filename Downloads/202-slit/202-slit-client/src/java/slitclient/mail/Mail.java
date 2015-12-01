@@ -97,7 +97,7 @@ public class Mail extends ButtonMenu {
         p1.setLayout(new GridLayout(0, 2));
         p2.setLayout(new BorderLayout()); 
         
-// Oppsett av container
+        // Oppsett av container
         container.setLayout(new GridLayout(1, 2));
         mailFrame.setVisible(true);
         mailFrame.setSize(1024, 768);
@@ -269,7 +269,7 @@ public class Mail extends ButtonMenu {
  
  
         String userName = "sliterino@gmail.com";
-        String password = "slitfuck";
+        String password = "is202sliterino";
         
        // System.setProperty("javax.net.ssl.trustStore","JAVA_HOME\\lib\\security\\cacerts");
        // System.setProperty("javax.net.ssl.trustStorePassword","changeit");

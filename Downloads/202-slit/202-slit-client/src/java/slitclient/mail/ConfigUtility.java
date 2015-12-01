@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package slitclient.mail;
 
 import java.io.File;
@@ -16,6 +11,10 @@ import java.util.Properties;
 /**
  * A utility class that reads/saves SMTP settings from/to a properties file.
  * Takk til http://www.codejava.net/coding/swing-application-for-sending-e-mail-with-attachments
+ * 
+ * Dette er en klasse som leser SMTP-innstillinger fra en property-fil. Den kan også
+ * lagre SMTP-innstillinger til en property-fil. Koden er i sin helhet hentet fra linken ovenfor.
+ * Jeg har bare modifisert den litt for å få den til å fungere med vårt prosjekt. 
  *
  */
 public class ConfigUtility {
@@ -28,7 +27,7 @@ public class ConfigUtility {
         defaultProps.setProperty("mail.smtp.host", "smtp.gmail.com");
         defaultProps.setProperty("mail.smtp.port", "587");
         defaultProps.setProperty("mail.user", "sliterino@gmail.com");
-        defaultProps.setProperty("mail.password", "slitfuck");
+        defaultProps.setProperty("mail.password", "is202sliterino");
         defaultProps.setProperty("mail.smtp.starttls.enable", "true");
         defaultProps.setProperty("mail.smtp.auth", "true");
         defaultProps.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");

@@ -6,6 +6,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -16,11 +17,21 @@ public class NotificationTransfer implements Serializable{
      private int NotificationID;
      private String Message;
      private int UserID; 
+     private Date NoteDate;
      
-      public NotificationTransfer(int NotificationID, String Message, int UserID) {
+      public NotificationTransfer(int NotificationID, String Message, int UserID, Date NoteDate) {
         this.NotificationID = NotificationID;
         this.Message = Message;
         this.UserID = UserID;
+        this.NoteDate = NoteDate;
+    }
+
+    public Date getNoteDate() {
+        return NoteDate;
+    }
+
+    public void setNoteDate(Date NoteDate) {
+        this.NoteDate = NoteDate;
     }
 
     public int getNotificationID() {

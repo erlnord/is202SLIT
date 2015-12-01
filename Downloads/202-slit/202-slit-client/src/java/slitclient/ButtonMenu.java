@@ -144,12 +144,14 @@ public abstract class ButtonMenu {
             public void actionPerformed(ActionEvent e) {
                     int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "Application is kill RIP.");
+                        JOptionPane.showMessageDialog(null, "Application is kill. RIP application.");
                         System.exit(0);
                     }
             }
         }); 
         
+        // Legger til en ActionListener på logg ut-knappen.
+        // Sørger for at brukeren logges ut av systemet, ved at currentUserID blir satt til 0.
         logOut.addActionListener(new ActionListener() {
             String message = "Vil du logge ut?";
             String title = "Logg ut";
@@ -158,18 +160,22 @@ public abstract class ButtonMenu {
                     int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "Du har nå logget av systemet.");
+                        // Sett currentUserID til 0.
                         Main.setCurrentUserID(0);
                         for (java.awt.Frame frame : java.awt.Frame.getFrames()) {
                             frame.dispose();
                         }
+                        // Lag et nytt innloggingsvindu for neste bruker.
                         new guiLogInWindow();
                         
                     }
             }
         }); 
         
-        UserTransfer uff = Main.getUserBean().findUser(Main.getCurrentUserID());
         
+        UserTransfer uff = Main.getUserBean().findUser(Main.getCurrentUserID());
+        // Lar deg forandre brukertype fra 1 til 2, eller fra elev til lærer.
+        // Dette er kun for testing av applikasjonen.
         changeUser.addActionListener(new ActionListener() {
             String message = "Vil du bytte brukertype?";
             String title = "Brukerbytte";
@@ -193,6 +199,8 @@ public abstract class ButtonMenu {
         // Hver actionlistener har en for-løkke som lukker alle åpne frames
         // Før den kaller en metode i main som oppretter en ny frame for hver av
         // vinduene. 
+        // I tillegg sjekker vi om brukertype er 1 eller 2, altså student eller lærer.
+        // Åpner de riktige vinduene i forhol til dette. 
         infoBtn.addActionListener ((ActionEvent e) -> {
             for (java.awt.Window win : java.awt.Dialog.getWindows()) {
                 win.dispose();

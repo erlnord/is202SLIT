@@ -40,6 +40,7 @@ CREATE TABLE Notification (
 NotificationID INT NOT NULL AUTO_INCREMENT,
 Message VARCHAR(255),
 UserID INT NOT NULL,
+NoteDate DATETIME,
 PRIMARY KEY (NotificationID),
 CONSTRAINT fk_Notification_User
 FOREIGN KEY (UserID) REFERENCES Users(UserID))
@@ -231,5 +232,5 @@ INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 4);
 INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 5);
 INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 6);
 
-INSERT INTO Notification (Message, UserID) VALUES ("Hei buddy", 2);
-INSERT INTO Notification (Message, UserID) Values ("Hei støggen", 1);
+INSERT INTO Notification (Message, UserID, NoteDate) VALUES ("Heisann karer. Tenkte jeg skulle teste litt jeg.", 2, "2015-12-01 03:33:33");
+INSERT INTO Notification (Message, UserID, NoteDate) Values ("Heisann jenter. Nå må vi være inkluderende og kjøre en test for kvinnene også.", 1, "2015-12-01 03:33:33");

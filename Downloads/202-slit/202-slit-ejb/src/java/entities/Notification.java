@@ -6,12 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -28,7 +31,18 @@ public class Notification implements Serializable {
     
     private String Message;
     private int UserID;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date NoteDate;
 
+    public Date getNoteDate() {
+        return NoteDate;
+    }
+
+    public void setNoteDate(Date NoteDate) {
+        this.NoteDate = NoteDate;
+    }
+    
     public int getNotificationID() {
         return NotificationID;
     }

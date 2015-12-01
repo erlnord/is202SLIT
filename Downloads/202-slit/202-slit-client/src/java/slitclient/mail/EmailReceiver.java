@@ -160,7 +160,7 @@ public class EmailReceiver {
  
  
         String userName = "sliterino™gmail.com";
-        String password = "slitfuck";
+        String password = "is202sliterino";
  
         EmailReceiver receiver = new EmailReceiver();
         receiver.downloadEmails(protocol, host, port, userName, password);
