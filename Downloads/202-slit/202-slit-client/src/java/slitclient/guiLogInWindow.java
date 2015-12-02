@@ -59,6 +59,8 @@ public class guiLogInWindow extends JFrame {
         // guiLogInWindow arver fra superklassen sin, JFrame
         // Legger til panel1 og panel2 i frame
         super("Logg inn");
+        // Setter defaultknappen i frame til logInBtn
+        super.getRootPane().setDefaultButton(logInBtn);
         super.setVisible(true);
         super.setSize(600,150);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
