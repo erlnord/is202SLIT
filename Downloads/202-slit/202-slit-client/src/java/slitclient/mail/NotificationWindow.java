@@ -112,6 +112,8 @@ public class NotificationWindow extends JFrame {
                         if (reply == JOptionPane.YES_OPTION) {
                 Main.getNotificationBean().addNotification(sendNotification.getText(), Main.getCurrentUserID(), now);
                 System.out.println("Notifikasjon sendt." + "\n" + "Melding: " + sendNotification.getText());
+                // Stresstestmetode
+                //Main.addTonsOfNotes();
                         }
             } else {
                 // brukeren var elev, og har dermed ikke tillatelse til å sende notifikasjoner

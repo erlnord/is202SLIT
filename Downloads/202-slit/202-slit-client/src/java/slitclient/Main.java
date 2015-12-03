@@ -10,6 +10,7 @@ import slitclient.mail.SwingEmailSender;
 import beans.InformationBeanRemote;
 import beans.ModuleBeanRemote;
 import beans.NotificationBeanRemote;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -220,6 +221,13 @@ public class Main {
     public static void NotificationWindow() {
         NotificationWindow nw = new NotificationWindow();
         nw.setVisible(true);
+    }
+    
+    public static void addTonsOfNotes() {
+        Date now = new Date();
+        for (int i = 1; i <= 1000; i++) {
+            getNotificationBean().addNotification("Messagetesting "+i, 1, now);
+        }
     }
 
 }
