@@ -49,6 +49,7 @@ public class Main {
     private static int CurrentUserID;
     private static int ModuleType;
     private static int UserType;
+    private static String userMail;
 
     
     /**
@@ -104,6 +105,16 @@ public class Main {
     // Getter-metode for brukeren som er innlogget sin unike ID
     public static int getCurrentUserID() {
         return CurrentUserID;
+    }
+    
+    // Getter-metode for brukeren som er innlogget sin e-post
+    public static String getUserMail() {
+        return userMail;
+    }
+    
+    // Setter-metode for brukeren som er innlogget sin e-post
+    public static void setUserMail(String userMail) {
+        Main.userMail = userMail;
     }
     
     // Setter-metode for innlogget bruker sin unike ID

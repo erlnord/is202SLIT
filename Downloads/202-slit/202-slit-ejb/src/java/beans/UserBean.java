@@ -132,6 +132,12 @@ public class UserBean implements UserBeanRemote {
         }
         return false;
     }
+    
+    // Lagrer en ny epost til brukeren
+    public void changeEmail(int bruker_id, String nyEmail) {
+        Users user = em.find(Users.class, bruker_id);
+        user.setEmail(nyEmail);
+    }
 }   
     
     

@@ -114,6 +114,8 @@ public class guiLogInWindow extends JFrame {
                         Main.setCurrentUserID(u.getUserID());
                         // Lagrer userType til en lokal variabel
                         Main.setUserType(u.getUserType());
+                        // Lagrer userMail til en lokal variabel
+                        Main.setUserMail(u.getEmail());
                         // Lagrer en variabel for å hente ut brukertypen
                         UserTransfer uff = Main.getUserBean().findUser(u.getUserID());
                         // sjekker om bruker er student eller foreleser

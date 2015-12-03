@@ -29,4 +29,6 @@ public interface UserBeanRemote {
     
     boolean changePassword(int bruker_id, String nyttPassord, String gammeltPassord);
     
+    void changeEmail(int bruker_id, String nyEmail);
+    
 }
