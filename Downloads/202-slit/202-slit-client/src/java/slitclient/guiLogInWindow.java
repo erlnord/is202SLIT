@@ -99,7 +99,9 @@ public class guiLogInWindow extends JFrame {
             // Dersom logIn-informasjonen stemmer overens med student, 
             // lukker vi denne klassen og kaller metoden fra main
             // som bygger studentMainView-klassen
-            
+            // Kjører en metode som sjekker om brukeren finnes i databasen.
+            boolean test = Main.getUserBean().searchForUser(userTxt.getText());
+                if(test == true) {
             
             // Looper gjennom alle brukere og leter etter brukernavn
             for (UserTransfer u : Main.getUserBean().findAllUsers()) {
@@ -127,10 +129,17 @@ public class guiLogInWindow extends JFrame {
                             Main.teacherMainView();
                         }
                     } else {
-                        // Feilmelding ved feil brukernavn
-                        JOptionPane.showMessageDialog(null, "Passordet/brukernavnet er ikke riktig");
+                        // Feilmelding ved feil passord
+                        JOptionPane.showMessageDialog(null, "Passordet er ikke riktig");
                     }
-                }
+                } 
+
+            }
+        }
+            // Felmelding ved ikke-eksisterende bruker
+            else if(test == !true) {
+                JOptionPane.showMessageDialog(null, "Finner ingen med det brukernavnet." +
+                        "\n" + "Merk at brukernavnet er case-sensitive");
             }
         });
             

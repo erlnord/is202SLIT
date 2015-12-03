@@ -31,4 +31,6 @@ public interface UserBeanRemote {
     
     void changeEmail(int bruker_id, String nyEmail);
     
+    public boolean searchForUser(String userName);
+    
 }

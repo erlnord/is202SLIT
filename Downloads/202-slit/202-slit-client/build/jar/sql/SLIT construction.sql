@@ -19,6 +19,21 @@ Email VARCHAR(45),
 PRIMARY KEY (UserID))
 ENGINE = InnoDB;
 
+
+/* Opretter tabellen "Booking"
+Tabellen inneholder en BookingID som er unik for hver bruker.
+I tillegg dag, info og studenter. Denne tabellen brukes for å lagres
+bookinginfo for læreren og slik at studenter kan booke et tidspunkt.
+*/
+CREATE TABLE Booking (
+BookingID INT NOT NULL AUTO_INCREMENT,
+Dag VARCHAR (999),
+Info VARCHAR (999),
+Studenter VARCHAR (999),
+PRIMARY KEY (BookingID))
+ENGINE = InnoDB;
+
+
 /* Oppretter tabellen Informasjon. 
 Tabellen brukes til å lagre informasjon som blir lagt ut på informasjon-siden i applikasjonen.
 Bruker Foreign key userID for å se hvem som har lagt ut informasjonen.
@@ -59,17 +74,6 @@ UserID INT NOT NULL,
 PRIMARY KEY (ModuleID),
 CONSTRAINT fk_Module_User
 FOREIGN KEY (UserID) REFERENCES Users(UserID))
-ENGINE = InnoDB;
-
-/* Opretter tabellen Resource. Lagrer en hyperlink som blir brukt som ressurs til en modul.
-*/
-CREATE TABLE Resource (
-ResourceID INT NOT NULL AUTO_INCREMENT,
-ResourceLink VARCHAR(100),
-ModuleID INT,
-PRIMARY KEY (ResourceID),
-CONSTRAINT fk_Resource_Module
-FOREIGN KEY (ModuleID) REFERENCES Module(ModuleID))
 ENGINE = InnoDB;
 
 /* Oppretter tabellen Delivery.
@@ -120,6 +124,11 @@ VALUES ("Når du skal treffe Even eller Hallgeir ifm godkjenning av modul 4, ta 
 der du viser prosjekt du har gjort selv. Når ikke annet er oppgitt skjer dette på kontoret til henholdsvis Even, Hallgeir.", 1);
 INSERT INTO Notification (Message, UserID)
 VALUES ("Det blir lab imorgen 4.11, Kenneth er der fra 10.15 til 12.", 2);
+INSERT INTO Notification (Message, UserID, NoteDate) 
+VALUES ("Heisann karer. Tenkte jeg skulle teste litt jeg.", 2, "2015-12-01 03:33:33");
+INSERT INTO Notification (Message, UserID, NoteDate) 
+Values ("Heisann jenter. Nå må vi være inkluderende og kjøre en test for kvinnene også.", 1, "2015-12-01 03:33:33");
+
 
 /* Legger inn eksempelinformasjonstekster.
 */
@@ -208,6 +217,17 @@ VALUES ('11', 'Modul 11', '4', "", "", "");
 INSERT INTO Module (ModuleID, ModuleName, UserID, ModuleDescription, ModuleApproval, ModuleResource) 
 VALUES ('12', 'Modul 12', '4', "", "", "");
 
+INSERT INTO Booking (BookingID, Dag)
+VALUES (1, "Mandag");
+INSERT INTO Booking (BookingID, Dag)
+VALUES (2, "Mandag");
+INSERT INTO Booking (BookingID, Dag)
+VALUES (3, "Mandag");
+INSERT INTO Booking (BookingID, Dag)
+VALUES (4, "Mandag");
+INSERT INTO Booking (BookingID, Dag)
+VALUES (5, "Mandag");
+
 /* Legger inn eksempelinformasjon om innleveringer. 
 */
 INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (2, 1, 1, "Godkjent");
@@ -218,20 +238,4 @@ INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 
 INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 2, "Ikke vurdert");
 INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 3, "Ikke vurdert");
 
-/* Legger inn eksempelinformasjon om hyperlinkressurser.
-*/
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("vg.no", 1);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("dagbladet.no", 1);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("youtube.com", 1);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("vg.no", 2);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("gamer.no", 2);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("itavisen.no", 2);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 3);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("vg.no", 3);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 4);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 4);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 5);
-INSERT INTO Resource (ResourceLink, ModuleID) VALUES ("java.com", 6);
 
-INSERT INTO Notification (Message, UserID, NoteDate) VALUES ("Heisann karer. Tenkte jeg skulle teste litt jeg.", 2, "2015-12-01 03:33:33");
-INSERT INTO Notification (Message, UserID, NoteDate) Values ("Heisann jenter. Nå må vi være inkluderende og kjøre en test for kvinnene også.", 1, "2015-12-01 03:33:33");

@@ -133,11 +133,35 @@ public class UserBean implements UserBeanRemote {
         return false;
     }
     
+
+
+    
+    // Lagrer en ny epost til brukeren
+
     // Lagrer en ny epost til brukeren, kalles på i linje 130 i SettingsWindow
+
     public void changeEmail(int bruker_id, String nyEmail) {
         Users user = em.find(Users.class, bruker_id);
         user.setEmail(nyEmail);
     }
-}   
+    
+    // Sjekker om en bruker med dette navnet eksisterer i databasen
+    @Override
+    public boolean searchForUser(String userName) { 
+        TypedQuery<Users> q = em.createQuery("Select c from Users c", Users.class);
+        
+        List<Users> result = q.getResultList();
+        
+        if (result.stream().noneMatch((u) -> (u.getUserName().equals(userName)))) {
+            return false;
+        }
+         return true;
+    }
+}
+
+        
+  
+
+
     
     
