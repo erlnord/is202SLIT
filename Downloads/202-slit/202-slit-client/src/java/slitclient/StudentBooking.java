@@ -5,9 +5,12 @@
  */
 package slitclient;
 
+import beans.BookingTransfer;
+import beans.ModuleTransfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,6 +37,11 @@ public class StudentBooking extends ButtonMenu {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(1024, 768);
     frame.setLocationRelativeTo(null);
+    
+    
+    // Hente å adde tekst fra beans
+    
+    
     
     // PANEL 1
     
@@ -295,17 +303,55 @@ public class StudentBooking extends ButtonMenu {
     
       p1.add(p5_3);
       
+    BookingTransfer mt = Main.getBookingBean().findBooking(1);
+    text1.setText(mt.getDag()); // Henter modulbeskrivelse
+    text2.setText(mt.getInfo()); // Henter modulressurser
+    text3.setText(mt.getStudenter()); // Henter modulkrav
+    
      
+    BookingTransfer tt = Main.getBookingBean().findBooking(2);
+    text4.setText(tt.getDag()); // Henter modulbeskrivelse
+    text5.setText(tt.getInfo()); // Henter modulressurser
+    text6.setText(tt.getStudenter()); // Henter modulkrav
+    
+     
+    BookingTransfer ot = Main.getBookingBean().findBooking(3);
+    text7.setText(ot.getDag()); // Henter modulbeskrivelse
+    text8.setText(ot.getInfo()); // Henter modulressurser
+    text9.setText(ot.getStudenter()); // Henter modulkrav
+    
+     
+    BookingTransfer tot = Main.getBookingBean().findBooking(4);
+    text11.setText(tot.getDag()); // Henter modulbeskrivelse
+    text12.setText(tot.getInfo()); // Henter modulressurser
+    text13.setText(tot.getStudenter()); // Henter modulkrav
+    
+     
+    BookingTransfer ft = Main.getBookingBean().findBooking(5);
+    text14.setText(ft.getDag()); // Henter modulbeskrivelse
+    text15.setText(ft.getInfo()); // Henter modulressurser
+    text16.setText(ft.getStudenter()); // Henter modulkrav
       
       // ButtomPanel
       
       JPanel p6 = new JPanel();
       
       JButton b6 = new JButton("Oppdater");
-      JButton b7 = new JButton("Reset");
+      
+      b6.addActionListener ((ActionEvent e) -> {
+           Main.getBookingBean().addDag(1,text1.getText(), text2.getText(), text3.getText() );
+            Main.getBookingBean().addDag(2,text4.getText(), text5.getText(), text6.getText() );
+            Main.getBookingBean().addDag(3, text7.getText(), text8.getText(), text9.getText() );
+            Main.getBookingBean().addDag(4, text11.getText(), text12.getText(), text13.getText() );
+            Main.getBookingBean().addDag(5, text14.getText(), text15.getText(), text16.getText() );
+             
+            System.out.println("Ting ble gjort");
+        });
+      
+      
       
       p6.add(b6);
-      p6.add(b7);
+     
       
       frame.add(p6, BorderLayout.SOUTH);
       

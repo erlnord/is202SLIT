@@ -1,5 +1,6 @@
 package slitclient;
 
+import beans.BookingBeanRemote;
 import beans.DeliveryBeanRemote;
 import slitclient.mainview.TeacherMainView;
 import slitclient.mainview.StudentMainView;
@@ -28,6 +29,10 @@ public class Main {
     // Injecter ModuleBean
     @EJB(name="ModuleBean")
     private static ModuleBeanRemote moduleInstance;
+    
+    // Injecter BookingBean
+    @EJB(name="BookingBean")
+    private static BookingBeanRemote BookingInstance;
     
     // Injecter UserBean
     @EJB(name="UserBean")
@@ -70,6 +75,11 @@ public class Main {
     // Returnerer en instans av bruker
     public static UserBeanRemote getUserBean() {
             return userInstance;
+    }
+    
+    // Returnerer en instans av booking
+    public static BookingBeanRemote getBookingBean() {
+        return BookingInstance;
     }
     
     // Returnerer en instans av levering
