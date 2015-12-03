@@ -47,7 +47,7 @@ public class Notification implements Serializable {
         return NotificationID;
     }
 
-    public void setDeliveryID(int NotificationID) {
+    public void setNotificationID(int NotificationID) {
         this.NotificationID = NotificationID;
     }
 

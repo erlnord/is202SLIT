@@ -2,12 +2,12 @@ package slitclient.mail;
 
 import beans.NotificationTransfer;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import static java.awt.font.TextAttribute.FONT;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -26,6 +26,8 @@ import slitclient.Main;
  * Denne klassen lager notifikasjonsvinduet. Notifikasjonsvinduet lar deg 
  * sende notifikasjoner til alle andre brukere av systemet. Notifikasjonene
  * du sender blir lagret i databasen.
+ * 
+ * Kun lærere kan sende notifikasjoner. Elever kan bare motta. 
  */
 public class NotificationWindow extends JFrame {
     JPanel container = new JPanel();
@@ -61,12 +63,16 @@ public class NotificationWindow extends JFrame {
         sendNotification.setLineWrap (true);
         sendNotification.setWrapStyleWord (true);
         sendNotification.setFont(new Font("Verdana", Font.ITALIC, 14));
+        if(Main.getUserType() == 1) {
+            sendNotification.setText("Elever har ikke mulighet til å sende notifikasjoner");
+            sendNotification.setEditable(false);
+        }
         
         // Initialiserings av innholdspanelene
         p1.add(newNotification, BorderLayout.NORTH);
         p1.add(nnScroll, BorderLayout.CENTER);
         p2.add(viewNotificationBtn, BorderLayout.NORTH);
-        p2.add(vnScroll, BorderLayout.CENTER);
+        p2.add(viewNotification, BorderLayout.CENTER);
         
         // Legg til innholdspaneler i container
         container.add(p1);
@@ -91,18 +97,26 @@ public class NotificationWindow extends JFrame {
         // Knappen gir brukeren muliget til å sende ut en notifikasjon
         // Som kan bli sett at alle brukerene i systemet
         // Systemer er ikke anonymt
+        // Kun lærere kan sende ut notifikasjoner
         newNotification.addActionListener((ActionEvent e) -> {
-            Date now = new Date();
-            String message = "ADVARSEL! Det du nå sender kan bli lest av alle som bruker systemet." + "\n"
-                    + "Systemet er ikke anonymt, alle kan se hvem som har sendt meldingen." + "\n"
-                    + "Trykk YES for å sende, eller NO for å avbryte.";
-            String title = "Sende melding?";
-            int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
-                    if (reply == JOptionPane.YES_OPTION) {
-            Main.getNotificationBean().addNotification(sendNotification.getText(), Main.getCurrentUserID(), now);
-            System.out.println("Notifikasjon sendt." + "\n" + "Melding: " + sendNotification.getText());
-                    }
-        });
+           // Sjekker om brukeren er en lærer
+            if(Main.getUserType() == 2) { 
+               Date now = new Date();
+                String message = "ADVARSEL! Notifikasjonen du skriver vil bli sett av alle elever og lærere." + "\n"
+                        + "Navnet ditt vil stå bak meldingen." + "\n"
+                        + "Trykk YES for å sende, eller NO for å avbryte.";
+                String title = "Sende melding?";
+                int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+                        if (reply == JOptionPane.YES_OPTION) {
+                Main.getNotificationBean().addNotification(sendNotification.getText(), Main.getCurrentUserID(), now);
+                System.out.println("Notifikasjon sendt." + "\n" + "Melding: " + sendNotification.getText());
+                        }
+            } else {
+                // brukeren var elev, og har dermed ikke tillatelse til å sende notifikasjoner
+               String message = "Som student har du ikke mulighet til å sende notifikasjoner";
+               JOptionPane.showMessageDialog(container, message);
+           }
+           });
         
         // En mouselistener som tar vekk teksten i tekstfeltet dersom default-teksten er der.
         sendNotification.addMouseListener(new MouseAdapter() {

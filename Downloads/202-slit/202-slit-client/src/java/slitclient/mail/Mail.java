@@ -3,23 +3,12 @@ package slitclient.mail;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.mail.Address;
-import javax.mail.Authenticator;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Store;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -46,7 +35,6 @@ public class Mail extends ButtonMenu {
    JPanel container = new JPanel();
    JPanel p1 = new JPanel();
    JPanel p2 = new JPanel(); 
-   
  
    // Elementer til p1
    JLabel fromLbl = new JLabel("Sender:");
@@ -98,7 +86,7 @@ public class Mail extends ButtonMenu {
         p2.setBackground(Color.WHITE);
         p2.setBorder(BorderFactory.createTitledBorder("Melding"));
         p1.setLayout(new GridLayout(0, 2));
-        p2.setLayout(new BorderLayout()); 
+        p2.setLayout(new GridLayout(3, 0)); 
         
         // Oppsett av container
         container.setLayout(new GridLayout(1, 2));
@@ -192,15 +180,12 @@ public class Mail extends ButtonMenu {
            
         // Ting til panel2
         displayMsgLbl.setFont(new Font("Verdana", Font.CENTER_BASELINE, 16));
-        //p2.add(displayMsgLbl);
-        //p2.add(spacingLblR);
-        p2.add(newMessageBtn, BorderLayout.NORTH);
         displayMessage.setEditable(false);
         displayMessage.setFont(new Font("Verdana", Font.ITALIC, 14));
-        //p2.add(displayMessage, BorderLayout.CENTER);
-        p2.add(inbxBtn, BorderLayout.SOUTH);
-        p2.add(notificationBtn, BorderLayout.CENTER);
-       
+        p2.add(newMessageBtn); 
+        p2.add(notificationBtn);
+        p2.add(inbxBtn);
+         
         
         // Legger til panel 1 og 2 i container
         container.add(p1);

@@ -52,8 +52,6 @@ public class guiLogInWindow extends JFrame {
     JButton cancelBtn = new JButton("Avbryt");
     JButton regUserBtn = new JButton("Registrer");
     
-    int logInType; 
-    
    
     public guiLogInWindow() {
         // guiLogInWindow arver fra superklassen sin, JFrame
@@ -114,17 +112,17 @@ public class guiLogInWindow extends JFrame {
                         System.out.println("Found user: " + u.getFirstName());
                         // Lagrer UserID til en lokal variabel
                         Main.setCurrentUserID(u.getUserID());
+                        // Lagrer userType til en lokal variabel
+                        Main.setUserType(u.getUserType());
                         // Lagrer en variabel for å hente ut brukertypen
                         UserTransfer uff = Main.getUserBean().findUser(u.getUserID());
                         // sjekker om bruker er student eller foreleser
                         if (uff.getUserType() == 1) {
                             super.dispose();
                             Main.studentMainView();
-                            logInType = 1;
                         } else {
                             super.dispose();
                             Main.teacherMainView();
-                            logInType = 2;
                         }
                     } else {
                         // Feilmelding ved feil brukernavn
@@ -253,9 +251,6 @@ public class guiLogInWindow extends JFrame {
         });
         
     }
-    
-    public int getLogInType() {
-        return logInType;
-    }
+
 
 }
