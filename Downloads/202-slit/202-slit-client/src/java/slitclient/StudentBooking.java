@@ -43,10 +43,13 @@ public class StudentBooking extends ButtonMenu {
     
     
     
-    // PANEL 1
+    // Hele GridLayoyten i CENTER på frame
     
     JPanel p1 = new JPanel();
     p1.setLayout(new GridLayout(3,5));
+    
+    
+    // Panel 1 For Mandag 
     
     JPanel p1_1 = new JPanel();
     JPanel p1_2 = new JPanel();
@@ -91,16 +94,11 @@ public class StudentBooking extends ButtonMenu {
     p1_1.add(scroll1);
     p1_2.add(scroll2);
     p1_3.add(scroll3);
-    
-    
-    
-   
+  
       
     frame.add(p1, BorderLayout.CENTER);
       
-    // PANEL 2 .3 rader. Rad 1 "Tirsdag"
-      
-    
+    // PANEL 2 for Tirsdag
     
       
    JPanel p2_1 = new JPanel();
@@ -144,7 +142,7 @@ public class StudentBooking extends ButtonMenu {
     p2_2.add(scroll5);
     p2_3.add(scroll6);
     
-    // PANEL 3 rad 2 "Onsdag"
+    // PANEL 3 for Onsdag
       
     JPanel p3_1 = new JPanel();
     JPanel p3_2 = new JPanel();
@@ -186,7 +184,7 @@ public class StudentBooking extends ButtonMenu {
     p3_2.add(scroll8);
     p3_3.add(scroll9);
     
-    // Panel 4 rad 3 Torsdag
+    // Panel 4 rad for Torsdag
     
     JPanel p4_1 = new JPanel();
     JPanel p4_2 = new JPanel();
@@ -228,16 +226,10 @@ public class StudentBooking extends ButtonMenu {
     p4_2.add(scroll12);
     p4_3.add(scroll13);
     
+    
+    // Panel 5 forrad Fredag
+    
    
-     
-     
-  
-    
-    // Panel 5  1 rad Fredag
-    
-    
-    
-    
     JPanel p5_1 = new JPanel();
     JPanel p5_2 = new JPanel();
     JPanel p5_3 = new JPanel();
@@ -278,61 +270,59 @@ public class StudentBooking extends ButtonMenu {
     p5_2.add(scroll15);
     p5_3.add(scroll16);
     
+    // Legger til de forskjellige "Mandag,Tirsdag,Onsdag,Torsdag,Fredag" panelene i hovedpanelet som har flowlayout
+    
      p1.add(p1_1);
      p1.add(p2_1);
-      p1.add(p3_1);
+     p1.add(p3_1);
      p1.add(p4_1);
      p1.add(p5_1);
      
      p1.add(p1_2);
      p1.add(p2_2);
-    p1.add(p3_2);
+     p1.add(p3_2);
      p1.add(p4_2);
      p1.add(p5_2);
      
      
     p1.add(p1_3);
-  
     p1.add(p2_3);
     p1.add(p3_3);
     p1.add(p4_3);
-       
+    p1.add(p5_3);
     
-    
-    
-    
-      p1.add(p5_3);
+    // Lager en BookingTransfer som henter informasjonen fra tekstfeltene
       
     BookingTransfer mt = Main.getBookingBean().findBooking(1);
-    text1.setText(mt.getDag()); // Henter modulbeskrivelse
-    text2.setText(mt.getInfo()); // Henter modulressurser
-    text3.setText(mt.getStudenter()); // Henter modulkrav
+    text1.setText(mt.getDag()); 
+    text2.setText(mt.getInfo()); 
+    text3.setText(mt.getStudenter()); 
     
      
     BookingTransfer tt = Main.getBookingBean().findBooking(2);
-    text4.setText(tt.getDag()); // Henter modulbeskrivelse
-    text5.setText(tt.getInfo()); // Henter modulressurser
-    text6.setText(tt.getStudenter()); // Henter modulkrav
+    text4.setText(tt.getDag()); 
+    text5.setText(tt.getInfo()); 
+    text6.setText(tt.getStudenter()); 
     
      
     BookingTransfer ot = Main.getBookingBean().findBooking(3);
-    text7.setText(ot.getDag()); // Henter modulbeskrivelse
-    text8.setText(ot.getInfo()); // Henter modulressurser
-    text9.setText(ot.getStudenter()); // Henter modulkrav
+    text7.setText(ot.getDag()); 
+    text8.setText(ot.getInfo()); 
+    text9.setText(ot.getStudenter()); 
     
      
     BookingTransfer tot = Main.getBookingBean().findBooking(4);
-    text11.setText(tot.getDag()); // Henter modulbeskrivelse
-    text12.setText(tot.getInfo()); // Henter modulressurser
+    text11.setText(tot.getDag()); 
+    text12.setText(tot.getInfo()); 
     text13.setText(tot.getStudenter()); // Henter modulkrav
     
      
     BookingTransfer ft = Main.getBookingBean().findBooking(5);
-    text14.setText(ft.getDag()); // Henter modulbeskrivelse
-    text15.setText(ft.getInfo()); // Henter modulressurser
-    text16.setText(ft.getStudenter()); // Henter modulkrav
+    text14.setText(ft.getDag()); 
+    text15.setText(ft.getInfo()); 
+    text16.setText(ft.getStudenter()); 
       
-      // ButtomPanel
+      // ButtomPanel som har oppdater knapp med actionlistener som oppdaterer det som blir skrevet i tekstfeltene og lagrer det i databasen
       
       JPanel p6 = new JPanel();
       

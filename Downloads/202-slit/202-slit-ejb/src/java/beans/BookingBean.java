@@ -5,9 +5,9 @@
  */
 package beans;
 
-import beans.BookingBeanRemote;
+
 import entities.Booking;
-import entities.Module;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
