@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 import slit.user.UserTransfer;
 
 /**
@@ -108,9 +109,29 @@ public class UserBean implements UserBeanRemote {
             user.getFirstName(), user.getLastName(), user.getUserName(),
             user.getPassPhrase(), user.getEmail());
     }
-
-}
-
     
+    /**
+     * @author Atilla Sjusdal
+     * 
+     * denne metoden endrer brukerens passord
+     * @param bruker_id id til brukeren som bytter passord
+     * @param nyttPassord nye passordet brukeren vil ha
+     * @param gammeltPassord brukerens nåværende passord
+     */
+    public boolean changePassword(int bruker_id, String nyttPassord, String gammeltPassord) {
+        Users user = em.find(Users.class, bruker_id);        
+        if (user == null) {
+            System.out.println("fant ingenting");
+            return false; // trenger ikke ha denne, siden vi returnerer false uansett på slutten
+        }
+        if (user.getPassPhrase().equals(gammeltPassord)) {
+            user.setPassPhrase(nyttPassord);
+            //sjekker hva det nye passordet blir
+            //System.out.println(user.getPassPhrase());
+            return true;
+        }
+        return false;
+    }
+}   
     
     

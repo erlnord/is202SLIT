@@ -1,16 +1,20 @@
-//lastOpp.setPreferredSize(new Dimension(frame.getWidth()/2 -30, 10));
 package slitclient;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import slit.user.UserTransfer;
 
 
 public class SettingsWindow extends ButtonMenu {
@@ -29,6 +33,7 @@ public class SettingsWindow extends ButtonMenu {
    JButton jb3;
    
    
+   
     /**
      *
      */
@@ -42,10 +47,10 @@ public class SettingsWindow extends ButtonMenu {
     dropdownmeny = new JComboBox(dager);
     jb2 = new JButton ("Opprett Regel");
     jl3 = new JLabel ("Endre passord?");
-    tf2 = new JTextField ("nytt passord", 45);
-    tf3 = new  JTextField ("bekreft nytt passord", 45);
-    tf4 = new  JTextField ("Nåværende passord", 45);
-    jb3 = new JButton ("Skift passord");
+    tf2 = new JTextField ("nytt passord", 45); //nytt passord
+    tf3 = new  JTextField ("bekreft nytt passord", 45); // bekreft nytt passord
+    tf4 = new  JTextField ("Nåværende passord", 45); // nåværende passord
+    jb3 = new JButton ("Skift passord"); // action listener på denne
         
  
     //hovedramme   
@@ -98,7 +103,26 @@ public class SettingsWindow extends ButtonMenu {
     container.add (panel1_3);
     frame.add(container);
     
-    
+    jb3.addActionListener ((ActionEvent e) -> { 
+
+            System.out.println("change password");
+            if (tf2.getText().equals(tf3.getText())) { //current passord sjekkes i userbean sin changePassword
+                //her sjekker vi om vi får endret passord. dersom boolean test returnerer true, har vi byttet passord
+                //dersom den returnerer false, så stemmer ikke det gamle passordet og vi oppdaterer ikke i databasen
+                boolean test = Main.getUserBean().changePassword(Main.getCurrentUserID(), tf2.getText(), tf4.getText());  
+                if (test == false) {
+                    //pop up vindu som bekrefter at passordet er enten feil/endret
+                    JOptionPane.showMessageDialog(null, "gamle passordet stemmer ikke", "Feil ved passordendring", JOptionPane.INFORMATION_MESSAGE);
+                }
+                //hvis den returnerer true, endrer vi passord
+                else JOptionPane.showMessageDialog(null,"du har byttet passord", "Good job, passordet er endret", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Nye passordene stemmer ikke overens", "Feil ved passordendring", JOptionPane.INFORMATION_MESSAGE);
+            } 
+    });
     }
+
+    
 }
 

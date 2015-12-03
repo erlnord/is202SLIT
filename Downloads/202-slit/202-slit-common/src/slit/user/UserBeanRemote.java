@@ -26,4 +26,7 @@ public interface UserBeanRemote {
     List<UserTransfer> findAllUsers();
     
     List<UserTransfer> findAllUsersbyID(int ID);
+    
+    boolean changePassword(int bruker_id, String nyttPassord, String gammeltPassord);
+    
 }
