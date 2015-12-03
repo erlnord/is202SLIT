@@ -125,7 +125,7 @@ public class SettingsWindow extends ButtonMenu {
 jb1.addActionListener ((ActionEvent e1) -> {
         System.out.println("bekreft notifikasjoner på mail");
         JOptionPane.showMessageDialog(null, "Du vil nå få notifikasjoner på mail", "Notifikasjoner",JOptionPane.INFORMATION_MESSAGE);
-        tf1.getText
+       // tf1.getText
         //tenker å ha en metode som registrerer hva so er skrevet inn i tf1 (epost)
     });
 
