@@ -72,7 +72,7 @@ public class NotificationWindow extends JFrame {
         p1.add(newNotification, BorderLayout.NORTH);
         p1.add(nnScroll, BorderLayout.CENTER);
         p2.add(viewNotificationBtn, BorderLayout.NORTH);
-        p2.add(viewNotification, BorderLayout.CENTER);
+        p2.add(vnScroll, BorderLayout.CENTER);
         
         // Legg til innholdspaneler i container
         container.add(p1);
@@ -89,7 +89,8 @@ public class NotificationWindow extends JFrame {
                 UserTransfer ut = Main.getUserBean().findUser(nu.getUserID());
                 i++;
                     viewNotification.append("\n" + "Notifikasjon " + i + ": "  + nu.getMessage() + "\n" + "Sendt av: " 
-                            + ut.getFirstName() + " " + ut.getLastName() + "\n" + "Dato: " + nu.getNoteDate() + "\n");           
+                            + ut.getFirstName() + " " + ut.getLastName() + "\n" + "Dato: " + nu.getNoteDate() + "\n"
+                    + "   --------------------------------------------------   ");           
             }
         });
         
