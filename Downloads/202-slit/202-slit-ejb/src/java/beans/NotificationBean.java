@@ -39,7 +39,7 @@ public class NotificationBean implements NotificationBeanRemote {
     public NotificationTransfer viewNotification(int NotificationID) {
         Notification n = em.find(Notification.class, NotificationID);
         //if (null == n) {
-          //  System.out.println("found nutting");
+          //  System.out.println("found nothing");
            // return null;
         
    // } else

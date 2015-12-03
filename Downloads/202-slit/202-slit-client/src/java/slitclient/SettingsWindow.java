@@ -39,7 +39,7 @@ public class SettingsWindow extends ButtonMenu {
      */
     public SettingsWindow() {
     
-    jl1 = new JLabel ("vil du ha varsler videresendt til din personlige epost?");
+    jl1 = new JLabel ("vil du endre epost-adresse?");
     tf1 = new JTextField ("skriv inn epost", 45);
     jb1 = new JButton("Opprett Regel");
     jl2 = new JLabel ("velg selv hvor tidlig du skal få varsler");
@@ -123,10 +123,12 @@ public class SettingsWindow extends ButtonMenu {
     });
     
 jb1.addActionListener ((ActionEvent e1) -> {
+    //når bruker trykker på jb1 (JButton1) så vil den hente teksten skrevet inn i tf1 (JTextField1)
         System.out.println("bekreft notifikasjoner på mail");
         JOptionPane.showMessageDialog(null, "Du vil nå få notifikasjoner på mail", "Notifikasjoner",JOptionPane.INFORMATION_MESSAGE);
         // Main.setUserMail(tf1.getText());
         Main.getUserBean().changeEmail(Main.getCurrentUserID(), tf1.getText());
+        //main henviser til remoten som henter EJB, Getter-metode for brukeren som er innlogget sin unike ID
         System.out.println("Ny epost lagret: " + tf1.getText());
     });
 

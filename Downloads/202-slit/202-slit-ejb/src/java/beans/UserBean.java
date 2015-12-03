@@ -133,7 +133,7 @@ public class UserBean implements UserBeanRemote {
         return false;
     }
     
-    // Lagrer en ny epost til brukeren
+    // Lagrer en ny epost til brukeren, kalles på i linje 130 i SettingsWindow
     public void changeEmail(int bruker_id, String nyEmail) {
         Users user = em.find(Users.class, bruker_id);
         user.setEmail(nyEmail);
