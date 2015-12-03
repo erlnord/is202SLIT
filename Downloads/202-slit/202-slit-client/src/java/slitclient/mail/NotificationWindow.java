@@ -63,8 +63,9 @@ public class NotificationWindow extends JFrame {
         sendNotification.setLineWrap (true);
         sendNotification.setWrapStyleWord (true);
         sendNotification.setFont(new Font("Verdana", Font.ITALIC, 14));
+        // Setter tekstfeltet sendNotification til notEditable dersom det er en student som prøver å skrive
         if(Main.getUserType() == 1) {
-            sendNotification.setText("Elever har ikke mulighet til å sende notifikasjoner");
+            sendNotification.setText("Du har ikke tillatelse til å sende notifikasjoner");
             sendNotification.setEditable(false);
         }
         
@@ -114,7 +115,7 @@ public class NotificationWindow extends JFrame {
                         }
             } else {
                 // brukeren var elev, og har dermed ikke tillatelse til å sende notifikasjoner
-               String message = "Som student har du ikke mulighet til å sende notifikasjoner";
+               String message = "Du har ikke tillatelse til å sende notifikasjoner";
                JOptionPane.showMessageDialog(container, message);
            }
            });
