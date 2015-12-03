@@ -1,5 +1,6 @@
 package slitclient.module;
 
+import beans.DeliveryTransfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -47,6 +48,32 @@ public class ModuleWindow extends ButtonMenu {
         JButton button10 = new JButton("Modul 10");
         JButton button11 = new JButton("Modul 11");
         JButton button12 = new JButton("Modul 12");
+        
+        button1.setOpaque(true);
+        button1.setBackground(Color.YELLOW);
+        button2.setOpaque(true);
+        button2.setBackground(Color.YELLOW);
+        button3.setOpaque(true);
+        button3.setBackground(Color.YELLOW);
+        button4.setOpaque(true);
+        button4.setBackground(Color.YELLOW);
+        button5.setOpaque(true);
+        button5.setBackground(Color.YELLOW);
+        button6.setOpaque(true);
+        button6.setBackground(Color.YELLOW);
+        button7.setOpaque(true);
+        button7.setBackground(Color.YELLOW);
+        button8.setOpaque(true);
+        button8.setBackground(Color.YELLOW);
+        button9.setOpaque(true);
+        button9.setBackground(Color.YELLOW);
+        button10.setOpaque(true);
+        button10.setBackground(Color.YELLOW);
+        button11.setOpaque(true);
+        button11.setBackground(Color.YELLOW);
+        button12.setOpaque(true);
+        button12.setBackground(Color.YELLOW);
+        
         panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         panel.add(button1);
         panel.add(button2);
@@ -61,6 +88,38 @@ public class ModuleWindow extends ButtonMenu {
         panel.add(button11);
         panel.add(button12);
         frame.add(panel);
+        
+        for (DeliveryTransfer dt : Main.getDeliveryBean().findAllDeliveries()) {
+            if (dt.getModuleID() == 1 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
+                button1.setBackground(Color.green);
+            } else if (dt.getModuleID() == 1 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
+                button1.setBackground(Color.RED);
+            }
+            
+            else if (dt.getModuleID() == 2 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
+                button2.setBackground(Color.green);
+            } else if (dt.getModuleID() == 2 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
+                button2.setBackground(Color.red);
+            }
+            
+            else if (dt.getModuleID() == 3 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
+                button3.setBackground(Color.green);
+            } else if (dt.getModuleID() == 3 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
+                button3.setBackground(Color.red);
+            } 
+            
+            else  if (dt.getModuleID() == 4 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
+                button4.setBackground(Color.green);
+            } else if (dt.getModuleID() == 4 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
+                button4.setBackground(Color.red);
+            }
+            
+            else if (dt.getModuleID() == 5 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
+                button5.setBackground(Color.green);
+            } else if (dt.getModuleID() == 5 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
+                button5.setBackground(Color.red);
+            }
+        }
         
         // Lager en variabel av UserBean sin findUser metode.
         UserTransfer uff = Main.getUserBean().findUser(Main.getCurrentUserID());
