@@ -10,6 +10,7 @@ import beans.InformationTransfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
@@ -118,6 +119,7 @@ public abstract class MainViewMaster extends ButtonMenu {
         leftPane1.setLineWrap(true);
         leftPane1.setWrapStyleWord(true);
         leftPane1.setCaretPosition(0);
+        leftPane1.setFont(new Font("Calibri", Font.ROMAN_BASELINE, 16));
         
         // Søker gjennom alle Informations i databasen og printer det ut til 
         // forsiden/infosiden. Viser nyeste info først.
@@ -145,7 +147,8 @@ public abstract class MainViewMaster extends ButtonMenu {
         
         area1.setLineWrap(true);
         area1.setWrapStyleWord(true);
-        
+        area1.setEditable(false);
+        area1.setFont(new Font("Calibri", Font.HANGING_BASELINE, 16));
         area1.setText("Neste forelesning: " + "\nIS-109 - Onsdag 18. November "
                 + "- Kl: 13:15" + "\n\n\nIS-109 - Onsdag 27. November - Kl: "
                 + "13:15" + "\n\n\nIS-109 - Onsdag 1. Desember - Kl: 10:15");
