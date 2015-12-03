@@ -27,15 +27,33 @@ public class DeliveryBean implements DeliveryBeanRemote {
     public void addDelivery(int DeliveryStatus, 
             String feedback, byte[] deliveryfile, int UserID, int ModuleID,
             String FileName) {
-        Delivery deliver = new Delivery();
-        deliver.setDeliveryStatus(DeliveryStatus);
-        deliver.setFeedback(feedback);
-        deliver.setDeliveryFile(deliveryfile);
-        deliver.setUserID(UserID);
-        deliver.setModuleID(ModuleID);
-        deliver.setFileName(FileName);
-        em.persist(deliver);
+        Delivery delivery = new Delivery();
+        delivery.setDeliveryStatus(DeliveryStatus);
+        delivery.setFeedback(feedback);
+        delivery.setDeliveryFile(deliveryfile);
+        delivery.setUserID(UserID);
+        delivery.setModuleID(ModuleID);
+        delivery.setFileName(FileName);
+        em.persist(delivery);
     }
+    
+    @Override
+    public void updateModule(int DeliveryID, String feedback) {
+        
+        Delivery delivery = em.find(Delivery.class, DeliveryID);
+        
+        delivery.setFeedback(feedback);
+        
+        em.merge(delivery);
+    }
+    
+    @Override
+    public void setStatus(int DeliveryID, int DeliveryStatus) {
+        Delivery delivery = em.find(Delivery.class, DeliveryID);
+        
+        delivery.setDeliveryStatus(DeliveryStatus);
+    }
+    
     
     @Override
     public List<DeliveryTransfer> findAllDeliveries() {
@@ -63,5 +81,6 @@ public class DeliveryBean implements DeliveryBeanRemote {
                 delivery.getDeliveryFile(), delivery.getUserID(), 
                 delivery.getModuleID(), delivery.getFileName());
     }
+
     
 }

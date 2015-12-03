@@ -214,7 +214,7 @@ INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (2, 1, 
 INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (2, 1, 2, "Godkjent");
 INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (3, 1, 3, "Ikke godkjent");
 INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 1, 4, "Ikke vurdert");
-INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 1, "Ikke vurdert");
+INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 1, "Godkjent");
 INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 2, "Ikke vurdert");
 INSERT INTO Delivery (DeliveryStatus, UserID, ModuleID, Feedback) VALUES (1, 2, 3, "Ikke vurdert");
 

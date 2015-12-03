@@ -5,6 +5,7 @@
  */
 package slitclient.module;
 
+import beans.DeliveryTransfer;
 import beans.ModuleTransfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -140,6 +141,19 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
     lowerPanel.add(kommentarTf); //legger til kommentarfeltet i lowerpanel
     kommentarTf.setPreferredSize(new Dimension(frame.getWidth()/2 - 40, 410)); //setter kommentarboksens st�rrelse i forhold til bredden og h�yden p� framen og de andre komponentene, h�yde etter komma
     
+    //kommentarTf.setText(Main.getDeliveryBean().findDelivery(0));
+    
+    
+    
+    for (DeliveryTransfer df : Main.getDeliveryBean().findAllDeliveries()) {
+        DeliveryTransfer hei = Main.getDeliveryBean().findDelivery(df.getDeliveryID());
+        if (Main.getCurrentUserID() == df.getUserID() 
+                && Main.getModuleType() == df.getModuleID()) {
+            kommentarTf.setText(hei.getFeedback());
+            System.out.println(hei.getFeedback());
+        }
+    }
+    
     uploadTf.setEditable(false);
     kommentarTf.setLineWrap(true);
     kommentarTf.setWrapStyleWord(true);
@@ -251,8 +265,7 @@ public class ModuleViewStudent extends slitclient.ButtonMenu {
         byte[] content = readFile(file);
         System.out.println("Create file transfer object");
         Main.getDeliveryBean().addDelivery(1, "", content, 
-                Main.getUserBean().findUser(Main.getCurrentUserID()).getUserID()
-                , Main.getModuleType(), file.getName());
+                Main.getCurrentUserID(), Main.getModuleType(), file.getName());
     }
     
 }

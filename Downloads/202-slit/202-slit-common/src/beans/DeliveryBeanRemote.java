@@ -20,4 +20,8 @@ public interface DeliveryBeanRemote {
     DeliveryTransfer findDelivery(int id);
     
     List<DeliveryTransfer> findAllDeliveries();
+    
+    void updateModule(int DeliveryID, String feedback);
+
+    void setStatus(int DeliveryID, int DeliveryStatus);
 }

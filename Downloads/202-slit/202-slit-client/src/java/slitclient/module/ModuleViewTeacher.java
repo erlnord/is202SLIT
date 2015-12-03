@@ -48,6 +48,9 @@ public class ModuleViewTeacher extends ButtonMenu {
     
     JFileChooser fileChooser = new JFileChooser();
     List<UserTransfer> utList;
+    int selectedUser;
+    int selectedDelivery;
+    JTextArea kommentarTf = new JTextArea();
     
     public ModuleViewTeacher () {
         
@@ -164,7 +167,7 @@ public class ModuleViewTeacher extends ButtonMenu {
     JPanel upperPanel = new JPanel();
     JPanel lowerPanel = new JPanel();
     DefaultListModel model = new DefaultListModel();
-    JList navneListe = new JList();
+    JList navneListe = new JList(model);
     
               
     
@@ -176,15 +179,43 @@ public class ModuleViewTeacher extends ButtonMenu {
     // Looper gjennom alle brukere for å legge til studenter i listen
     for (UserTransfer u : Main.getUserBean().findAllUsers()) {
         // Hvis bruker har brukertype = student så legges dem til i listen
-        if (u.getUserType() == 1)
+        if (u.getUserType() == 1) {
+            System.out.println("added "+ u);
             model.addElement(u);
-    }      
-    
+        }
+    }
+        
     navneListe.addListSelectionListener(new ListSelectionListener() {
         @Override
         public void valueChanged(ListSelectionEvent e) {
-            //System.out.println(navneListe.getSelectedValue());
+            kommentarTf.setText("");
+            int index = navneListe.getSelectedIndex();
+            UserTransfer ut = (UserTransfer)model.getElementAt(index);
+            selectedUser = ut.getUserID();
+            System.out.println(selectedUser);
             
+            for (DeliveryTransfer df : Main.getDeliveryBean().findAllDeliveries()) {
+                if (df.getUserID() == selectedUser && 
+                        df.getModuleID() == Main.getModuleType()) {
+                    selectedDelivery = df.getDeliveryID();
+                    System.out.println("Selected user's delivery is: "
+                            +selectedDelivery);
+                    kommentarTf.setText(Main.getDeliveryBean()
+                .findDelivery(selectedDelivery).getFeedback());
+                }
+            }
+        }
+    });
+    
+    btnLagreRight.addActionListener ((ActionEvent e) -> {
+        Main.getDeliveryBean().updateModule(selectedDelivery, 
+                kommentarTf.getText());
+        JOptionPane.showMessageDialog(null, "Feedback oppdatert.");
+        
+        if (ikkeGodkjent.isSelected()) {
+            Main.getDeliveryBean().setStatus(selectedDelivery, 3);
+        } else if (godkjent.isSelected()) {
+            Main.getDeliveryBean().setStatus(selectedDelivery, 2);
         }
     });
     
@@ -197,8 +228,7 @@ public class ModuleViewTeacher extends ButtonMenu {
 
     lowerPanel.setLayout(new FlowLayout());
     lowerPanel.setBorder(BorderFactory.createTitledBorder("KOMMENTAR"));
-
-    JTextArea kommentarTf = new JTextArea();
+    
     kommentarTf.setPreferredSize(new Dimension
         (frame.getWidth()/2 - 30, frame.getHeight() - 20));
     lowerPanel.add(kommentarTf); //legger til kommentarfeltet i lowerpanel
@@ -222,7 +252,7 @@ public class ModuleViewTeacher extends ButtonMenu {
     // fra en JList over studenter som har levert og så laste ned deres 
     // innlevering.
     download.addActionListener ((ActionEvent e) -> {
-        DeliveryTransfer dt = Main.getDeliveryBean().findDelivery(8);
+        DeliveryTransfer dt = Main.getDeliveryBean().findDelivery(selectedDelivery);
             try {
                 // Kjører metoden downloadDelivery
                 downloadDelivery(dt);
@@ -231,8 +261,7 @@ public class ModuleViewTeacher extends ButtonMenu {
                 ioe.printStackTrace();
             }
     });
-    
-    }
+}
     
     /**
      * Metode for å laste ned en innlevering. Denne metoden kjøres når
