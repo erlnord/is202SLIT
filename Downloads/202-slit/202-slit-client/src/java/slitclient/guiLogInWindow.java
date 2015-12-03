@@ -229,7 +229,7 @@ public class guiLogInWindow extends JFrame {
         regContainer.setBackground(Color.WHITE);
         
         // Legger til alle elementene som trengs i panel1
-        regPanel.setLayout(new GridLayout(4, 2));
+        regPanel.setLayout(new GridLayout(4, 2)); 
         regPanel.setBackground(Color.WHITE);
         regPanel.add(FirstNameTxt);
         regPanel.add(LastNameTxt);
@@ -258,6 +258,18 @@ public class guiLogInWindow extends JFrame {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 frame2.dispose();
                 new guiLogInWindow();
+                
+                /* Legge til 10000 brukere
+                for (int i = 1; i <= 10000; i++) {
+                    Main.getUserBean().addUser(1, "fornavn"+i, "lastname"+i, 
+                        "brukernavn"+i, "passord", "mail"+1+"@mail.com");
+                    System.out.println("telling på gang her: "+i);
+                }
+                Printe ut alle brukere
+                for (UserTransfer u : Main.getUserBean().findAllUsers()) {
+                    System.out.println(u.getFirstName() + " " + u.getLastName());
+                }
+                */
             }
         });
         

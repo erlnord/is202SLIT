@@ -154,7 +154,5 @@ public abstract class MainViewMaster extends ButtonMenu {
                 + "13:15" + "\n\n\nIS-109 - Onsdag 1. Desember - Kl: 10:15");
         
         frame.pack();
-        
-        
     }
 }

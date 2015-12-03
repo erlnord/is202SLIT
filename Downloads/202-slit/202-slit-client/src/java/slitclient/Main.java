@@ -13,7 +13,6 @@ import beans.NotificationBeanRemote;
 import javax.ejb.EJB;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import org.jboss.weld.context.ejb.Ejb;
 import slit.user.UserBeanRemote;
 import slitclient.mail.NotificationWindow;
 
