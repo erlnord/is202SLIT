@@ -49,31 +49,32 @@ public class ModuleWindow extends ButtonMenu {
         JButton button11 = new JButton("Modul 11");
         JButton button12 = new JButton("Modul 12");
         
+        
         if (Main.getUserType() == 1) {
             button1.setOpaque(true);
-            button1.setBackground(Color.YELLOW);
+            //button1.setBackground(Color.YELLOW);
             button2.setOpaque(true);
-            button2.setBackground(Color.YELLOW);
+            //button2.setBackground(Color.YELLOW);
             button3.setOpaque(true);
-            button3.setBackground(Color.YELLOW);
+            //button3.setBackground(Color.YELLOW);
             button4.setOpaque(true);
-            button4.setBackground(Color.YELLOW);
+            //button4.setBackground(Color.YELLOW);
             button5.setOpaque(true);
-            button5.setBackground(Color.YELLOW);
+            //button5.setBackground(Color.YELLOW);
             button6.setOpaque(true);
-            button6.setBackground(Color.YELLOW);
+            //button6.setBackground(Color.YELLOW);
             button7.setOpaque(true);
-            button7.setBackground(Color.YELLOW);
+            //button7.setBackground(Color.YELLOW);
             button8.setOpaque(true);
-            button8.setBackground(Color.YELLOW);
+            //button8.setBackground(Color.YELLOW);
             button9.setOpaque(true);
-            button9.setBackground(Color.YELLOW);
+            //button9.setBackground(Color.YELLOW);
             button10.setOpaque(true);
-            button10.setBackground(Color.YELLOW);
+            //button10.setBackground(Color.YELLOW);
             button11.setOpaque(true);
-            button11.setBackground(Color.YELLOW);
+            //button11.setBackground(Color.YELLOW);
             button12.setOpaque(true);
-            button12.setBackground(Color.YELLOW);
+            //button12.setBackground(Color.YELLOW);
         }
         
         panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -98,6 +99,9 @@ public class ModuleWindow extends ButtonMenu {
             } else if (dt.getModuleID() == 1 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 System.out.println("Fant rød innlevering ID: " + dt.getDeliveryID());
                 button1.setBackground(Color.RED);
+            } else if (dt.getModuleID() == 1 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                System.out.println("Fant rød innlevering ID: " + dt.getDeliveryID());
+                button1.setBackground(Color.yellow);
             }
             
             else if (dt.getModuleID() == 2 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
@@ -106,6 +110,8 @@ public class ModuleWindow extends ButtonMenu {
             } else if (dt.getModuleID() == 2 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 System.out.println("Fant rød innlevering ID: " + dt.getDeliveryID());
                 button2.setBackground(Color.red);
+            } else if (dt.getModuleID() == 2 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button2.setBackground(Color.yellow);
             }
             
             else if (dt.getModuleID() == 3 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
@@ -114,60 +120,80 @@ public class ModuleWindow extends ButtonMenu {
             } else if (dt.getModuleID() == 3 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 System.out.println("Fant rød innlevering ID: " + dt.getDeliveryID());
                 button3.setBackground(Color.red);
-            } 
+            } else if (dt.getModuleID() == 3 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button3.setBackground(Color.yellow);
+            }
             
             else  if (dt.getModuleID() == 4 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button4.setBackground(Color.green);
             } else if (dt.getModuleID() == 4 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button4.setBackground(Color.red);
+            } else if (dt.getModuleID() == 4 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button4.setBackground(Color.yellow);
             }
             
             else if (dt.getModuleID() == 5 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button5.setBackground(Color.green);
             } else if (dt.getModuleID() == 5 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button5.setBackground(Color.red);
-            } 
+            } else if (dt.getModuleID() == 5 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button5.setBackground(Color.yellow);
+            }
             
             else  if (dt.getModuleID() == 6 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button6.setBackground(Color.green);
             } else if (dt.getModuleID() == 6 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button6.setBackground(Color.red);
+            } else if (dt.getModuleID() == 6 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button6.setBackground(Color.yellow);
             }
             
             else if (dt.getModuleID() == 7 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button7.setBackground(Color.green);
             } else if (dt.getModuleID() == 7 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button7.setBackground(Color.red);
-            } 
+            } else if (dt.getModuleID() == 7 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button7.setBackground(Color.yellow);
+            }
             
             else  if (dt.getModuleID() == 8 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button8.setBackground(Color.green);
             } else if (dt.getModuleID() == 8 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button8.setBackground(Color.red);
+            } else if (dt.getModuleID() == 8 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button8.setBackground(Color.yellow);
             }
             
             else if (dt.getModuleID() == 9 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button9.setBackground(Color.green);
             } else if (dt.getModuleID() == 9 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button9.setBackground(Color.red);
-            } 
+            } else if (dt.getModuleID() == 9 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button9.setBackground(Color.yellow);
+            }
             
             else  if (dt.getModuleID() == 10 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button10.setBackground(Color.green);
             } else if (dt.getModuleID() == 10 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button10.setBackground(Color.red);
+            } else if (dt.getModuleID() == 10 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button10.setBackground(Color.yellow);
             }
             
             else if (dt.getModuleID() == 11 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button11.setBackground(Color.green);
             } else if (dt.getModuleID() == 11 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button11.setBackground(Color.red);
+            } else if (dt.getModuleID() == 11 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button11.setBackground(Color.yellow);
             }
             
             else if (dt.getModuleID() == 12 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 2) {
                 button12.setBackground(Color.green);
             } else if (dt.getModuleID() == 12 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 3) {
                 button12.setBackground(Color.red);
+            } else if (dt.getModuleID() == 12 && dt.getUserID() == Main.getCurrentUserID() && dt.getDeliveryStatus() == 1) {
+                button12.setBackground(Color.yellow);
             }
         }
         
